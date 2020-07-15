@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        USER_ID: ${USER_ID:-1000}
+        GROUP_ID: ${GROUP_ID:-1000}
+        DOCKER_USER: ${DOCKER_USER:-user}
+        APP_DIR: ${APP_DIR:-/home/user/bridgetown-app}
+
+    command: bash -c "bundle exec rake test"
+
+    volumes:
+      - .:${APP_DIR:-/home/user/snowpacker}
