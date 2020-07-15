@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    parcel-rails (0.9.2)
+    parcel-rails (0.9.3)
 
 GEM
   remote: https://rubygems.org/
@@ -54,4 +54,4 @@ DEPENDENCIES
   rubocop
 
 BUNDLED WITH
-   1.16.1
+   1.17.2
