@@ -1,27 +1,31 @@
-# parcel-rails
+# Snowpacker
 
 [![Gem Version](https://badge.fury.io/rb/parcel-rails.svg)](https://badge.fury.io/rb/parcel-rails)
-[![Maintainability](https://api.codeclimate.com/v1/badges/4b0a3f36a6b1970a88e5/maintainability)](https://codeclimate.com/github/michaldarda/parcel-rails/maintainability)
-[![Build Status](https://travis-ci.org/michaldarda/parcel-rails.svg?branch=master)](https://travis-ci.org/michaldarda/parcel-rails)
+[![Maintainability](https://api.codeclimate.com/v1/badges/4b0a3f36a6b1970a88e5/maintainability)](https://codeclimate.com/github/ParamagicDev/snowpacker/maintainability)
 
-Gem integrates [parcel](https://parceljs.org/) JS module bundler into your Rails application. It is inspired by gems such as
-[breakfast](https://github.com/devlocker/breakfast) or [webpacker](https://github.com/rails/webpacker).
+Gem integrates [snowpack](https://snowpack.dev/) JS module bundler into
+your Rails application. It is inspired by gems such as
+[breakfast](https://github.com/devlocker/breakfast) /
+[webpacker](https://github.com/rails/webpacker) and is a fork off of
+[parcel-rails](https://github.com/michaldarda/parcel-rails)
+
+This is not meant to be a 1:1 replacement of Webpacker.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'parcel-rails'
+gem 'snowpacker'
 ```
 
 Then run
 
-    $ bin/rails g parcel
+    $ bin/rails g snowpacker
 
 ### Development
 
-Currently `parcel` is not integrated with `rails s` so you need a process manager like [foreman]() to run both `rails s` and `parcel`.
+Currently `snowpacker` is not integrated with `rails s` so you need a process manager like [foreman]() to run both `rails s` and `parcel`.
 
 Create `Procfile.dev`, with the following content:
 
@@ -36,23 +40,23 @@ Then run `foreman start -f Procfile.dev`
 
 Gem hooks up to the `assets:precompile` and `assets:clobber`, so no special setup is required.
 
-You can start parcel's compilation process manually by running
+You can start snowpacker's compilation process manually by running
 
-    rake parcel:compile
+    rake snowpacker:compile
 
 ### Including in views
 
 Use Rails generic helpers to include assets in your views
 
-    javascript_include_tag '/parcels/application'
-    stylesheet_link_tag '/parcels/application'
+    javascript_include_tag '/snowpacks/application'
+    stylesheet_link_tag '/snowpacks/application'
 
 ### Configuration
 
 After running generator, configuration can be found in config/initializers/parcel.rb.
 
 	config.parcel.entry_points = %w(app/javascript/application.js)
-	config.parcel.destination = 'public/parcels'
+	config.parcel.destination = 'public/snowpacks'
 
 #### Warning
 
@@ -60,7 +64,7 @@ Currently only single entry point is supported, it is limitation coming from Par
 
 ## Changelog
 
-See [CHANGELOG.md](https://github.com/michaldarda/parcel-rails/blob/master/CHANGELOG.md)
+See [CHANGELOG.md](https://github.com/ParamagicDev/snowpacker/blob/master/CHANGELOG.md)
 
 ## Development
 
@@ -70,13 +74,8 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/michaldarda/parcel-rails. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/ParamagicDev/snowpacker.
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-## Code of Conduct
-
-Everyone interacting in the *parcel-rails* project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/michaldarda/parcel-rails/blob/master/CODE_OF_CONDUCT.md).
-
