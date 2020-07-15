@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Railsapp</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag   'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%# <%= javascript_parcel_tag 'application' %1> %>
+    <%= javascript_include_tag '/parcels/application' %>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>
