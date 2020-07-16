@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-namespace :parcel do
+namespace :snowpacker do
   desc 'Compiles assets using parcel bundler'
   task compile: :environment do
-    Parcel::Rails::Runner.from_config.compile
+    Snowpacker::Rails::Runner.from_config.compile
   end
 
   desc 'Compiles assets using parcel bundler'
   task serve: :environment do
-    Parcel::Rails::Runner.from_config.serve
+    Snowpacker::Rails::Runner.from_config.serve
   end
 
   desc 'Removes compiled assets'
@@ -21,9 +21,9 @@ namespace :parcel do
 end
 
 Rake::Task['assets:precompile'].enhance do
-  Rake::Task['parcel:compile'].invoke
+  Rake::Task['snowpacker:compile'].invoke
 end
 
 Rake::Task['assets:clobber'].enhance do
-  Rake::Task['parcel:clobber'].invoke
+  Rake::Task['snowpacker:clobber'].invoke
 end

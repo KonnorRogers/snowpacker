@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Parcel
+module Snowpacker
   module Rails
     class Runner
       def self.from_command_line(args)
@@ -9,7 +9,7 @@ module Parcel
       end
 
       def self.from_config
-        to_args(::Rails.application.config.parcel)
+        to_args(::Rails.application.config.snowpacker)
       end
 
       def self.to_args(config)
@@ -21,17 +21,17 @@ module Parcel
       end
 
       def compile
-        parcel_commmand(:build)
+        snowpacker_command(:build)
       end
 
       def serve
-        parcel_commmand
+        snowpacker_command(:dev)
       end
 
       private
 
-      def parcel_commmand(cmd = '')
-        command = "yarn run parcel #{cmd} #{@args.join(' ')}"
+      def snowpacker_command(cmd = '')
+        command = "yarn run snowpack #{cmd} #{@args.join(' ')}"
         output = exec(command)
       end
     end

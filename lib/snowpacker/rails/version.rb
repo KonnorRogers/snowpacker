@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module Parcel
+module Snowpacker
   module Rails
-    VERSION = '0.9.3'
+    VERSION = '0.0.1'
   end
 end

@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 require 'ostruct'
-RSpec.describe Parcel::Rails::Runner do
+RSpec.describe Snowpacker::Rails::Runner do
   before do
-    FileUtils.rm_rf(PUBLIC_PARCELS_DIR)
+    FileUtils.rm_rf(PUBLIC_SNOWPACKER_DIR)
     FileUtils.rm_rf(CACHE_DIR)
-    FileUtils.mkdir_p(PUBLIC_PARCELS_DIR)
+    FileUtils.mkdir_p(PUBLIC_SNOWPACKER_DIR)
   end
 
   context 'from config' do
@@ -15,15 +15,15 @@ RSpec.describe Parcel::Rails::Runner do
         Rails = OpenStruct.new(
           application: OpenStruct.new(
             config: OpenStruct.new(
-              parcel: OpenStruct.new(
+              snowpacker: OpenStruct.new(
                 entry_points: asset,
-                destination: PUBLIC_PARCELS_DIR
+                destination: PUBLIC_SNOWPACKER_DIR
               )
             )
           )
         )
-        Parcel::Rails::Runner.from_config.compile
-        expect(File.exist?(PUBLIC_PARCELS_DIR.join('index.js'))).to eq true
+        Snowpacker::Rails::Runner.from_config.compile
+        expect(File.exist?(PUBLIC_SNOWPACKER_DIR.join('index.js'))).to eq true
       end
     end
   end

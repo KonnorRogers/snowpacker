@@ -3,17 +3,17 @@
 
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'parcel/rails/version'
+require 'snowpacker/rails/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'parcel-rails'
-  spec.version       = Parcel::Rails::VERSION
-  spec.authors       = ['Michał Darda', 'Ignacy Moryc']
-  spec.email         = ['michaldarda@gmail.com', 'imoryc@gmail.com']
+  spec.version       = Snowpacker::Rails::VERSION
+  spec.authors       = ['Konnor Rogers']
+  spec.email         = ['konnor7414@gmail.com']
 
-  spec.summary       = 'Rails integration of parceljs bundler'
-  spec.description   = 'Rails integration of parceljs bundler'
-  spec.homepage      = 'http://github.com/michaldarda/parcel-rails'
+  spec.summary       = 'Rails integration of snowpack'
+  spec.description   = 'Rails integration of snowpack'
+  spec.homepage      = 'http://github.com/paramagicdev/snowpacker'
   spec.license       = 'MIT'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
