@@ -9,7 +9,7 @@ services:
         USER_ID: ${USER_ID:-1000}
         GROUP_ID: ${GROUP_ID:-1000}
         DOCKER_USER: ${DOCKER_USER:-user}
-        APP_DIR: ${APP_DIR:-/home/user/bridgetown-app}
+        APP_DIR: ${APP_DIR:-/home/user/snowpacker}
 
     command: bash -c "bundle exec rake test"
 
