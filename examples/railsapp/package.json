@@ -4,5 +4,5 @@
   "dependencies": {
     "parcel-bundler": "^1.6.1"
   },
-  "scripts": { "parcel": "parcel" }
+  "scripts": { "snowpack": "snowpack" }
 }

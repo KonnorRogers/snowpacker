@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    parcel-rails (0.9.3)
+    snowpacker (0.0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -52,11 +52,11 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.16)
-  parcel-rails!
   pry
   rake (~> 10.0)
   rspec (~> 3.0)
   rubocop
+  snowpacker!
 
 BUNDLED WITH
    1.17.2

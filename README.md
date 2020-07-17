@@ -4,7 +4,7 @@
 
 Progress can be seen on the `development` branch. Right now, this is a just a fork.
 
-[![Gem Version](https://badge.fury.io/rb/parcel-rails.svg)](https://badge.fury.io/rb/parcel-rails)
+[![Gem Version](https://badge.fury.io/rb/snowpacker.svg)](https://badge.fury.io/rb/snowpacker)
 [![Maintainability](https://api.codeclimate.com/v1/badges/4b0a3f36a6b1970a88e5/maintainability)](https://codeclimate.com/github/ParamagicDev/snowpacker/maintainability)
 
 Gem integrates [snowpack](https://snowpack.dev/) JS module bundler into
@@ -29,13 +29,13 @@ Then run
 
 ### Development
 
-Currently `snowpacker` is not integrated with `rails s` so you need a process manager like [foreman]() to run both `rails s` and `parcel`.
+Currently `snowpacker` is not integrated with `rails s` so you need a process manager like [foreman]() to run both `rails s` and `snowpack`.
 
 Create `Procfile.dev`, with the following content:
 
 ```
 web: bin/rails s
-parcel: bin/rails parcel:serve
+snowpacker: bin/rails snowpacker:serve
 ```
 
 Then run `foreman start -f Procfile.dev`
@@ -57,14 +57,10 @@ Use Rails generic helpers to include assets in your views
 
 ### Configuration
 
-After running generator, configuration can be found in config/initializers/parcel.rb.
+After running generator, configuration can be found in config/initializers/snowpacker.rb.
 
-	config.parcel.entry_points = %w(app/javascript/application.js)
-	config.parcel.destination = 'public/snowpacks'
-
-#### Warning
-
-Currently only single entry point is supported, it is limitation coming from Parcel itself and not the gem.
+	config.snowpacker.entry_points = %w(app/javascript/application.js)
+	config.snowpacker.destination = 'public/snowpacks'
 
 ## Changelog
 

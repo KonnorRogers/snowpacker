@@ -6,7 +6,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'snowpacker/rails/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'parcel-rails'
+  spec.name          = 'snowpacker'
   spec.version       = Snowpacker::Rails::VERSION
   spec.authors       = ['Konnor Rogers']
   spec.email         = ['konnor7414@gmail.com']
