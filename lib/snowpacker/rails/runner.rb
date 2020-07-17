@@ -13,7 +13,7 @@ module Snowpacker
       end
 
       def self.to_args(config)
-        new([*config.entry_points, '-d', config.destination])
+        new([*config.entry_points, '--out', config.destination])
       end
 
       def initialize(args)

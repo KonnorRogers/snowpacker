@@ -2,7 +2,12 @@
   "name": "railsapp",
   "private": true,
   "dependencies": {
-    "parcel-bundler": "^1.6.1"
+    "@snowpack/plugin-babel": "^1.4.0",
+    "@snowpack/plugin-parcel": "^1.3.0",
+    "parcel-bundler": "^1.12.4",
+    "snowpack": "^2.6.4"
   },
-  "scripts": { "snowpack": "snowpack" }
+  "scripts": {
+    "snowpack": "snowpack"
+  }
 }

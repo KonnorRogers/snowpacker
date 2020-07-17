@@ -1,0 +1,26 @@
+{
+  "installOptions": {
+    "NODE_ENV": true
+  },
+  "scripts": {
+    "mount:javascript": "mount javascript --to /public/snowpacks",
+    "mount:public": "mount public --to /",
+    "build:css": "postcss"
+  },
+  "devOptions": {
+    "port": 4000,
+    "open": "none",
+    "out": "public/snowpacks"
+  },
+  "proxy": {
+    "0.0.0.0:3035": "0.0.0.0:3035"
+  },
+  "buildOptions": {
+    "clean": true,
+    "baseUrl": "/"
+  },
+  "plugins": [
+    "@snowpack/plugin-babel",
+    "@snowpack/plugin-parcel"
+  ]
+}

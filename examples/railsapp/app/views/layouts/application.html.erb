@@ -5,8 +5,7 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag   'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%# <%= javascript_snowpacker_tag 'application' %1> %>
-    <%= javascript_include_tag '/snowpacks/application' %>
+    <%= javascript_include_tag '/snowpacks/application', type: "module" %>
   </head>
 
   <body>
