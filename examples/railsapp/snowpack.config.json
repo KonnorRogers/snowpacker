@@ -8,7 +8,7 @@
     "mount:public": "mount public --to /"
   },
   "devOptions": {
-    "port": 3035,
+    "port": 4000,
     "open": "none",
     "out": "public"
   },
