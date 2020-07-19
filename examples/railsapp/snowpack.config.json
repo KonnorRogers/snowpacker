@@ -3,7 +3,8 @@
     "NODE_ENV": true
   },
   "scripts": {
-    "mount:javascript": "mount javascript --to /public/snowpacks",
+    "mount:javascript": "mount /app/javascript/snowpacks --to /public/snowpacks",
+    "mount:stylesheets": "mount /app/javascript/stylesheets --to /public/stylesheets",
     "mount:public": "mount public --to /",
     "build:css": "postcss"
   },
