@@ -15,10 +15,10 @@ public/
 
 log/
 
-node_modules/
+*node_modules*
 
 .vscode/
-/tags
+tags
 
 # See https://help.github.com/articles/ignoring-files for more about ignoring files.
 #
@@ -30,35 +30,35 @@ node_modules/
 .bundle
 
 # Ignore the default SQLite database.
-examples/railsapp/db/*.sqlite3
-examples/railsapp/db/*.sqlite3-journal
-examples/railsapp/db/*.sqlite3-*
+examples/*/db/*.sqlite3
+examples/*/db/*.sqlite3-journal
+examples/*/db/*.sqlite3-*
 
 # Ignore all logfiles and tempfiles.
-examples/railsapp/log/*
-examples/railsapp/tmp/*
-!examples/railsapp/log/.keep
-!examples/railsapp/tmp/.keep
+examples/*/log/*
+examples/*/tmp/*
+!examples/*/log/.keep
+!examples/*/tmp/.keep
 
 # Ignore pidfiles, but keep the directory.
-examples/railsapp/tmp/pids/*
-!examples/railsapp/tmp/pids/
-!examples/railsapp/tmp/pids/.keep
+examples/*/tmp/pids/*
+!examples/*/tmp/pids/
+!examples/*/tmp/pids/.keep
 
 # Ignore uploaded files in development.
-examples/railsapp/storage/*
-!examples/railsapp/storage/.keep
+examples/*/storage/*
+!examples/*/storage/.keep
 
-examples/railsapp/public/assets
-examples/railsapp/.byebug_history
+examples/*/public/assets
+examples/*/.byebug_history
 
 # Ignore master key for decrypting credentials and more.
-examples/railsapp/config/master.key
+examples/*/config/master.key
 
-examples/railsapp/public/packs
-examples/railsapp/public/snowpacks
-examples/railsapp/public/packs-test
-examples/railsapp/node_modules
-examples/railsapp/yarn-error.log
-examples/railsapp/yarn-debug.log*
-examples/railsapp/.yarn-integrity
+examples/*/public/packs
+examples/*/public/snowpacks
+examples/*/public/packs-test
+examples/*/node_modules
+examples/*/yarn-error.log
+examples/*/yarn-debug.log*
+examples/*/.yarn-integrity
