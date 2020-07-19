@@ -7,14 +7,14 @@ class SnowpackerGenerator < ::Rails::Generators::Base
   def create_initializer_file
     initializer 'snowpacker.rb' do
       %{Rails.application.config.snowpacker do |snowpacker|
-  snowpacker.entry_points = %w(app/javascript/application.js)
-  snowpacker.destination = 'public/snowpacks'
+  snowpacker.entry_points = %w(app/javascript/snowpacks/application.js)
+  snowpacker.destination = 'snowpacks'
 end}
     end
   end
 
   def add_snowpack
     `yarn add snowpack parcel-bundler \
-              snowpack/plugin-babel @snowpack/plugin-parcel`
+              @snowpack/plugin-babel @snowpack/plugin-parcel`
   end
 end
