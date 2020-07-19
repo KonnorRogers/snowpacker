@@ -14,7 +14,9 @@ end}
   end
 
   def add_snowpack
-    `yarn add snowpack parcel-bundler \
-              @snowpack/plugin-babel @snowpack/plugin-parcel`
+    `yarn add -D snowpack \
+                 parcel-bundler \
+                 @snowpack/plugin-babel \
+                 @snowpack/plugin-parcel`
   end
 end

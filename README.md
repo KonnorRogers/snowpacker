@@ -25,7 +25,9 @@ gem 'snowpacker'
 
 Then run
 
-    $ bin/rails g snowpacker
+```
+bin/rails g snowpacker
+```
 
 ### Development
 
@@ -33,7 +35,7 @@ Currently `snowpacker` is not integrated with `rails s` so you need a process ma
 
 Create `Procfile.dev`, with the following content:
 
-```
+```bash
 web: bin/rails s
 snowpacker: bin/rails snowpacker:serve
 ```
@@ -46,21 +48,28 @@ Gem hooks up to the `assets:precompile` and `assets:clobber`, so no special setu
 
 You can start snowpacker's compilation process manually by running
 
-    rake snowpacker:compile
+```bash
+rake snowpacker:compile
+```
 
 ### Including in views
 
 Use Rails generic helpers to include assets in your views
 
-    javascript_include_tag '/snowpacks/application'
-    stylesheet_link_tag '/snowpacks/application'
+```ruby
+<%= javascript_snowpack_tag 'application' %> # => snowpacks/javascript
+<%= stylesheet_snowpack_tag 'application' %> # => snowpacks/stylesheets
+```
 
 ### Configuration
 
-After running generator, configuration can be found in config/initializers/snowpacker.rb.
+After running generator, the configuration file can be found in
+`config/initializers/snowpacker.rb`
 
-	config.snowpacker.entry_points = %w(app/javascript/application.js)
-	config.snowpacker.destination = 'public/snowpacks'
+```ruby
+config.snowpacker.entry_points = %w(app/javascript/snowpacks/application.js)
+config.snowpacker.destination = 'snowpacks'
+```
 
 ## Changelog
 
