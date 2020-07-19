@@ -2,12 +2,18 @@
   "name": "railsapp",
   "private": true,
   "dependencies": {
-    "@snowpack/plugin-babel": "^1.4.0",
-    "@snowpack/plugin-parcel": "^1.3.0",
-    "parcel-bundler": "^1.12.4",
-    "snowpack": "^2.6.4"
+    "@rails/actioncable": "^6.0.0",
+    "@rails/activestorage": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
+    "turbolinks": "^5.2.0"
   },
   "scripts": {
-    "snowpack": "snowpack"
+    "dev": "snowpack dev"
+  },
+  "version": "0.1.0",
+  "devDependencies": {
+    "@snowpack/plugin-babel": "^1.4.0",
+    "snowpack": "^2.6.4",
+    "webpack-dev-server": "^3.11.0"
   }
 }

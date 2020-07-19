@@ -3,24 +3,23 @@
     "NODE_ENV": true
   },
   "scripts": {
-    "mount:javascript": "mount javascript --to /public/snowpacks",
-    "mount:public": "mount public --to /",
-    "build:css": "postcss"
+    "mount:javascript": "mount app/javascript/snowpacks --to /snowpacks/javascript",
+    "mount:stylesheets": "mount app/javascript/stylesheets --to /snowpacks/stylesheets",
+    "mount:public": "mount public --to /"
   },
   "devOptions": {
     "port": 4000,
     "open": "none",
-    "out": "public/snowpacks"
+    "out": "public"
   },
   "proxy": {
     "0.0.0.0:3035": "0.0.0.0:3035"
   },
   "buildOptions": {
-    "clean": true,
+    "clean": false,
     "baseUrl": "/"
   },
   "plugins": [
-    "@snowpack/plugin-babel",
-    "@snowpack/plugin-parcel"
+    "@snowpack/plugin-babel"
   ]
 }
