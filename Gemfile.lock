@@ -17,7 +17,7 @@ GEM
       coderay (~> 1.1)
       method_source (~> 1.0)
     rainbow (3.0.0)
-    rake (10.5.0)
+    rake (13.0.1)
     regexp_parser (1.7.1)
     rexml (3.2.4)
     rspec (3.9.0)
@@ -53,7 +53,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.16)
   pry
-  rake (~> 10.0)
+  rake (~> 13.0)
   rspec (~> 3.0)
   rubocop
   snowpacker!
