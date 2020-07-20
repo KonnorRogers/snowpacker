@@ -62,3 +62,4 @@ examples/*/node_modules
 examples/*/yarn-error.log
 examples/*/yarn-debug.log*
 examples/*/.yarn-integrity
+examples/*/snowpacks
