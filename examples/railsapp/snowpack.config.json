@@ -3,12 +3,12 @@
     "NODE_ENV": true
   },
   "scripts": {
-    "mount:app/snowpacks": "mount app/javascript/snowpacks --to /snowpacks/javascript",
+    "mount:app/snowpacks": "mount javascript/snowpacks --to /snowpacks/javascript",
     "mount:stylesheets": "mount app/javascript/stylesheets --to /snowpacks/stylesheets",
     "mount:snowpacks": "mount snowpacks --to /"
   },
   "devOptions": {
-    "port": 4000,
+    "port": 4035,
     "open": "none",
     "out": "snowpacks"
   },
@@ -20,7 +20,6 @@
     "baseUrl": "/"
   },
   "plugins": [
-    "@snowpack/plugin-babel",
-    "@snowpack/plugin-parcel"
+    "@snowpack/plugin-babel"
   ]
 }

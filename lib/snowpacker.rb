@@ -22,8 +22,13 @@ module Snowpacker
         end
 
         config.snowpacker = ActiveSupport::OrderedOptions.new
-        config.snowpacker.entry_points = %w[app/javascript/application.js]
-        config.snowpacker.destination = 'public/snowpacks'
+        config.snowpacker.config_file = File.join('app', 'config', 'snowpack.config.json')
+        config.snowpacker.source_path = File.join('app', 'javascript')
+        config.snowpacker.entry_points = [File.join(config.snowpacker.source_path, 'snowpacks', 'application.js')]
+        config.snowpacker.out = 'snowpacks'
+        config.snowpacker.javascript = File.join(config.snowpacker.out, 'javascript')
+        config.snowpacker.stylesheets = File.join(config.snowpacker.out, 'stylesheets')
+        config.snowpacker.assets = File.join(config.snowpacker.out, 'assets')
       end
     end
   end
