@@ -7,7 +7,7 @@ class SnowpackerGenerator < ::Rails::Generators::Base
   desc 'Generate Snowpacker initializer'
   def create_initializer_file
     initializer 'snowpacker.rb' do
-      File.read(File.join(TEMPLATES, 'snowpacker.rb')
+      File.read(File.join(TEMPLATES, 'snowpacker.rb'))
     end
   end
 
