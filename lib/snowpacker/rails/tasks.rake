@@ -2,13 +2,13 @@
 
 namespace :snowpacker do
   desc 'Compiles assets using snowpack bundler'
-  task compile: :environment do
-    Snowpacker::Rails::Runner.from_config.compile
+  task build: :environment do
+    Snowpacker::Rails::Runner.new.compile
   end
 
   desc 'Compiles assets using snowpack bundler'
-  task serve: :environment do
-    Snowpacker::Rails::Runner.from_config.serve
+  task dev: :environment do
+    Snowpacker::Rails::Runner.new.dev
   end
 
   desc 'Removes compiled assets'
@@ -21,7 +21,7 @@ namespace :snowpacker do
 end
 
 Rake::Task['assets:precompile'].enhance do
-  Rake::Task['snowpacker:compile'].invoke
+  Rake::Task['snowpacker:build'].invoke
 end
 
 Rake::Task['assets:clobber'].enhance do

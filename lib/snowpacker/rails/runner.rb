@@ -4,12 +4,12 @@ module Snowpacker
   module Rails
     class Runner
       # Build for production
-      def compile
+      def build
         snowpacker_command(env: :production, cmd: :build)
       end
 
       # Serve for development
-      def serve
+      def dev
         snowpacker_command(env: :development, cmd: :dev)
       end
 

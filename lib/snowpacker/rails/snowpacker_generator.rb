@@ -3,6 +3,7 @@ require 'rails/generators'
 
 class SnowpackerGenerator < ::Rails::Generators::Base
   desc 'Generate Snowpacker initializer'
+
   def create_initializer_file
     initializer 'snowpacker.rb' do <<-RUBY
       Rails.application.config.snowpacker do |snowpacker|
