@@ -3,35 +3,20 @@
 module Snowpacker
   module Rails
     class Runner
-      def self.from_command_line(args)
-        return from_config if args.empty?
-        new(args)
-      end
-
-      def self.from_config
-        to_args(::Rails.application.config.snowpacker)
-      end
-
-      def self.to_args(config)
-        new([*config.entry_points, '--out', config.destination])
-      end
-
-      def initialize(args)
-        @args = args
-      end
-
+      # Build for production
       def compile
-        snowpacker_command(:build)
+        snowpacker_command(env: :production, cmd: :build)
       end
 
+      # Serve for development
       def serve
-        snowpacker_command(:dev)
+        snowpacker_command(env: :development, cmd: :dev)
       end
 
       private
 
-      def snowpacker_command(cmd = '')
-        command = "yarn run snowpack #{cmd} #{@args.join(' ')}"
+      def snowpacker_command(*args, env: '', cmd: '')
+        command = "NODE_ENV=#{env} yarn run snowpack #{cmd} #{args.flatten.join(' ')}"
         output = exec(command)
       end
     end
