@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 namespace :snowpacker do
   desc 'Compiles assets using snowpack bundler'
   task build: :environment do
