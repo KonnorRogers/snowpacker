@@ -3,10 +3,9 @@
   <head>
     <title>Railsapp</title>
     <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag   'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%# <%= javascript_parcel_tag 'application' %1> %>
-    <%= javascript_include_tag '/parcels/application' %>
+    <%= javascript_include_tag "/snowpacks/javascript/application.js", type: "module", skip_pipeline: true %>
   </head>
 
   <body>

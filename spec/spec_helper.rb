@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'bundler/setup'
-require 'parcel-rails'
+require 'snowpacker'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -16,5 +16,5 @@ RSpec.configure do |config|
 end
 
 FIXTURES_DIR = Pathname.new('spec/fixtures')
-PUBLIC_PARCELS_DIR = Pathname.new('public/parcels')
+PUBLIC_SNOWPACKER_DIR = Pathname.new('public/snowpacks')
 CACHE_DIR = '.cache'
