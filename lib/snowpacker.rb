@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'tasks/snowpacker_tasks.rake'
 require 'snowpacker/rails/version'
 require 'snowpacker/rails/runner'
 require 'snowpacker/rails/snowpacker_generator' if defined?(Rails)
