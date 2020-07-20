@@ -3,7 +3,7 @@
 namespace :snowpacker do
   desc 'Compiles assets using snowpack bundler'
   task build: :environment do
-    Snowpacker::Rails::Runner.new.compile
+    Snowpacker::Rails::Runner.new.build
   end
 
   desc 'Compiles assets using snowpack bundler'

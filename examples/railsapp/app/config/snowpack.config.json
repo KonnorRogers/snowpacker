@@ -3,12 +3,13 @@
           "NODE_ENV": true
         },
         "scripts": {
-          "mount:javascript": "mount app/javascript/snowpacks --to /snowpacks/javascript",
-          "mount:stylesheets": "mount app/javascript/stylesheets --to /snowpacks/stylesheets",
-          "mount:assets": "mount app/javascript/assets --to /snowpacks/assets",
+          "mount:javascript": "mount app/javascript/snowpacks --to /javascript",
+          "mount:stylesheets": "mount app/javascript/stylesheets --to /stylesheets",
+          "mount:assets": "mount app/javascript/assets --to /assets",
           "mount:snowpacks": "mount snowpacks --to /"
         },
         "devOptions": {
+          "bundle": false,
           "port": 4035,
           "open": "none",
           "out": "snowpacks"

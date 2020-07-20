@@ -1,0 +1,7 @@
+{
+  "imports": {
+    "@rails/activestorage": "./@rails/activestorage.js",
+    "@rails/ujs": "./@rails/ujs.js",
+    "turbolinks": "./turbolinks.js"
+  }
+}

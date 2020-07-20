@@ -5,9 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%# <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %1> %>
-    <script type="module" src="/public/snowpacks" defer></script>
+    <%= javascript_include_tag "/snowpacks/javascript/application.js", type: "module", skip_pipeline: true %>
   </head>
 
   <body>

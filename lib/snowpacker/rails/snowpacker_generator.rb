@@ -27,6 +27,8 @@ class SnowpackerGenerator < ::Rails::Generators::Base
   desc 'Add snowpack to your package.json dependencies'
   def add_snowpack
     `yarn add -D snowpack \
+                 @babel/plugin-transform-runtime \
+                 babel-plugin-macros \
                  @snowpack/plugin-babel`
   end
 
