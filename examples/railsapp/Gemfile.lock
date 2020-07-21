@@ -2,6 +2,7 @@ PATH
   remote: ../..
   specs:
     snowpacker (0.0.2)
+      rack-cors (~> 1.1)
 
 GEM
   remote: https://rubygems.org/
@@ -110,6 +111,8 @@ GEM
     puma (4.3.5)
       nio4r (~> 2.0)
     rack (2.2.3)
+    rack-cors (1.1.1)
+      rack (>= 2.0.0)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (6.0.3.2)
@@ -203,6 +206,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   listen (~> 3.2)
   puma (~> 4.1)
+  rack-cors (~> 1.1)
   rails (~> 6.0.3, >= 6.0.3.2)
   sass-rails (>= 6)
   selenium-webdriver

@@ -4,7 +4,7 @@
   },
   "scripts": {
     "mount:entrypoints": "mount app/javascript/snowpacks --to /entrypoints" ,
-    "mount:src": "mount app/javascript/src --to /src",
+    "mount:javascript": "mount app/javascript/src --to /src",
     "mount:stylesheets": "mount app/javascript/stylesheets --to /stylesheets",
     "mount:assets": "mount app/javascript/assets --to /assets",
     "mount:snowpacks": "mount snowpacks --to /"
@@ -13,9 +13,6 @@
     "port": 4035,
     "open": "none",
     "out": "snowpacks"
-  },
-  "proxy": {
-    "/snowpacks/*": "http://localhost:3000/snowpacks/*"
   },
   "buildOptions": {
     "clean": true,

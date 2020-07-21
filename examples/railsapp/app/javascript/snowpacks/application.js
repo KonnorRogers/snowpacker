@@ -3,8 +3,7 @@ import Turbolinks from "turbolinks"
 import ActiveStorage from "@rails/activestorage"
 import "../src/channels"
 
-UJS.start()
+// UJS.start()
 Turbolinks.start()
 ActiveStorage.start()
-
 console.log("Hi from snowpacker")
