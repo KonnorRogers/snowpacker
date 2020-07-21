@@ -3,7 +3,8 @@
     "NODE_ENV": true
   },
   "scripts": {
-    "mount:javascript": "mount app/javascript/snowpacks --to /snowpacks/javascript",
+    "mount:entry_points": "mount app/javascript/snowpacks --to /snowpacks/entrypoints" ,
+    "mount:source_path": "mount app/javascript --to /snowpacks/javascript",
     "mount:stylesheets": "mount app/javascript/stylesheets --to /snowpacks/stylesheets",
     "mount:assets": "mount app/javascript/assets --to /snowpacks/assets",
     "mount:snowpacks": "mount snowpacks --to /"

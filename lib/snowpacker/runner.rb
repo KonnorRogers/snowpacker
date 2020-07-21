@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
+# require ::Rails.root.join('config', 'initializers', 'snowpacker')
+
 module Snowpacker
   module Rails
     class Runner
-      def initialize(args)
-        @config_file = File.expand_path(::Rails.application.config.snowpacker.config_file)
+      def initialize
+        @config_file = Snowpacker.configuration.config_file
       end
 
       # Build for production
