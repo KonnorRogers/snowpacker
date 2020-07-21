@@ -15,7 +15,7 @@
     "out": "snowpacks"
   },
   "proxy": {
-    "/snowpacks/entrypoints/application.js": "http://localhost:3000/snowpacks/entrypoints/application.js"
+    "/snowpacks/*": "http://localhost:3000/snowpacks/*"
   },
   "buildOptions": {
     "clean": true,
