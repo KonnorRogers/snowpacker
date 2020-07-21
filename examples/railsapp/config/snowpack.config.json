@@ -12,7 +12,7 @@
   "devOptions": {
     "port": 4035,
     "open": "none",
-    "out": "snowpacks"
+    "out": "public/snowpacks"
   },
   "buildOptions": {
     "clean": true,
