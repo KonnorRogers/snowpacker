@@ -2,7 +2,7 @@
 require 'rails/generators'
 
 class SnowpackerGenerator < ::Rails::Generators::Base
-  TEMPLATES = File.join(File.expand_path("..", __dir__), 'templates')
+  TEMPLATES = File.join(File.expand_path(__dir__), 'templates')
 
   desc 'Generate Snowpacker initializer'
   def create_initializer_file

@@ -3,9 +3,8 @@
 module Snowpacker
   module Rails
     class Runner
-      # Where to read the config file from
-      def config_file
-        File.expand_path(::Rails.application.config.snowpacker.config_file)
+      def initialize(args)
+        @config_file = File.expand_path(::Rails.application.config.snowpacker.config_file)
       end
 
       # Build for production
@@ -21,8 +20,8 @@ module Snowpacker
       private
 
       def snowpacker_command(env: '', cmd: '')
-        command = "NODE_ENV=#{env} yarn run snowpack #{cmd} --config #{config_file}"
-        output = exec(command)
+        command = "NODE_ENV=#{env} yarn run snowpack #{cmd} --config #{@config_file}"
+        exec(command)
       end
     end
   end

@@ -206,7 +206,7 @@ DEPENDENCIES
   rails (~> 6.0.3, >= 6.0.3.2)
   sass-rails (>= 6)
   selenium-webdriver
-  snowpacker (~> 0.0.1)!
+  snowpacker (~> 0.0.2)!
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3 (~> 1.4)
