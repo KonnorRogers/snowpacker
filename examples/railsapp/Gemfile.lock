@@ -2,7 +2,6 @@ PATH
   remote: ../..
   specs:
     snowpacker (0.0.2)
-      rack-cors (~> 1.1)
 
 GEM
   remote: https://rubygems.org/

@@ -5,8 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%# <%= javascript_include_tag "http://localhost:4035/entrypoints/application.js", type: "module", skip_pipeline: true, nonce: true %1> %>
-    <%# <%= javascript_include_tag '/snowpacks/entrypoints/application', type: "module", skip_pipeline: true %1> %>
+    <%= javascript_include_tag '/snowpacks/application', type: "module" %>
     <script>window.HMR_WEBSOCKET_URL = "ws://localhost:4035"</script>
   </head>
 

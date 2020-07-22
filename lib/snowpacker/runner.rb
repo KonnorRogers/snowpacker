@@ -5,6 +5,8 @@
 module Snowpacker
   module Rails
     class Runner
+      attr_reader :config_file
+
       def initialize
         @config_file = Snowpacker.configuration.config_file
       end

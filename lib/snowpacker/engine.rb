@@ -1,4 +1,3 @@
-
 require 'rails/railtie'
 
 module Snowpacker

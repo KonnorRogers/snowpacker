@@ -3,11 +3,11 @@
     "NODE_ENV": true
   },
   "scripts": {
-    "mount:entrypoints": "mount app/javascript/snowpacks --to /entrypoints" ,
+    "mount:entrypoints": "mount app/javascript/snowpacks --to /" ,
     "mount:javascript": "mount app/javascript/src --to /src",
     "mount:stylesheets": "mount app/javascript/stylesheets --to /stylesheets",
     "mount:assets": "mount app/javascript/assets --to /assets",
-    "mount:snowpacks": "mount snowpacks --to /"
+    "mount:snowpacks": "mount public/snowpacks --to /"
   },
   "devOptions": {
     "port": 4035,

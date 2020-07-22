@@ -1,8 +1,0 @@
-{
-  "imports": {
-    "@rails/actioncable": "./@rails/actioncable.js",
-    "@rails/activestorage": "./@rails/activestorage.js",
-    "@rails/ujs": "./@rails/ujs.js",
-    "turbolinks": "./turbolinks.js"
-  }
-}
