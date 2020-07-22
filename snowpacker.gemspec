@@ -32,7 +32,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   # For proxying snowpacker-dev
-  spec.add_runtime_dependency    'rack-cors', '~> 1.1'
+  spec.add_runtime_dependency     'rack-proxy', '~> 0.64'
+
   spec.add_development_dependency 'bundler', '~> 1.16'
   spec.add_development_dependency 'pry'
   spec.add_development_dependency 'rake', '~> 13.0'
