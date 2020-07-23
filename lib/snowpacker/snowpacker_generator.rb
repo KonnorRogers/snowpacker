@@ -5,9 +5,14 @@ class SnowpackerGenerator < ::Rails::Generators::Base
   TEMPLATES = File.join(File.expand_path(__dir__), 'templates')
 
   desc 'Generate Snowpacker initializer'
-  def create_initializer_file
+  def create_initializer_files
     initializer 'snowpacker.rb' do
       File.read(File.join(TEMPLATES, 'snowpacker.rb'))
+    end
+
+    initializer 'snowpacker.proxy' do |app|
+      app.middleware.insert_before 0,
+          Rails::VERSION::MAJOR >= 5 ? Snowpacker::SnowpackerProxy : "Snowpacker::SnowpackerProxy", ssl_verify_none: true
     end
   end
 
