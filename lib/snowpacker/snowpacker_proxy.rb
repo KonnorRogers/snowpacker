@@ -5,19 +5,16 @@ require 'rack/proxy'
 module Snowpacker
   # Proxy server for snowpacker
   class SnowpackerProxy < Rack::Proxy
-    def rewrite_env(env)
-      @app.call(env) unless env["PATH_INFO"].start_with?("/snowpacks/")
+    def perform_request(env)
+      request = Rack::Request.new(env)
 
-      env["HTTP_HOST"] = env["HTTP_X_FORWARDED_HOST"] = "localhost"
-      env["HTTP_X_FORWARDED_SERVER"] = "localhost:4035"
-      env["HTTP_PORT"] = env["HTTP_X_FORWARDED_PORT"] = "4035"
-
-      # unless https?
-      env["HTTPS"] = env["HTTP_X_FORWARDED_SSL"] = "off"
-      # end
-      env["SCRIPT_NAME"] = ""
-
-      super(env)
+      if request.path =~ %r{/snowpacks}
+          env["HTTP_HOST"] = "localhost:4035"
+          env['HTTP_COOKIE'] = ''
+          super(env)
+      else
+        @app.call(env)
+      end
     end
   end
 end

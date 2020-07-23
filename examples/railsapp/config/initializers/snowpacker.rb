@@ -12,3 +12,4 @@ Snowpacker.configure do |snowpacker|
   snowpacker.stylesheets = File.join(snowpacker.out, 'stylesheets')
   snowpacker.assets = File.join(snowpacker.out, 'assets')
 end
+

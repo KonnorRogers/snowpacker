@@ -9,11 +9,6 @@ class SnowpackerGenerator < ::Rails::Generators::Base
     initializer 'snowpacker.rb' do
       File.read(File.join(TEMPLATES, 'snowpacker.rb'))
     end
-
-    initializer 'snowpacker.proxy' do |app|
-      app.middleware.insert_before 0,
-          Rails::VERSION::MAJOR >= 5 ? Snowpacker::SnowpackerProxy : "Snowpacker::SnowpackerProxy", ssl_verify_none: true
-    end
   end
 
   desc 'Add snowpack to your package.json dependencies'
