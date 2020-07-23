@@ -10,8 +10,6 @@
     "open": "none",
     "out": "public"
   },
-  "proxy": {
-  },
   "buildOptions": {
     "clean": true,
     "baseUrl": "/"
