@@ -7,6 +7,10 @@ module Snowpacker
     attr_accessor :configuration
   end
 
+  def self.config_location
+    Rails.root.join("config", "snowpack.config.json")
+  end
+
   def self.configure
     self.configuration ||= Configuration.new
     yield(configuration)
