@@ -71,7 +71,7 @@ Use Rails generic helpers to include assets in your views
 
 ```ruby
 <%= javascript_include_tag '/snowpacks/packs/application' %>
-<%= stylesheet_snowpack_tag '/snowpacks/stylesheets/index' %>
+<%= stylesheet_link_tag '/snowpacks/stylesheets/index' %>
 ```
 
 ### Configuration
