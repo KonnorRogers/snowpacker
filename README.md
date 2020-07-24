@@ -49,7 +49,7 @@ Gem hooks up to the `assets:precompile` and `assets:clobber`, so no special setu
 You can start snowpacker's compilation process manually by running
 
 ```bash
-rake snowpacker:compile
+rails snowpacker:compile
 ```
 
 ### Including in views

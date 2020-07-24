@@ -5,6 +5,9 @@ namespace :snowpacker do
   end
 
   desc 'Compiles assets using snowpack bundler'
+  task compile: :build
+
+  desc 'Run a snowpack dev server'
   task dev: :environment do
     Snowpacker::Rails::Runner.new.dev
   end
