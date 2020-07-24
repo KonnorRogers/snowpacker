@@ -1,13 +1,14 @@
 const output_path = process.env["SNOWPACKER_OUTPUT_PATH"]
 const port = process.env["SNOWPACKER_PORT"]
+const mount_dir = process.env["SNOWPACKER_MOUNT_DIR"]
 
-// not currently supported
+// not currently supported as of v2.6.4
 // const hostname = process.env["SNOWPACKER_HOSTNAME"]
 
 const scripts = {
   "mount:web_modules": `mount web_modules --to /${output_path}`,
   "mount:__snowpack__": `mount __snowpack__ --to /${output_path}`,
-  "mount:snowpacks": `mount app/javascript --to /${output_path}`
+  "mount:snowpacks": `mount ${mount_dir} --to /${output_path}`
 }
 
 const installOptions = {

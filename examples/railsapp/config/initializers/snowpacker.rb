@@ -2,7 +2,7 @@ Snowpacker.configure do |snowpacker|
   # Where to find the config file
   snowpacker.config_file = Rails.root.join('config', 'snowpack.config.js')
 
-  # Snowpacker will set these values at runtime via `config/snowpack.config.js`
+  snowpacker.mount_dir = Rails.root.join('app', 'javascript')
   snowpacker.output_path = "snowpacks" # => /public/snowpacks
   snowpacker.port = "4035"
 

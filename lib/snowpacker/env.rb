@@ -7,6 +7,7 @@ module Snowpacker
         set_env("OUTPUT_PATH", Snowpacker.config.output_path)
         set_env("HOSTNAME", Snowpacker.config.hostname)
         set_env("PORT", Snowpacker.config.port)
+        set_env("MOUNT_DIR", Snowpacker.config.mount_dir)
       end
 
       private
