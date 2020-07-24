@@ -29,7 +29,7 @@ Then run
 bin/rails g snowpacker
 ```
 
-### Development
+### Usage
 
 Currently `snowpacker` is not integrated with `rails s` so you need a process manager like [foreman](https://github.com/ddollar/foreman) to run both `rails s` and `snowpack`.
 
