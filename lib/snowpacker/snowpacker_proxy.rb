@@ -18,7 +18,7 @@ module Snowpacker
       if request.path =~ %r{/snowpacks} && dev_server_running?
         puts "REQUEST: #{request.fullpath}"
         env["HTTP_HOST"] = "localhost:4035"
-        env['PATH_INFO'] = request.fullpath
+        env['PATH_INFO'] = request.fullpath.sub("/snowpacks", "")
         env['HTTP_COOKIE'] = ''
         super(env)
       else
