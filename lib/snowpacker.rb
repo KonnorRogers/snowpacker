@@ -1,35 +1,24 @@
 # frozen_string_literal: true
 
-require 'snowpacker/rails/version'
-require 'snowpacker/rails/runner'
-require 'snowpacker/rails/snowpacker_generator' if defined?(Rails)
+require 'snowpacker/configuration'
 
 module Snowpacker
-  # Snowpack integration with Rails
-  module Rails
-    if defined?(::Rails)
-      module Rails
-        class Application
-          attr_accessor :snowpacker
-        end
-      end
+  class << self
+    attr_accessor :config
+  end
 
-      class Railtie < ::Rails::Railtie
-        railtie_name :snowpacker
+  def self.config_location
+    Rails.root.join("config", "snowpack.config.json")
+  end
 
-        rake_tasks do
-          load 'snowpacker/rails/tasks.rake'
-        end
-
-        config.snowpacker = ActiveSupport::OrderedOptions.new
-          # config.snowpacker.config_file = File.join('app', 'config', 'snowpack.config.json')
-          # config.snowpacker.source_path = File.join('app', 'javascript')
-          # config.snowpacker.entry_points = [File.join(config.snowpacker.source_path, 'snowpacks', 'application.js')]
-          # config.snowpacker.out = 'snowpacks'
-          # config.snowpacker.javascript = File.join(config.snowpacker.out, 'javascript')
-          # config.snowpacker.stylesheets = File.join(config.snowpacker.out, 'stylesheets')
-          # config.snowpacker.assets = File.join(config.snowpacker.out, 'assets')
-      end
-    end
+  def self.configure
+    self.config ||= Configuration.new
+    yield(config)
   end
 end
+
+require 'snowpacker/snowpacker_proxy'
+require 'snowpacker/snowpacker_generator'
+require 'snowpacker/runner'
+require "snowpacker/engine" if defined?(Rails)
+
