@@ -79,10 +79,9 @@ Use Rails generic helpers to include assets in your views
 After running generator, the configuration file can be found in
 `config/initializers/snowpacker.rb`
 
-```ruby
-config.snowpacker.entry_points = %w(app/javascript/snowpacks/application.js)
-config.snowpacker.destination = 'snowpacks'
-```
+### Examples
+
+Examples can be found in the [/examples](/examples) directory.
 
 ## Changelog
 
