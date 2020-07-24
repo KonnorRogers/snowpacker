@@ -9,7 +9,7 @@ module Snowpacker
     def perform_request(env)
       request = Rack::Request.new(env)
 
-      if request.path =~ %r{^/snowpacks} # && dev_server_running?
+      if request.path =~ %r{^/snowpacks} && dev_server_running?
         env["HTTP_HOST"] = host_with_port
         env['HTTP_COOKIE'] = ''
         super(env)
@@ -25,10 +25,10 @@ module Snowpacker
       port = Snowpacker.config.port
       connect_timeout = 0.01
 
-      socket.tcp(host, port, connect_timeout: connect_timeout).close
-      puts "Dev server running"
+      Socket.tcp(host, port, connect_timeout: connect_timeout).close
       true
-    rescue StandardError
+    rescue Errno::ECONNREFUSED
+      puts "Snowpacker is not currently running on #{host_with_port}"
       false
     end
 
