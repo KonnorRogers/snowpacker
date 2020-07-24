@@ -5,7 +5,8 @@
 Progress can be seen on the `development` branch.
 
 [![Gem Version](https://badge.fury.io/rb/snowpacker.svg)](https://badge.fury.io/rb/snowpacker)
-[![Maintainability](https://api.codeclimate.com/v1/badges/4b0a3f36a6b1970a88e5/maintainability)](https://codeclimate.com/github/ParamagicDev/snowpacker/maintainability)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/b88ac1a56d868d4f23d5/maintainability)](https://codeclimate.com/github/ParamagicDev/snowpacker/maintainability)
 
 This gem integrates the [snowpack](https://snowpack.dev/) JS module bundler into
 your Rails application. It is inspired by gems such as
