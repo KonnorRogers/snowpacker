@@ -9,16 +9,18 @@ module Snowpacker
     def initialize(app = nil, opts = {})
       super
 
-      @config = Snowpacker.json_config
+      @config = Snowpacker.config.json_config
     end
 
     def perform_request(env)
       request = Rack::Request.new(env)
 
       if request.path =~ %r{/snowpacks} && dev_server_running?
-          env["HTTP_HOST"] = "localhost:4035"
-          env['HTTP_COOKIE'] = ''
-          super(env)
+        puts "REQUEST: #{request.fullpath}"
+        env["HTTP_HOST"] = "localhost:4035"
+        env['PATH_INFO'] = request.fullpath
+        env['HTTP_COOKIE'] = ''
+        super(env)
       else
         @app.call(env)
       end

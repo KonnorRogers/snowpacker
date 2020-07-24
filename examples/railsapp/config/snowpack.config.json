@@ -3,12 +3,12 @@
     "NODE_ENV": true
   },
   "scripts": {
-    "mount:snowpacks": "mount app/javascript --to /snowpacks"
+    "mount:snowpacks": "mount app/javascript --to /"
   },
   "devOptions": {
     "port": 4035,
     "open": "none",
-    "out": "public"
+    "out": "public/snowpacks"
   },
   "buildOptions": {
     "clean": true,

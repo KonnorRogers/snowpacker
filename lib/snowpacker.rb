@@ -4,7 +4,7 @@ require 'snowpacker/configuration'
 
 module Snowpacker
   class << self
-    attr_accessor :configuration
+    attr_accessor :config
   end
 
   def self.config_location
@@ -12,8 +12,8 @@ module Snowpacker
   end
 
   def self.configure
-    self.configuration ||= Configuration.new
-    yield(configuration)
+    self.config ||= Configuration.new
+    yield(config)
   end
 end
 

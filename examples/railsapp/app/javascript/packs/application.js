@@ -6,4 +6,4 @@ import "../channels"
 // UJS.start()
 Turbolinks.start()
 ActiveStorage.start()
-console.log("Hi from snowpacker")
+console.log("Hi from snow")
