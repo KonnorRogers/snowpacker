@@ -9,7 +9,6 @@ module Snowpacker
 
       def initialize
         @config_file = Snowpacker.config.config_file
-        @config = Snowpacker.config.json_config
 
         detect_port!
 
@@ -37,8 +36,8 @@ module Snowpacker
       end
 
       def detect_port!
-        hostname = "127.0.0.1"
-        port = @config["devOptions"]["port"]
+        hostname = Snowpacker.config.hostname
+        port = Snowpacker.config.port
         server = TCPServer.new(hostname, port)
         server.close
       rescue Errno::EADDRINUSE
