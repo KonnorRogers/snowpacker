@@ -15,10 +15,9 @@ module Snowpacker
     def perform_request(env)
       request = Rack::Request.new(env)
 
-      if request.path =~ %r{/snowpacks} && dev_server_running?
-        puts "REQUEST: #{request.fullpath}"
+      if request.path =~ %r{snowpacks} && dev_server_running?
         env["HTTP_HOST"] = "localhost:4035"
-        env['PATH_INFO'] = request.fullpath.sub("/snowpacks", "")
+        env['PATH_INFO'] = request.fullpath
         env['HTTP_COOKIE'] = ''
         super(env)
       else
