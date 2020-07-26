@@ -8,7 +8,7 @@
 import "@rails/ujs" // Autostarts on import
 import Turbolinks from "turbolinks"
 import ActiveStorage from "@rails/activestorage"
-import "../channels"
+// import "../channels"
 
 Turbolinks.start()
 ActiveStorage.start()

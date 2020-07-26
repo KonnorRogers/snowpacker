@@ -17,7 +17,7 @@ module.exports = function(api) {
 
   // Cached based on the value of some function. If this function returns a value different from
   // a previously-encountered value, the plugins will re-evaluate.
-  api.cache(() => currentEnv);
+  api.cache(() => currentEnv)
 
   return {
     presets: [
@@ -32,7 +32,7 @@ module.exports = function(api) {
       (isProductionEnv || isDevelopmentEnv) && [
         '@babel/preset-env',
         {
-          forceAllTransforms: false,
+          forceAllTransforms: true,
           useBuiltIns: 'entry',
           corejs: 3,
           modules: false,

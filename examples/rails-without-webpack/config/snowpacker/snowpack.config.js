@@ -13,6 +13,7 @@ const scripts = {
   "mount:snowpacks": `mount ${mount_dir} --to /${output_path}`,
   "build:css": `postcss --config ${postcss_config}`,
   "build:js,jsx,ts,tsx": `babel --config-file ${babel_config} \
+                                --out-dir ${output_path} \
                                 ${mount_dir}`
 }
 
