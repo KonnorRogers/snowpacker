@@ -12,9 +12,7 @@ const scripts = {
   "mount:__snowpack__": `mount __snowpack__ --to /${output_path}`,
   "mount:snowpacks": `mount ${mount_dir} --to /${output_path}`,
   "build:css": `postcss --config ${postcss_config}`,
-  "build:js,jsx,ts,tsx": `babel --config-file ${babel_config} \
-                                --out-dir ${output_path} \
-                                ${mount_dir}`
+  "build:js,jsx,ts,tsx": `babel --config-file ${babel_config} --filename $FILE`
 }
 
 const installOptions = {
