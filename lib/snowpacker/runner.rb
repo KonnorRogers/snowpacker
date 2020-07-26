@@ -10,7 +10,7 @@ module Snowpacker
 
       def initialize
         @config_file = Snowpacker.config.config_file
-        @env = Env.set_env_variables
+        Env.set_env_variables
 
         detect_port!
 
