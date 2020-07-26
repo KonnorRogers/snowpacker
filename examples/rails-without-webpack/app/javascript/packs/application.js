@@ -14,3 +14,5 @@ import ActiveStorage from "@rails/activestorage"
 Turbolinks.start()
 ActiveStorage.start()
 
+console.log("Hello from snowpacker")
+

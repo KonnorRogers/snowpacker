@@ -6,7 +6,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag '/snowpacks/stylesheets/index', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag '/snowpacks/packs/application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag '/snowpacks/packs/application', 'data-turbolinks-track': 'reload', type: "module" %>
   </head>
 
   <body>
