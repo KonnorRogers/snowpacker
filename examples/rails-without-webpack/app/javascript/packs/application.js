@@ -12,3 +12,5 @@ import "../channels"
 
 Turbolinks.start()
 ActiveStorage.start()
+
+console.log("Hello from snowpacker")
