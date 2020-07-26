@@ -33,7 +33,7 @@ const buildOptions = {
 
 module.exports = {
   scripts,
-  plugins: ["@snowpack/babel-plugin-package-import"],
+  plugins: [],
   installOptions,
   devOptions,
   buildOptions

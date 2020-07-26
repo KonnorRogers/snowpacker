@@ -25,14 +25,14 @@ module.exports = function(api) {
         '@babel/preset-env',
         {
           targets: {
-            node: 'current'
+            esmodules: 'true'
           }
         }
       ],
       (isProductionEnv || isDevelopmentEnv) && [
         '@babel/preset-env',
         {
-          forceAllTransforms: true,
+          forceAllTransforms: false,
           useBuiltIns: 'entry',
           corejs: 3,
           modules: false,
