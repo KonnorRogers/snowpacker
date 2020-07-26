@@ -46,8 +46,10 @@ class SnowpackerGenerator < ::Rails::Generators::Base
       .browserslistrc
     ]
 
-    create_file Rails.root.join('config', 'snowpacker', filename) do
-      File.read(File.join(TEMPLATES, filename))
+    config_files.each do |filename|
+      create_file Rails.root.join('config', 'snowpacker', filename) do
+        File.read(File.join(TEMPLATES, filename))
+      end
     end
   end
 end
