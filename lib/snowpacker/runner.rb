@@ -10,7 +10,7 @@ module Snowpacker
 
       def initialize
         @config_file = Snowpacker.config.config_file
-        @env = Env.set_env_variables
+        Env.set_env_variables
 
         detect_port!
 
@@ -33,6 +33,7 @@ module Snowpacker
       private
 
       def snowpacker_command(env: '', cmd: '')
+        env = ENV["NODE_ENV"] || env
         command = "NODE_ENV=#{env} yarn run snowpack #{cmd} --config #{@config_file}"
         exec(command)
       end
