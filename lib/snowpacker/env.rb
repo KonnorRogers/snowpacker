@@ -13,7 +13,7 @@ module Snowpacker
       private
 
       def set_env(env_var, value)
-        ENV["#{ENV_PREFIX}_#{env_var}"] = value.to_s
+        ENV["#{ENV_PREFIX}_#{env_var}"] ||= value.to_s
       end
     end
   end
