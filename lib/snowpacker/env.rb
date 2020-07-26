@@ -8,6 +8,8 @@ module Snowpacker
         set_env("HOSTNAME", Snowpacker.config.hostname)
         set_env("PORT", Snowpacker.config.port)
         set_env("MOUNT_DIR", Snowpacker.config.mount_dir)
+        set_env("BABEL_CONFIG_FILE", Snowpacker.config.babel_config_file)
+        set_env("POSTCSS_CONFIG_FILE", Snowpacker.config.postcss_config_file)
       end
 
       private

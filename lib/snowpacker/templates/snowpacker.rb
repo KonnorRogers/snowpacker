@@ -1,6 +1,10 @@
 Snowpacker.configure do |snowpacker|
   # Where to find the config file
-  snowpacker.config_file = Rails.root.join('config', 'snowpack.config.js')
+  snowpacker.config_dir = Rails.root.join('config', 'snowpacker')
+  snowpacker.config_file = File.join(snowpacker.config_dir, 'snowpack.config.js')
+
+  snowpacker.babel_config_file = File.join(snowpacker.config_dir, 'babel.config.js')
+  snowpacker.postcss_config_file = File.join(snowpacker.config_dir, 'postcss.config.js')
 
   snowpacker.mount_dir = File.join('app', 'javascript')
   snowpacker.output_path = "snowpacks" # => /public/snowpacks

@@ -16,6 +16,7 @@ class SnowpackerGenerator < ::Rails::Generators::Base
   def add_snowpack
     `yarn add -D snowpack \
                  @snowpack/plugin-babel \
+                 @snowpack/babel-plugin-package-import
                  core-js@3 \
                  postcss \
                  postcss-cli \
