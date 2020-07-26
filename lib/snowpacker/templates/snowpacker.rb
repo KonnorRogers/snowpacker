@@ -7,6 +7,7 @@ Snowpacker.configure do |snowpacker|
   snowpacker.postcss_config_file = File.join(snowpacker.config_dir, 'postcss.config.js')
 
   snowpacker.mount_dir = File.join('app', 'javascript')
+  snowpacker.build_dir = "public"
   snowpacker.output_path = "snowpacks" # => /public/snowpacks
   snowpacker.port = "4035"
 
