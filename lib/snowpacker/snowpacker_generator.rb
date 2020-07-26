@@ -19,6 +19,9 @@ class SnowpackerGenerator < ::Rails::Generators::Base
                  core-js@3 \
                  postcss \
                  postcss-cli \
+                 postcss-import \
+                 postcss-flexbugs-fixes \
+                 postcss-preset-env \
                  @babel/core \
                  @babel/cli \
                  @babel/preset-env \
