@@ -11,12 +11,28 @@ class SnowpackerGenerator < ::Rails::Generators::Base
     end
   end
 
-  desc 'Add snowpack to your package.json dependencies'
+  desc 'Add snowpack, babel, and postcss to your package.json dependencies'
   def add_snowpack
     `yarn add -D snowpack \
+                 core-js@3 \
+                 postcss \
+                 postcss-cli \
+                 @babel/core \
+                 @babel/cli \
+                 @babel/preset-env \
                  @babel/plugin-transform-runtime \
                  babel-plugin-macros \
-                 @snowpack/plugin-babel`
+                 @snowpack/plugin-babel \
+                 @babel/preset-env \
+                 babel-plugin-macros \
+                 @babel/plugin-syntax-dynamic-import \
+                 babel-plugin-dynamic-import-node \
+                 @babel/plugin-transform-destructuring \
+                 @babel/plugin-proposal-class-properties \
+                 @babel/plugin-proposal-object-rest-spread \
+                 @babel/plugin-transform-runtime \
+                 @babel/plugin-transform-regenerator \
+    `
   end
 
   desc 'Create a snowpack.config.json file'
