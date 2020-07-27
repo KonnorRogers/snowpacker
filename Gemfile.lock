@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    snowpacker (0.0.4)
+    snowpacker (0.0.4.alpha1)
       rack-proxy (~> 0.6.4)
 
 GEM
