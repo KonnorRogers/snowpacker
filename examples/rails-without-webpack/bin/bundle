@@ -10,7 +10,7 @@
 
 require "rubygems"
 
-m = Module.new do
+m = Module.new {
   module_function
 
   def invoked_as_script?
@@ -63,7 +63,7 @@ m = Module.new do
   def bundler_version
     @bundler_version ||=
       env_var_version || cli_arg_version ||
-        lockfile_version
+      lockfile_version
   end
 
   def bundler_requirement
@@ -87,13 +87,13 @@ m = Module.new do
   end
 
   def activate_bundler
-    gem_error = activation_error_handling do
+    gem_error = activation_error_handling {
       gem "bundler", bundler_requirement
-    end
+    }
     return if gem_error.nil?
-    require_error = activation_error_handling do
+    require_error = activation_error_handling {
       require "bundler/version"
-    end
+    }
     return if require_error.nil? && Gem::Requirement.new(bundler_requirement).satisfied_by?(Gem::Version.new(Bundler::VERSION))
     warn "Activating bundler (#{bundler_requirement}) failed:\n#{gem_error.message}\n\nTo install the version of bundler this project requires, run `gem install bundler -v '#{bundler_requirement}'`"
     exit 42
@@ -105,7 +105,7 @@ m = Module.new do
   rescue StandardError, LoadError => e
     e
   end
-end
+}
 
 m.load_bundler!
 

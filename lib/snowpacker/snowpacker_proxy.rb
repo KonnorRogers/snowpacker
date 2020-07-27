@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'rack/proxy'
-require 'socket'
+require "rack/proxy"
+require "socket"
 
 module Snowpacker
   # Proxy server for snowpacker
@@ -11,7 +11,7 @@ module Snowpacker
 
       if request.path =~ %r{^/snowpacks} && dev_server_running?
         env["HTTP_HOST"] = host_with_port
-        env['HTTP_COOKIE'] = ''
+        env["HTTP_COOKIE"] = ""
         super(env)
       else
         @app.call(env)

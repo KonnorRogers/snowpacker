@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'socket'
-require 'snowpacker/env'
+require "socket"
+require "snowpacker/env"
 
 module Snowpacker
   module Rails
@@ -13,7 +13,6 @@ module Snowpacker
         Env.set_env_variables
 
         detect_port!
-
       rescue Errno::ENOENT, NoMethodError
         $stdout.puts "Snowpacker configuration not found in #{Snowpacker.config_location}"
         $stdout.puts "Please run bundle exec rails generate snowpacker to install Snowpacker"
@@ -32,7 +31,7 @@ module Snowpacker
 
       private
 
-      def snowpacker_command(env: '', cmd: '')
+      def snowpacker_command(env: "", cmd: "")
         env = ENV["NODE_ENV"] || env
         command = "NODE_ENV=#{env} yarn run snowpack #{cmd} --config #{@config_file}"
         exec(command)

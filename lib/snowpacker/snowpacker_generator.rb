@@ -1,20 +1,20 @@
 # frozen_string_literal: true
 
-require 'rails/generators'
+require "rails/generators"
 
 class SnowpackerGenerator < ::Rails::Generators::Base
-  TEMPLATES = File.join(File.expand_path(__dir__), 'templates')
+  TEMPLATES = File.join(File.expand_path(__dir__), "templates")
 
-  desc 'Generate Snowpacker initializer'
+  desc "Generate Snowpacker initializer"
   def create_initializer_file
-    initializer 'snowpacker.rb' do
-      File.read(File.join(TEMPLATES, 'snowpacker.rb'))
+    initializer "snowpacker.rb" do
+      File.read(File.join(TEMPLATES, "snowpacker.rb"))
     end
   end
 
-  desc 'Add snowpack, babel, and postcss to your package.json dependencies'
+  desc "Add snowpack, babel, and postcss to your package.json dependencies"
   def add_snowpack
-    `yarn add -D snowpack \
+    %x(yarn add -D snowpack \
                  @snowpack/babel-plugin-package-import \
                  core-js@3 \
                  postcss \
@@ -37,10 +37,10 @@ class SnowpackerGenerator < ::Rails::Generators::Base
                  @babel/plugin-proposal-object-rest-spread \
                  @babel/plugin-transform-runtime \
                  @babel/plugin-transform-regenerator
-    `
+    )
   end
 
-  desc 'Create config files IE: babel.config snowpack.config'
+  desc "Create config files IE: babel.config snowpack.config"
   def create_config_files
     config_files = %w[
       snowpack.config.js
@@ -50,7 +50,7 @@ class SnowpackerGenerator < ::Rails::Generators::Base
     ]
 
     config_files.each do |filename|
-      create_file Rails.root.join('config', 'snowpacker', filename) do
+      create_file Rails.root.join("config", "snowpacker", filename) do
         File.read(File.join(TEMPLATES, filename))
       end
     end

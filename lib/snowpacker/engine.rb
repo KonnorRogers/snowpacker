@@ -1,4 +1,4 @@
-require 'rails/railtie'
+require "rails/railtie"
 
 module Snowpacker
   class Engine < ::Rails::Engine
