@@ -7,12 +7,10 @@ module Snowpacker
   # Proxy server for snowpacker
   class SnowpackerProxy < Rack::Proxy
     def perform_request(env)
-      # request = Rack::Request.new(env)
-
       if env["PATH_INFO"].start_with?(%r{/#{Snowpacker.config.output_path}}) && dev_server_running?
-        env["HTTP_HOST"] = env["HTTP_X_FORWARDED_HOST"] = "localhost"
+        env["HTTP_HOST"] = env["HTTP_X_FORWARDED_HOST"] = Snowpacker.config.hostname
         env["HTTP_X_FORWARDED_SERVER"] = host_with_port
-        env["HTTP_PORT"] = env["HTTP_X_FORWARDED_PORT"] = "4035"
+        env["HTTP_PORT"] = env["HTTP_X_FORWARDED_PORT"] = Snowpacker.config.port
         env["HTTP_X_FORWARDED_PROTO"] = env["HTTP_X_FORWARDED_SCHEME"] = "http"
 
         # unless dev_server.https?
