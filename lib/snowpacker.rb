@@ -17,7 +17,8 @@ module Snowpacker
   end
 end
 
+require "snowpacker/version"
 require "snowpacker/snowpacker_proxy"
-require "snowpacker/snowpacker_generator"
-require "snowpacker/runner"
+require "snowpacker/snowpacker_generator" if defined?(Rails)
+require "snowpacker/runner" if defined?(Rails)
 require "snowpacker/engine" if defined?(Rails)

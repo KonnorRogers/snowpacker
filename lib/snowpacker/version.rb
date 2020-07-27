@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
 module Snowpacker
-  module Rails
-    VERSION = "0.0.4"
-  end
+  VERSION = "0.0.4"
 end

@@ -1,7 +1,6 @@
-require 'minitest'
-require 'minitest/autorun'
-require 'rake'
-require 'snowpacker'
+require "minitest"
+require "minitest/autorun"
+require "rake"
+require "snowpacker"
 
-
-TEST_APP = File.expand_path('test_app')
+TEST_APP = File.expand_path("test_app")

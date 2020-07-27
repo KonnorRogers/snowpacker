@@ -1,17 +1,19 @@
 # frozen_string_literal: true
 
+require "snowpacker"
+
 begin
   require "bundler/setup"
 rescue LoadError
   puts "You must `gem install bundler` and `bundle install` to run rake tasks"
 end
 
-require 'yard'
+require "yard"
 
 YARD::Rake::YardocTask.new do |t|
-  t.files   = ['lib/**/*.rb', "README.md"]   # optional
-  t.options = ['--title Snowpacker #{Snowpacker::VERSION}', '--line-numbers', '--any', '--extra', '--opts'] # optional
-  t.stats_options = ['--list-undoc']         # optional
+  t.files = ["lib/**/*.rb", "README.md"] # optional
+  t.options = ["--title Snowpacker #{::Snowpacker::VERSION}", "--line-numbers", "--any", "--extra", "--opts"] # optional
+  t.stats_options = ["--list-undoc"] # optional
 end
 
 require "bundler/gem_tasks"
@@ -24,4 +26,7 @@ Rake::TestTask.new(:test) do |t|
   t.verbose = true
 end
 
+task :format do
+  sh("standardrb --format progress --fix")
+end
 task default: :test
