@@ -128,9 +128,20 @@ rails snowpacker:build
 ```
 
 
-### Examples
+## Examples
 
 Examples can be found in the [/examples](/examples) directory.
+
+## Converting from Webpack to Snowpack
+
+- Snowpack (as far as I'm aware) does not support the `require.context()`
+so you will have to manually `register` your Stimulus Controllers and
+your Websocket Channels.
+
+- Any require statements should be rewritten to import statements.
+Alternatively, you could add a polyfill-plugin to snowpack to fix this
+issue as well.
+
 
 ## Changelog
 
