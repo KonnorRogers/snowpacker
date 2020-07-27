@@ -30,7 +30,7 @@ Then run
 bin/rails g snowpacker
 ```
 
-### Usage
+## Usage
 
 Currently `snowpacker` is not integrated with `rails s` so you need a process manager like [foreman](https://github.com/ddollar/foreman) to run both `rails s` and `snowpack`.
 
@@ -52,9 +52,53 @@ rails snowpacker:dev
 
 in 2 different terminals.
 
-### Production
+## File Structure
 
-Gem hooks up to the `assets:precompile` and `assets:clobber`, so no special setup is required.
+Given the below file structure and a default configuration:
+
+```yaml
+app:
+├── javascript:
+│   ├── channels:
+│   ├── packs:
+│   └── stylesheets:
+```
+
+It will output to the following location:
+
+```yaml
+├── public:
+│   └── snowpacks:
+│       ├── channels:
+│       ├── packs:
+│       ├── __snowpack__:
+│       ├── stylesheets:
+│       └── web_modules:
+```
+
+## Including in views
+
+Use Rails generic helpers to include assets in your views
+
+```ruby
+<%= javascript_include_tag '/snowpacks/packs/application' %>
+<%= stylesheet_link_tag '/snowpacks/stylesheets/index' %>
+```
+
+This assumes you are using the default configuration.
+
+## Configuration
+
+After running generator, the configuration file can be found in
+`config/initializers/snowpacker.rb`
+
+In addition, all related `snowpack.config.js`, `babel.config.js`, and `postcss.config.js` can all be found in the
+`config/snowpacker` directory.
+
+## Production
+
+Gem hooks up to the `rails assets:precompile` and `rails
+assets:clobber`, so no special setup is required.
 
 You can start snowpacker's compilation process manually by running
 
@@ -66,28 +110,10 @@ rails snowpacker:compile
 rails snowpacker:build
 ```
 
-### Including in views
-
-Use Rails generic helpers to include assets in your views
-
-```ruby
-<%= javascript_include_tag '/snowpacks/packs/application' %>
-<%= stylesheet_link_tag '/snowpacks/stylesheets/index' %>
-```
-
-### Configuration
-
-After running generator, the configuration file can be found in
-`config/initializers/snowpacker.rb`
-
-In addition, all related `snowpack.config.js`, `babel.config.js`,
-`.browserslistrc`, and `postcss.config.js` can all be found in the
-`config/snowpacker` directory.
 
 ### Examples
 
 Examples can be found in the [/examples](/examples) directory.
-
 
 ## Changelog
 
