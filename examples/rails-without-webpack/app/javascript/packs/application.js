@@ -5,7 +5,6 @@
 // require("channels")
 
 // Snowpack
-
 import "@rails/ujs" // Autostarts
 import Turbolinks from "turbolinks"
 import ActiveStorage from "@rails/activestorage"

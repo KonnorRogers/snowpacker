@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "snowpacker/configuration"
+require "snowpacker/snowpacker_proxy"
 
 module Snowpacker
   class << self
@@ -18,7 +19,6 @@ module Snowpacker
 end
 
 require "snowpacker/version"
-require "snowpacker/snowpacker_proxy"
 require "snowpacker/snowpacker_generator" if defined?(Rails)
 require "snowpacker/runner" if defined?(Rails)
 require "snowpacker/engine" if defined?(Rails)
