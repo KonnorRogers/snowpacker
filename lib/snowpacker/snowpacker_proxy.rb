@@ -9,15 +9,16 @@ module Snowpacker
     def perform_request(env)
       # request = Rack::Request.new(env)
 
-      puts "REQUEST_PATH: #{env['PATH_INFO']}"
       if env["PATH_INFO"].start_with?(%r{/snowpacks}) && dev_server_running?
         env["HTTP_HOST"] = env["HTTP_X_FORWARDED_HOST"] = "localhost"
         env["HTTP_X_FORWARDED_SERVER"] = host_with_port
         env["HTTP_PORT"] = env["HTTP_X_FORWARDED_PORT"] = "4035"
         env["HTTP_X_FORWARDED_PROTO"] = env["HTTP_X_FORWARDED_SCHEME"] = "http"
-        unless dev_server.https?
+
+        # unless dev_server.https?
           env["HTTPS"] = env["HTTP_X_FORWARDED_SSL"] = "off"
-        end
+        # end
+
         env["SCRIPT_NAME"] = ""
 
         super(env)
