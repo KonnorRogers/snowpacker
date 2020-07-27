@@ -11,8 +11,6 @@ module Snowpacker
       def initialize
         @config_file = Snowpacker.config.config_file
         Env.set_env_variables
-
-        detect_port!
       rescue Errno::ENOENT, NoMethodError
         $stdout.puts "Snowpacker configuration not found in #{Snowpacker.config_location}"
         $stdout.puts "Please run bundle exec rails generate snowpacker to install Snowpacker"
@@ -26,6 +24,7 @@ module Snowpacker
 
       # Serve for development
       def dev
+        detect_port!
         snowpacker_command(env: :development, cmd: :dev)
       end
 
