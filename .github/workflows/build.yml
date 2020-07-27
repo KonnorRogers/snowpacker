@@ -13,6 +13,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker-compose up --build --exit-code-from web
+      run: |
+        source docker.env
+        docker-compose up --build --exit-code-from web
     - name: Run StandardRB
       run: docker-compose run --rm web bundle exec standardrb --format progress
