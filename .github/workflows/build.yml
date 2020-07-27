@@ -12,7 +12,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Run StandardRB
-      run: bundle exec standardrb --format progress
     - name: Build the Docker image
-      run: docker-compose up --exit-code-from web
+      run: docker-compose up --build --exit-code-from web
+    - name: Run StandardRB
+      run: docker-compose run --rm web bundle exec standardrb --format progress
