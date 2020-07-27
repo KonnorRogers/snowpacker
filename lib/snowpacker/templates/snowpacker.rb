@@ -1,3 +1,5 @@
+Rails.application.config.middleware.use Snowpacker::SnowpackerProxy, {ssl_verify_none: true}
+
 Snowpacker.configure do |snowpacker|
   # Where to find the config file
   snowpacker.config_dir = Rails.root.join("config", "snowpacker")
