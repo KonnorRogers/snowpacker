@@ -9,7 +9,7 @@ module Snowpacker
     def perform_request(env)
       request = Rack::Request.new(env)
 
-      if request.path =~ %r{^/snowpacks} && dev_server_running?
+      if request.path =~ %r{^/#{Snowpacker.config.output_path} && dev_server_running?
         env["HTTP_HOST"] = host_with_port
         env["HTTP_COOKIE"] = ""
         super(env)
