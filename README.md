@@ -32,6 +32,17 @@ bin/rails g snowpacker
 
 ## Usage
 
+### Tasks
+
+```bash
+rails snowpacker:dev # starts a dev server
+rails snowpacker:build # builds for production
+
+rails assets:precompile # will build snowpacker and asset pipeline
+```
+
+### Caveats
+
 Currently `snowpacker` is not integrated with `rails s` so you need a process manager like [foreman](https://github.com/ddollar/foreman) to run both `rails s` and `snowpack`.
 
 Create `Procfile.dev`, with the following content:
@@ -81,11 +92,17 @@ It will output to the following location:
 Use Rails generic helpers to include assets in your views
 
 ```ruby
-<%= javascript_include_tag '/snowpacks/packs/application' %>
-<%= stylesheet_link_tag '/snowpacks/stylesheets/index' %>
+<%= stylesheet_link_tag '/snowpacks/stylesheets/index', media: 'all',
+'data-turbolinks-track': 'reload' %>
+
+<%= javascript_include_tag '/snowpacks/packs/application',
+'data-turbolinks-track': 'reload', type: "module" %>
 ```
 
 This assumes you are using the default configuration.
+
+Make sure to use `type: "module"` for all javascript scripts, otherwise,
+snowpack will not work properly.
 
 ## Configuration
 
