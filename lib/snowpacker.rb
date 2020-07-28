@@ -5,6 +5,9 @@ require "snowpacker/env"
 require "snowpacker/snowpacker_proxy"
 
 module Snowpacker
+  # In case youre not using Rails
+  Dir.glob("./tasks/**/*.rake").each { |task| load task }
+
   class << self
     attr_accessor :config
   end
