@@ -46,7 +46,6 @@ class SnowpackerGenerator < ::Rails::Generators::Base
       snowpack.config.js
       postcss.config.js
       babel.config.js
-      .browserslistrc
     ]
 
     config_files.each do |filename|
