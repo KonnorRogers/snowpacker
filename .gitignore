@@ -55,6 +55,7 @@ examples/*/.byebug_history
 # Ignore master key for decrypting credentials and more.
 examples/*/config/master.key
 
+examples/*/tmp
 examples/*/public/packs
 examples/*/public/snowpacks
 examples/*/public/packs-test
