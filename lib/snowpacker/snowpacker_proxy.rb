@@ -14,7 +14,7 @@ module Snowpacker
         env["HTTP_X_FORWARDED_PROTO"] = env["HTTP_X_FORWARDED_SCHEME"] = "http"
 
         # unless dev_server.https?
-          env["HTTPS"] = env["HTTP_X_FORWARDED_SSL"] = "off"
+        env["HTTPS"] = env["HTTP_X_FORWARDED_SSL"] = "off"
         # end
 
         env["SCRIPT_NAME"] = ""

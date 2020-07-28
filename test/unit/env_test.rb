@@ -1,4 +1,4 @@
-require 'test_helper.rb'
+require "test_helper.rb"
 
 class TestEnv < Minitest::Test
   def test_sets_env_vars_appropriately
