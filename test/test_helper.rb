@@ -6,4 +6,5 @@ require "snowpacker"
 require "minitest/reporters"
 Minitest::Reporters.use!
 
-TEST_APP = File.expand_path("test_app")
+RUBY_TEST_APP = File.expand_path("test_app")
+RAILS_TEST_APP = File.expand_path("rails_test_app")
