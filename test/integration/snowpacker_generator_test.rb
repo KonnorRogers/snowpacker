@@ -18,5 +18,6 @@ class SnowpackerGeneratorTest < Minitest::Test
     Dir.chdir(RAILS_TEST_APP) { `rails generate snowpacker` }
 
     assert_equal File.read(SNOWPACKER_INITIALIZER), File.read(File.join(TEMPLATE_DIR, "snowpacker.rb"))
+    assert_equal File.read(SNOWPACKER_INITIALIZER), File.read(File.join(TEMPLATE_DIR, "snowpacker.rb"))
   end
 end
