@@ -28,5 +28,14 @@ class SnowpackerGeneratorTest < Minitest::Test
 
       assert_includes package_json, pkg
     end
+
+    config_files = %w[snowpack.config.js postcss.config.js babel.config.js]
+
+    config_files.each do |config_file|
+      test_file = File.read(File.join(CONFIG_DIR, config_file))
+      config_file = File.read(File.join(TEMPLATE_DIR, config_file))
+
+      assert_equal test_file, config_file
+    end
   end
 end
