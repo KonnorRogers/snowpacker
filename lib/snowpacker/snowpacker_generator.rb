@@ -14,31 +14,7 @@ class SnowpackerGenerator < ::Rails::Generators::Base
 
   desc "Add snowpack, babel, and postcss to your package.json dependencies"
   def add_snowpack
-    %x(yarn add -D
-                 snowpack \
-                 @snowpack/babel-plugin-package-import \
-                 core-js@3 \
-                 postcss \
-                 postcss-cli \
-                 postcss-import \
-                 postcss-flexbugs-fixes \
-                 postcss-preset-env \
-                 @babel/core \
-                 @babel/cli \
-                 @babel/preset-env \
-                 @babel/plugin-transform-runtime \
-                 babel-plugin-macros \
-                 @snowpack/plugin-babel \
-                 @babel/preset-env \
-                 babel-plugin-macros \
-                 @babel/plugin-syntax-dynamic-import \
-                 babel-plugin-dynamic-import-node \
-                 @babel/plugin-transform-destructuring \
-                 @babel/plugin-proposal-class-properties \
-                 @babel/plugin-proposal-object-rest-spread \
-                 @babel/plugin-transform-runtime \
-                 @babel/plugin-transform-regenerator
-    )
+    %x(yarn add -D #{::Snowpacker::YARN_PACKAGES.join(" ")})
   end
 
   desc "Create config files IE: babel.config snowpack.config"
