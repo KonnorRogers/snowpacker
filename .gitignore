@@ -35,10 +35,10 @@ examples/*/db/*.sqlite3-journal
 examples/*/db/*.sqlite3-*
 
 # Ignore all logfiles and tempfiles.
-examples/*/log/*
-examples/*/tmp/*
-!examples/*/log/.keep
-!examples/*/tmp/.keep
+examples/**/*log/
+examples/**/*tmp
+!examples/**/*log/.keep
+!examples/**/*tmp/.keep
 
 # Ignore pidfiles, but keep the directory.
 examples/*/tmp/pids/*
@@ -55,12 +55,16 @@ examples/*/.byebug_history
 # Ignore master key for decrypting credentials and more.
 examples/*/config/master.key
 
-examples/*/tmp
-examples/*/public/packs
-examples/*/public/snowpacks
-examples/*/public/packs-test
-examples/*/node_modules
-examples/*/yarn-error.log
-examples/*/yarn-debug.log*
-examples/*/.yarn-integrity
-examples/*/snowpacks
+examples/**/*tmp
+examples/**/public/packs
+examples/**/public/snowpacks
+examples/**/public/packs-test
+examples/**/node_modules
+examples/**/yarn-error.log
+examples/**/yarn-debug.log*
+examples/**/.yarn-integrity
+examples/**/snowpacks
+
+test/**/*tmp
+test/**/*storage
+test/**/*node_modules
