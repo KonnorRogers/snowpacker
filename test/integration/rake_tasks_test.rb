@@ -10,8 +10,8 @@ class RakeTasksTest < Minitest::Test
     assert_includes output, "snowpacker:compile"
     assert_includes output, "snowpacker:clobber"
 
-    # generators = Dir.chdir(RAILS_TEST_APP) { `bundle exec rails generate --help` }
+    generators = Dir.chdir(RAILS_TEST_APP) { `bundle exec rails generate --help` }
 
-    # assert_includes generators, "snowpacker"
+    assert_includes generators, "snowpacker"
   end
 end
