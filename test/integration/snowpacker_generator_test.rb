@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 class SnowpackerGeneratorTest < Minitest::Test
   SNOWPACKER_INITIALIZER = File.join(RAILS_TEST_APP, "config", "initializers", "snowpacker.rb")
@@ -18,6 +18,10 @@ class SnowpackerGeneratorTest < Minitest::Test
     Dir.chdir(RAILS_TEST_APP) { `rails generate snowpacker` }
 
     assert_equal File.read(SNOWPACKER_INITIALIZER), File.read(File.join(TEMPLATE_DIR, "snowpacker.rb"))
-    assert_equal File.read(SNOWPACKER_INITIALIZER), File.read(File.join(TEMPLATE_DIR, "snowpacker.rb"))
+
+    package_json = File.read(File.join(RAILS_TEST_APP, "package.json"))
+    Snowpacker::YARN_PACKAGES.each do |pkg|
+      assert_includes package_json, pkg
+    end
   end
 end

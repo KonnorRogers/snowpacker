@@ -2,9 +2,11 @@
 
 require "snowpacker/configuration"
 require "snowpacker/env"
+require "snowpacker/yarn_packages"
 require "snowpacker/snowpacker_proxy"
 
 module Snowpacker
+  YARN_PACKAGES = YarnPackages.all_packages
   # In case youre not using Rails
   # Dir.glob("./tasks/**/*.rake").each { |task| load task }
 
