@@ -1,5 +1,8 @@
-require "action_controller/railtie"
-require "action_view/railtie"
+require_relative 'boot'
+
+require 'rails/all'
+
+Bundler.require(*Rails.groups)
 require "snowpacker"
 
 module Dummy
