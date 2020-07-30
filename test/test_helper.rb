@@ -9,3 +9,6 @@ Minitest::Reporters.use! [Minitest::Reporters::DefaultReporter.new(:color => tru
 TEST_DIR = File.expand_path(__dir__)
 RUBY_TEST_APP = File.join(TEST_DIR, "ruby_test_app")
 RAILS_TEST_APP = File.join(TEST_DIR, "rails_test_app")
+
+ROOT_DIR = File.expand_path("..", __dir__)
+TEMPLATE_DIR = File.join(ROOT_DIR, "lib", "snowpacker", "templates")
