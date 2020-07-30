@@ -14,7 +14,8 @@ class SnowpackerGenerator < ::Rails::Generators::Base
 
   desc "Add snowpack, babel, and postcss to your package.json dependencies"
   def add_snowpack
-    %x(yarn add -D snowpack \
+    %x(yarn add -D
+                 snowpack \
                  @snowpack/babel-plugin-package-import \
                  core-js@3 \
                  postcss \

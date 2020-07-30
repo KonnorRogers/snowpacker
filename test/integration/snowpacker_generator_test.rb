@@ -21,10 +21,11 @@ class SnowpackerGeneratorTest < Minitest::Test
 
     package_json = File.read(File.join(RAILS_TEST_APP, "package.json"))
     Snowpacker::YARN_PACKAGES.each do |pkg|
-      # work around core-js@3 turns to "core-js": "3"
+      # work around core-js@3 which turns to "core-js": "3"
       if pkg == "core-js@3"
         pkg = "core-js"
       end
+
       assert_includes package_json, pkg
     end
   end
