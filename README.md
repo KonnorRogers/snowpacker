@@ -12,16 +12,17 @@ This gem integrates the [snowpack](https://snowpack.dev/) JS module bundler into
 your Rails application. It is inspired by gems such as
 [breakfast](https://github.com/devlocker/breakfast) /
 [webpacker](https://github.com/rails/webpacker) started as a fork of
-[parcel-rails](https://github.com/michaldarda/parcel-rails)
+[parcel-rails](https://github.com/michaldarda/parcel-rails).
 
-This is not meant to be a 1:1 replacement of Webpacker.
+This is not meant to be a 1:1 replacement of Webpacker. Snowpacker is
+actually just a wrapper around Snowpack using Rake.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'snowpacker'
+gem 'snowpacker', '~> 0.0.4.alpha1'
 ```
 
 Then run
@@ -29,6 +30,9 @@ Then run
 ```bash
 bin/rails g snowpacker
 ```
+
+Which will install your yarn packages, create an initializer file, and
+add config files.
 
 ## Usage
 
@@ -65,8 +69,8 @@ in 2 different terminals.
 
 #### New Rails app
 
-When working with a new Rails app, it is important to swich from webpack
-`require` to ESM-based `import`
+When working with a new Rails app, it is important to switch any webpack
+`require` statements to ESM-based `import`
 
 With a new app you will have to change 2 files to achieve the same
 result as Webpacker. The 2 files are
@@ -100,6 +104,8 @@ result as Webpacker. The 2 files are
 
 - // const channels = require.context('.', true, /_channel\.js$/)
 - // channels.keys().forEach(channels)
++ // Channels must be manually imported via `import Channel from
+"<path>"`
 ```
 
 Instead, now you must manually load each channels. Currently,
@@ -187,6 +193,9 @@ your Websocket Channels.
 Alternatively, you could add a polyfill-plugin to snowpack to fix this
 issue as well.
 
+## Issues
+
+Not all packages may be compatible with Snowpack.
 
 ## Changelog
 
