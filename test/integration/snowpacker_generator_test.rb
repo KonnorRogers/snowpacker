@@ -14,6 +14,8 @@ class SnowpackerGeneratorTest < Minitest::Test
     Rake.rm_rf(SNOWPACKER_INITIALIZER)
   end
 
+  Minitest.after_run { `yarn remove #{Snowpacker::YARN_PACKAGES.join(" ")}` }
+
   def test_generator_works
     Dir.chdir(RAILS_TEST_APP) { `rails generate snowpacker` }
 
