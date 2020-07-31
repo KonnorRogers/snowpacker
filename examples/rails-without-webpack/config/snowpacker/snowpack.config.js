@@ -32,9 +32,25 @@ const buildOptions = {
   metaDir: `${output_path}/__snowpack__`
 }
 
+const plugins = [
+  [
+    "@snowpack/plugin-build-script",
+    {
+      "cmd": `postcss --config ${postcss_config}`,
+      "input": [".css"],
+      "output": [".css"]
+    },
+    {
+      "cmd": `babel --config-file ${babel_config} ${mount_dir}`,
+      "input": [".js",".jsx",".ts",".tsx"],
+      "output": [".js"]
+    }
+  ],
+]
+
 module.exports = {
   scripts,
-  plugins: [],
+  plugins: plugins,
   installOptions,
   devOptions,
   buildOptions
