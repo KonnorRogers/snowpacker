@@ -15,15 +15,13 @@ class SnowpackerGeneratorTest < Minitest::Test
   end
 
   Minitest.after_run do
-    yarn_packages = Snowpacker::YARN_PACKAGES.map do |pkg|
+    yarn_packages = Snowpacker::YARN_PACKAGES.each do |pkg|
       if pkg == "core-js@3"
         pkg = "core-js"
       end
 
-      pkg
+      Dir.chdir(RAILS_TEST_APP) { `yarn remove #{yarn_packages}` }
     end
-
-    `yarn remove #{yarn_packages.join(" ")}`
   end
 
   def test_generator_works
