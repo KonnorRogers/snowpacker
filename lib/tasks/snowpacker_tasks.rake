@@ -1,7 +1,7 @@
 namespace :snowpacker do
   desc "Compiles assets using snowpack bundler"
   task build: :environment do
-    Snowpacker::Rails::Runner.new.build
+    Snowpacker::Runner.new.build
   end
 
   desc "Compiles assets using snowpack bundler"
@@ -9,7 +9,7 @@ namespace :snowpacker do
 
   desc "Run a snowpack dev server"
   task dev: :environment do
-    Snowpacker::Rails::Runner.new.dev
+    Snowpacker::Runner.new.dev
   end
 
   desc "Removes compiled assets"
