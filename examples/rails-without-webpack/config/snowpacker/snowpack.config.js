@@ -10,10 +10,7 @@ const postcss_config = process.env["SNOWPACKER_POSTCSS_CONFIG_FILE"]
 
 const scripts = {
   "mount:web_modules": `mount $WEB_MODULES --to /${output_path}/web_modules`,
-  "mount:snowpacks": `mount ${mount_dir} --to /${output_path}`,
-  "build:css": `postcss --config ${postcss_config}`,
-  "build:js,jsx,ts,tsx": `babel --config-file ${babel_config} \
-                                ${mount_dir}`
+  "mount:snowpacks": `mount ${mount_dir} --to /${output_path}`
 }
 
 const installOptions = {
@@ -39,13 +36,16 @@ const plugins = [
       "cmd": `postcss --config ${postcss_config}`,
       "input": [".css"],
       "output": [".css"]
-    },
+    }
+  ],
+  [
+    "@snowpack/plugin-build-script",
     {
       "cmd": `babel --config-file ${babel_config} ${mount_dir}`,
       "input": [".js",".jsx",".ts",".tsx"],
       "output": [".js"]
     }
-  ],
+  ]
 ]
 
 module.exports = {
