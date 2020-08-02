@@ -11,15 +11,16 @@ module Snowpacker
       target = "snowpacker.rb"
       source = File.join(TEMPLATES, target)
 
-      # If the project uses Rails
+      destination = File.join("config", "initializers", target)
+
       if defined?(Rails)
-        initializer(target) do
-          File.read(source)
-        end
+        destination = Rails.root.join("config", "initializers", target)
+
+        template File.read(source), destination
       end
 
       # Creates a config/initializers/snowpacker.rb file
-      create_file File.join("config", "initializers", target), File.read(source)
+      template File.read(source), destination
     end
 
     def self.create_config_files

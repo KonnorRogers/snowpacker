@@ -27,7 +27,8 @@ class SnowpackerGeneratorTest < Minitest::Test
   def test_generator_works
     Dir.chdir(RAILS_TEST_APP) { `rails generate snowpacker` }
 
-    assert_equal File.read(SNOWPACKER_INITIALIZER), File.read(File.join(TEMPLATE_DIR, "snowpacker.rb"))
+    snowpacker_file = ERB.new(File.read(File.join(TEMPLATE_DIR, "snowpacker.rb"))).result(binding)
+    assert_equal File.read(SNOWPACKER_INITIALIZER), snowpacker_file
 
     package_json = File.read(File.join(RAILS_TEST_APP, "package.json"))
     Snowpacker::YARN_PACKAGES.each do |pkg|
