@@ -19,7 +19,7 @@
     "@babel/plugin-transform-runtime": "^7.11.0",
     "@babel/preset-env": "^7.11.0",
     "@snowpack/babel-plugin-package-import": "^1.0.0",
-    "@snowpack/plugin-babel": "^2.0.1",
+    "@snowpack/plugin-babel": "^2.0.2",
     "babel-plugin-dynamic-import-node": "^2.3.3",
     "babel-plugin-macros": "^2.8.0",
     "core-js": "3",
@@ -28,6 +28,6 @@
     "postcss-flexbugs-fixes": "^4.2.1",
     "postcss-import": "^12.0.1",
     "postcss-preset-env": "^6.7.0",
-    "snowpack": "^2.7.3"
+    "snowpack": "^2.7.5"
   }
 }
