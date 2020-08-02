@@ -2,20 +2,22 @@
 
 ## WORK IN PROGRESS
 
-Progress can be seen on the `development` branch.
+Please note, that this project is still in it's infancy. Feel free to
+file bug reports and issues.
 
 [![Gem Version](https://badge.fury.io/rb/snowpacker.svg)](https://badge.fury.io/rb/snowpacker)
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/b88ac1a56d868d4f23d5/maintainability)](https://codeclimate.com/github/ParamagicDev/snowpacker/maintainability)
 
 This gem integrates the [snowpack](https://snowpack.dev/) JS module bundler into
-your Rails application. It is inspired by gems such as
+your Rails / Ruby application. It is inspired by gems such as
 [breakfast](https://github.com/devlocker/breakfast) /
 [webpacker](https://github.com/rails/webpacker) started as a fork of
 [parcel-rails](https://github.com/michaldarda/parcel-rails).
 
 This is not meant to be a 1:1 replacement of Webpacker. Snowpacker is
-actually just a wrapper around Snowpack using Rake.
+actually just a wrapper around Snowpack using Rake and as a result can
+be used without Rails.
 
 ## Installation
 
@@ -25,18 +27,16 @@ Add this line to your application's Gemfile:
 gem 'snowpacker', '~> 0.0.4.alpha1'
 ```
 
-Then run
+### With Rails
 
 ```bash
-bin/rails g snowpacker
+rails generate snowpacker
 ```
 
 Which will install your yarn packages, create an initializer file, and
 add config files.
 
-## Usage
-
-### Tasks
+#### Tasks
 
 ```bash
 rails snowpacker:dev # starts a dev server
@@ -45,7 +45,7 @@ rails snowpacker:build # builds for production
 rails assets:precompile # will build snowpacker and asset pipeline
 ```
 
-### Caveats
+#### Caveats
 
 Currently `snowpacker` is not integrated with `rails s` so you need a process manager like [foreman](https://github.com/ddollar/foreman) to run both `rails s` and `snowpack`.
 
@@ -195,7 +195,8 @@ issue as well.
 
 ## Issues
 
-Not all packages may be compatible with Snowpack.
+Not all packages may be compatible with Snowpack. Please check
+[skypack.dev](https://skypack.dev) for ESM-compatible packages.
 
 ## Changelog
 
