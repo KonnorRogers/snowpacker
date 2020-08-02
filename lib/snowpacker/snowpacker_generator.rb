@@ -26,9 +26,7 @@ class SnowpackerGenerator < ::Rails::Generators::Base
     ]
 
     config_files.each do |filename|
-      create_file Rails.root.join("config", "snowpacker", filename) do
-        File.read(File.join(TEMPLATES, filename))
-      end
+      template File.join(TEMPLATES, filename), Rails.root.join("config", "snowpacker", filename)
     end
   end
 end
