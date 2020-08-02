@@ -14,10 +14,6 @@ module Snowpacker
     attr_accessor :config
   end
 
-  def self.config_location
-    Rails.root.join("config", "snowpack.config.json")
-  end
-
   def self.configure
     self.config ||= Configuration.new
     yield(config) if block_given?
