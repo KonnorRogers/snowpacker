@@ -23,12 +23,10 @@ module Snowpacker
 
       if defined?(Rails)
         destination = Rails.root.join("config", "initializers", target)
-
-        template source, destination
       end
 
       # Creates a config/initializers/snowpacker.rb file
-      say "Creating initializer file at #{destination}...\n\n", :green
+      say "\n\nCreating initializer file at #{destination}...\n\n", :magenta
       template source, destination
     end
 
@@ -39,21 +37,23 @@ module Snowpacker
         destination = Rails.root.join("config", "snowpacker")
       end
 
-      puts "Creating config files @ #{destination}...\n\n"
+      say "\n\nCreating config files @ #{destination}...\n\n", :magenta
       CONFIG_FILES.each do |filename|
         template filename, File.join(destination, filename)
       end
     end
 
     def add_yarn_packages
-      say "Adding yarn packages...\n\n", :green
-      Rake.sh%(yarn add -D #{::Snowpacker::YARN_PACKAGES.join(" ")})
+      say "\n\nAdding yarn packages...\n\n", :magenta
+      Rake.sh %(yarn add -D #{::Snowpacker::YARN_PACKAGES.join(" ")})
     end
 
     def init
       create_initializer_file
       create_config_files
       add_yarn_packages
+
+      say "Finishing initializing snowpacker", :green
     end
   end
 end
