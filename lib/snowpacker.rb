@@ -4,8 +4,7 @@ require "snowpacker/configuration"
 require "snowpacker/env"
 require "snowpacker/yarn_packages"
 require "snowpacker/snowpacker_proxy"
-require "snowpacker/generator_actions.rb"
-
+require "snowpacker/generator"
 
 module Snowpacker
   YARN_PACKAGES = YarnPackages.all_packages

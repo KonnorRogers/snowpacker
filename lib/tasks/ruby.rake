@@ -1,11 +1,9 @@
-require "snowpacker/generator_actions"
+require "snowpacker/generator"
 
 namespace :snowpacker do
   desc "initializes snowpacker"
   task :init do
-    GeneratorActions.create_initializer_file
-    GeneratorActions.create_config_files
-    GeneratorActions.add_yarn_packages
+    Snowpacker::Generator.new.init
   end
 
   desc "Compiles assets using snowpack bundler"

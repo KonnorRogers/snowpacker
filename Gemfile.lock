@@ -4,6 +4,7 @@ PATH
     snowpacker (0.0.4.alpha1)
       rack-proxy (~> 0.6.4)
       rake (~> 13.0)
+      thor (~> 0.20)
 
 GEM
   remote: https://rubygems.org/
@@ -145,8 +146,8 @@ GEM
       rubocop-ast (>= 0.0.3)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 2.0)
-    rubocop-ast (0.2.0)
-      parser (>= 2.7.0.1)
+    rubocop-ast (0.3.0)
+      parser (>= 2.7.1.4)
     rubocop-performance (1.6.1)
       rubocop (>= 0.71.0)
     ruby-progressbar (1.10.1)
@@ -162,7 +163,7 @@ GEM
       rubocop-performance (~> 1.6.0)
     standardrb (1.0.0)
       standard
-    thor (1.0.1)
+    thor (0.20.3)
     thread_safe (0.3.6)
     tzinfo (1.2.7)
       thread_safe (~> 0.1)

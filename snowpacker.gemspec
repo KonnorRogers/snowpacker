@@ -34,6 +34,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency "rack-proxy", "~> 0.6.4"
   spec.add_runtime_dependency "rake", "~> 13.0"
+  spec.add_runtime_dependency "thor", "~> 0.20"
 
   spec.add_development_dependency "bundler", "~> 2"
   spec.add_development_dependency "conventional-changelog", "~> 1.2"
