@@ -5,9 +5,11 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag '/snowpacks/stylesheets/index', media: 'all' %>
     <%= javascript_include_tag '/snowpacks/packs/application', type: "module" %>
-    <script>window.HMR_WEBSOCKET_URL = "ws://localhost:3000"</script>
+
+    <script>
+      window.HMR_WEBSOCKET_URL = "ws://localhost:4035"
+    </script>
   </head>
 
   <body>
