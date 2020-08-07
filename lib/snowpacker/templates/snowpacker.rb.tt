@@ -1,14 +1,14 @@
-<%- if defined?(Rails) -%>
+<%- if defined?(Rails) %>
 Rails.application.config.middleware.use Snowpacker::Proxy, {ssl_verify_none: true}
-<%- end -%>
+<%- end %>
 
 Snowpacker.configure do |snowpacker|
   # Where to find the config directory
-  <%- if defined?(Rails) -%>
+  <%- if defined?(Rails) %>
   snowpacker.config_dir = Rails.root.join("config", "snowpacker")
-  <%- else -%>
+  <%- else %>
   snowpacker.config_dir = File.join("config", "snowpacker")
-  <%- end -%>
+  <%- end %>
 
   # Where to find the snowpack config file
   snowpacker.config_file = File.join(snowpacker.config_dir, "snowpack.config.js")

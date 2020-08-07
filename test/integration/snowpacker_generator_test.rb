@@ -15,19 +15,21 @@ class SnowpackerGeneratorTest < Minitest::Test
   end
 
   Minitest.after_run do
-    yarn_packages = Snowpacker::YARN_PACKAGES.each do |pkg|
+    yarn_packages = Snowpacker::YARN_PACKAGES.map { |pkg|
       if pkg == "core-js@3"
         pkg = "core-js"
       end
 
-      Dir.chdir(RAILS_TEST_APP) { `yarn remove #{yarn_packages}` }
-    end
+      pkg
+    }
+
+    Dir.chdir(RAILS_TEST_APP) { `yarn remove #{yarn_packages.join(" ")}` }
   end
 
   def test_generator_works
     Dir.chdir(RAILS_TEST_APP) { `rails generate snowpacker` }
 
-    snowpacker_file = ERB.new(File.read(File.join(TEMPLATE_DIR, "snowpacker.rb"))).result(binding)
+    snowpacker_file = ERB.new(File.read(File.join(TEMPLATE_DIR, "snowpacker.rb.tt"))).result(binding)
     assert_equal File.read(SNOWPACKER_INITIALIZER), snowpacker_file
 
     package_json = File.read(File.join(RAILS_TEST_APP, "package.json"))

@@ -10,7 +10,6 @@ module Snowpacker
     def initialize
       Env.set_env_variables
       @config_file = Snowpacker.config.config_file
-
     rescue Errno::ENOENT, NoMethodError
       $stdout.puts "Snowpacker configuration not found in #{Snowpacker.config_location}"
       $stdout.puts "Please run bundle exec rails generate snowpacker to install Snowpacker"

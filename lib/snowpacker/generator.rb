@@ -1,4 +1,4 @@
-require 'thor'
+require "thor"
 
 module Snowpacker
   class Generator < Thor::Group

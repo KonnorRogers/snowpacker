@@ -1,5 +1,5 @@
 namespace :snowpacker do
-  task init: :environment  do
+  task init: :environment do
     Rake::Task["snowpacker:init"].invoke
   end
 
