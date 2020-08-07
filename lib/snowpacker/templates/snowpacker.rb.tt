@@ -1,5 +1,5 @@
 <%- if defined?(Rails) -%>
-Rails.application.config.middleware.use Snowpacker::SnowpackerProxy, {ssl_verify_none: true}
+Rails.application.config.middleware.use Snowpacker::Proxy, {ssl_verify_none: true}
 <%- end -%>
 
 Snowpacker.configure do |snowpacker|

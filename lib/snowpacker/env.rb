@@ -4,13 +4,14 @@ module Snowpacker
 
     class << self
       def set_env_variables(config = Snowpacker.config)
-        set_env("OUTPUT_PATH", config&.output_path)
-        set_env("HOSTNAME", config&.hostname)
-        set_env("PORT", config&.port)
-        set_env("BUILD_DIR", config&.build_dir)
-        set_env("MOUNT_DIR", config&.mount_dir)
-        set_env("BABEL_CONFIG_FILE", config&.babel_config_file)
-        set_env("POSTCSS_CONFIG_FILE", config&.postcss_config_file)
+        config.instance_variables.each do |var|
+          value = config.instance_variable_get(var)
+
+          # .slice removes the "@" from beginning of string
+          var = var.to_s.upcase.slice(1..-1)
+
+          set_env(var, value)
+        end
       end
 
       private

@@ -5,7 +5,7 @@ require "socket"
 
 module Snowpacker
   # Proxy server for snowpacker
-  class SnowpackerProxy < Rack::Proxy
+  class Proxy < Rack::Proxy
     def perform_request(env)
       if env["PATH_INFO"].start_with?(%r{/#{Snowpacker.config.output_path}}) && dev_server_running?
         env["HTTP_HOST"] = env["HTTP_X_FORWARDED_HOST"] = Snowpacker.config.hostname
