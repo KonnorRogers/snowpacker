@@ -1,4 +1,5 @@
 require "rails_helper"
+require "erb"
 
 class SnowpackerGeneratorTest < Minitest::Test
   SNOWPACKER_INITIALIZER = File.join(RAILS_TEST_APP, "config", "initializers", "snowpacker.rb")
@@ -27,9 +28,9 @@ class SnowpackerGeneratorTest < Minitest::Test
   end
 
   def test_generator_works
-    Dir.chdir(RAILS_TEST_APP) { `rails generate snowpacker` }
+    Dir.chdir(RAILS_TEST_APP) { `rails snowpacker:init` }
 
-    snowpacker_file = ERB.new(File.read(File.join(TEMPLATE_DIR, "snowpacker.rb.tt"))).result(binding)
+    snowpacker_file = ERB.new(File.read(File.join(TEMPLATE_DIR, "snowpacker.rb.tt")), nil, trim_mode: "% <> > -").result(binding)
     assert_equal File.read(SNOWPACKER_INITIALIZER), snowpacker_file
 
     package_json = File.read(File.join(RAILS_TEST_APP, "package.json"))

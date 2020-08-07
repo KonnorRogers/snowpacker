@@ -30,7 +30,7 @@ gem 'snowpacker', '~> 0.0.4.alpha1'
 ### With Rails
 
 ```bash
-rails generate snowpacker
+rails snowpacker:init
 ```
 
 Which will install your yarn packages, create an initializer file, and
