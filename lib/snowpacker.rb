@@ -3,7 +3,7 @@
 require "snowpacker/configuration"
 require "snowpacker/env"
 require "snowpacker/yarn_packages"
-require "snowpacker/snowpacker_proxy"
+require "snowpacker/proxy"
 require "snowpacker/generator"
 
 module Snowpacker
