@@ -14,7 +14,7 @@ Snowpacker.configure do |snowpacker|
   snowpacker.postcss_config_file = File.join(snowpacker.config_dir, "postcss.config.js")
 
   # Where to find your snowpack files
-  snowpacker.mount_dir = File.join("app", "javascript")
+  snowpacker.mount_dir = File.join("app", "snowpacker")
 
   # Where to build snowpack to (out dir)
   snowpacker.build_dir = "public"
