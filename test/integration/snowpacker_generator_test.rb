@@ -30,7 +30,8 @@ class SnowpackerGeneratorTest < Minitest::Test
   def test_generator_works
     Dir.chdir(RAILS_TEST_APP) { `rails snowpacker:init` }
 
-    snowpacker_file = ERB.new(File.read(File.join(TEMPLATE_DIR, "snowpacker.rb.tt")), nil, trim_mode: "% <> > -").result(binding)
+    context = instance_eval("binding")
+    snowpacker_file = ERB.new(File.binread(File.join(TEMPLATE_DIR, "snowpacker.rb.tt")), nil, "-", "@output_buffer").result(context)
     assert_equal File.read(SNOWPACKER_INITIALIZER), snowpacker_file
 
     package_json = File.read(File.join(RAILS_TEST_APP, "package.json"))
