@@ -1,13 +1,13 @@
 FROM ruby:2.6-alpine3.11 as builder
 
 # Install system dependencies & clean them up
-RUN apk add --no-cache --virtual \
+RUN apk add --no-cache \
    nodejs-dev yarn bash \
    tzdata build-base libffi-dev \
    curl git vim \
    libnotify-dev
 
-FROM builder as bridgetownrb-app
+FROM builder as snowpacker-app
 
 # This is to fix an issue on Linux with permissions issues
 ARG USER_ID=${USER_ID:-1000}
@@ -29,10 +29,13 @@ USER $USER_ID:$GROUP_ID
 # . now == $APP_DIR
 WORKDIR $APP_DIR
 
-# COPY is run as a root user, not as the USER defined above, so we must chown it
-COPY --chown=$USER_ID:$GROUP_ID Gemfile* $APP_DIR/
-COPY --chown=$USER_ID:$GROUP_ID *.gemspec $APP_DIR/
 RUN gem install bundler
+# COPY is run as a root user, not as the USER defined above, so we must chown it
+COPY --chown=$USER_ID:$GROUP_ID Gemfile* *.gemspec .git $APP_DIR/
+
+RUN mkdir -p $APP_DIR/lib/snowpacker
+COPY --chown=$USER_ID:$GROUP_ID lib/snowpacker/version.rb $APP_DIR/lib/snowpacker/version.rb
 RUN bundle install
+COPY . .
 
 CMD ["bundle", "exec", "rake", "test"]
