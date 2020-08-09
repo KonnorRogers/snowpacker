@@ -19,6 +19,17 @@ This is not meant to be a 1:1 replacement of Webpacker. Snowpacker is
 actually just a wrapper around Snowpack using Rake and as a result can
 be used without Rails.
 
+## How is Snowpacker different?
+
+Snowpacker uses the native ESM module spec. ESM Modules are fast,
+lightweight, and natively supported by all newer browsers ("evergreen browsers")
+For more reading on ESM modules, check out this link:
+
+[TODO](TODO)
+
+Snowpacker is also Rails agnostic. It can be used in conjunction with
+Rails and provides helper methods, but Rails is not required.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -44,28 +55,6 @@ rails snowpacker:build # builds for production
 
 rails assets:precompile # will build snowpacker and asset pipeline
 ```
-
-#### Caveats
-
-Currently `snowpacker` is not integrated with `rails s` so you need a process manager like [foreman](https://github.com/ddollar/foreman) to run both `rails s` and `snowpack`.
-
-Create `Procfile.dev`, with the following content:
-
-```bash
-web: bin/rails s
-snowpacker: bin/rails snowpacker:dev
-```
-
-Then run `foreman start -f Procfile.dev`
-
-Alternatively, you can run:
-
-```
-rails server
-rails snowpacker:dev
-```
-
-in 2 different terminals.
 
 #### New Rails app
 
@@ -119,17 +108,19 @@ Given the below file structure and a default configuration:
 
 ```yaml
 app:
-├── javascript:
+├── snowpacker:
+│   ├── assets:
 │   ├── channels:
 │   ├── packs:
 │   └── stylesheets:
 ```
 
-It will output to the following location:
+When building for production, it will output the following:
 
 ```yaml
 ├── public:
 │   └── snowpacks:
+│       ├── assets:
 │       ├── channels:
 │       ├── packs:
 │       ├── __snowpack__:
