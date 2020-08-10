@@ -13,11 +13,11 @@ module Snowpacker
 
   class << self
     attr_accessor :config
-  end
 
-  def self.configure
-    self.config ||= Configuration.new
-    yield(config) if block_given?
+    def configure
+      self.config ||= Configuration.new
+      yield(config) if block_given?
+    end
   end
 end
 

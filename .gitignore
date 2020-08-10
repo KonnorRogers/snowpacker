@@ -68,3 +68,4 @@ examples/**/snowpacks
 test/**/*tmp
 test/**/*storage
 test/**/*node_modules
+test/**/*yarn-error.log

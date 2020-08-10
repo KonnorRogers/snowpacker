@@ -5,6 +5,8 @@ const mount_dir = process.env["SNOWPACKER_MOUNT_DIR"]
 const babel_config = process.env["SNOWPACKER_BABEL_CONFIG_FILE"]
 const postcss_config = process.env["SNOWPACKER_POSTCSS_CONFIG_FILE"]
 
+console.log(process.env["SNOWPACKER_TEST_ATTR"])
+
 // not currently supported
 // const hostname = process.env["SNOWPACKER_HOSTNAME"]
 
