@@ -9,6 +9,26 @@ module Snowpacker
     attr_accessor :output_path
     attr_accessor :port, :hostname
 
+    def method_missing(symbol, *args, &block)
+      begin
+        raise unless symbol.to_s =~ /\A.*=\z/
+
+        setter = symbol
+        getter = symbol.to_s.slice(0...-1).to_sym
+        instance_var = "@#{getter}".to_sym
+
+        define_singleton_method(setter) do |new_val|
+          instance_variable_set(instance_var, new_val)
+        end
+
+        define_singleton_method(getter) { instance_variable_get(instance_var) }
+
+        value = args[0]
+        self.send(setter, value)
+      rescue
+        super(symbol, *args)
+      end
+    end
 
     def self.add_attr(attr, value)
       instance_attr = "@#{attr}".to_sym
