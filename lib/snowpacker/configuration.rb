@@ -23,16 +23,18 @@ module Snowpacker
       getter = symbol.to_s.slice(0...-1).to_sym
       instance_var = "@#{getter}".to_sym
 
+      # attr_writer
       define_singleton_method(setter) do |new_val|
         instance_variable_set(instance_var, new_val)
       end
 
+      # attr_reader
       define_singleton_method(getter) { instance_variable_get(instance_var) }
 
       value = args[0]
       send(setter, value)
     rescue
-      super(symbol, *args)
+      super(symbol, *args, &block)
     end
   end
 end
