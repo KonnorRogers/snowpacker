@@ -2,37 +2,52 @@
 
 ## WORK IN PROGRESS
 
-Progress can be seen on the `development` branch.
+Please note, that this project is still in it's infancy. Feel free to
+file bug reports and issues.
 
 [![Gem Version](https://badge.fury.io/rb/snowpacker.svg)](https://badge.fury.io/rb/snowpacker)
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/b88ac1a56d868d4f23d5/maintainability)](https://codeclimate.com/github/ParamagicDev/snowpacker/maintainability)
 
 This gem integrates the [snowpack](https://snowpack.dev/) JS module bundler into
-your Rails application. It is inspired by gems such as
+your Rails / Ruby application. It is inspired by gems such as
 [breakfast](https://github.com/devlocker/breakfast) /
 [webpacker](https://github.com/rails/webpacker) started as a fork of
-[parcel-rails](https://github.com/michaldarda/parcel-rails)
+[parcel-rails](https://github.com/michaldarda/parcel-rails).
 
-This is not meant to be a 1:1 replacement of Webpacker.
+This is not meant to be a 1:1 replacement of Webpacker. Snowpacker is
+actually just a wrapper around Snowpack using Rake and as a result can
+be used without Rails.
+
+## How is Snowpacker different?
+
+Snowpacker uses the native ESM module spec. ESM Modules are fast,
+lightweight, and natively supported by all newer browsers ("evergreen browsers")
+For more reading on ESM modules, check out this link:
+
+[TODO](TODO)
+
+Snowpacker is also Rails agnostic. It can be used in conjunction with
+Rails and provides helper methods, but Rails is not required.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'snowpacker'
+gem 'snowpacker', '~> 0.0.4.alpha1'
 ```
 
-Then run
+### With Rails
 
 ```bash
-bin/rails g snowpacker
+rails snowpacker:init
 ```
 
-## Usage
+Which will install your yarn packages, create an initializer file, and
+add config files.
 
-### Tasks
+#### Tasks
 
 ```bash
 rails snowpacker:dev # starts a dev server
@@ -41,27 +56,51 @@ rails snowpacker:build # builds for production
 rails assets:precompile # will build snowpacker and asset pipeline
 ```
 
-### Caveats
+#### New Rails app
 
-Currently `snowpacker` is not integrated with `rails s` so you need a process manager like [foreman](https://github.com/ddollar/foreman) to run both `rails s` and `snowpack`.
+When working with a new Rails app, it is important to switch any webpack
+`require` statements to ESM-based `import`
 
-Create `Procfile.dev`, with the following content:
+With a new app you will have to change 2 files to achieve the same
+result as Webpacker. The 2 files are
+`app/javascript/packs/application.js` and the other is
+`app/javascript/channels/index.js`
 
-```bash
-web: bin/rails s
-snowpacker: bin/rails snowpacker:dev
+```diff
+// app/javascript/packs/application.js
+
+- // Webpack
+- require("@rails/ujs").start()
+- require("turbolinks").start()
+- require("@rails/activestorage").start()
+- require("channels")
++
++ // https://www.skypack.dev/ to find packages
++ import "https://cdn.skypack.dev/@rails/ujs" // Autostarts
++ import Turbolinks from "https://cdn.skypack.dev/turbolinks"
++ import ActiveStorage from "https://cdn.skypack.dev/@rails/activestorage"
++ import "../channels"
+
++ Turbolinks.start()
++ ActiveStorage.start()
 ```
 
-Then run `foreman start -f Procfile.dev`
+```diff
+// app/javascript/channels/index.js
 
-Alternatively, you can run:
+// Load all the channels within this directory and all subdirectories.
+// Channel files must be named *_channel.js.
 
+- // const channels = require.context('.', true, /_channel\.js$/)
+- // channels.keys().forEach(channels)
++ // Channels must be manually imported via `import Channel from
+"<path>"`
 ```
-rails server
-rails snowpacker:dev
-```
 
-in 2 different terminals.
+Instead, now you must manually load each channels. Currently,
+`require.context()` is not supported by Snowpack. It is a webpack
+specific function. (There is a plugin in the works with Snowpack to
+implement a plugin which does the same thing)
 
 ## File Structure
 
@@ -69,17 +108,19 @@ Given the below file structure and a default configuration:
 
 ```yaml
 app:
-├── javascript:
+├── snowpacker:
+│   ├── assets:
 │   ├── channels:
 │   ├── packs:
 │   └── stylesheets:
 ```
 
-It will output to the following location:
+When building for production, it will output the following:
 
 ```yaml
 ├── public:
 │   └── snowpacks:
+│       ├── assets:
 │       ├── channels:
 │       ├── packs:
 │       ├── __snowpack__:
@@ -109,8 +150,9 @@ snowpack will not work properly.
 After running generator, the configuration file can be found in
 `config/initializers/snowpacker.rb`
 
-In addition, all related `snowpack.config.js`, `babel.config.js`, and `postcss.config.js` can all be found in the
-`config/snowpacker` directory.
+In addition, all related `snowpack.config.js`, `babel.config.js`, and
+`postcss.config.js` can all be found in the `config/snowpacker`
+directory.
 
 ## Production
 
@@ -142,6 +184,10 @@ your Websocket Channels.
 Alternatively, you could add a polyfill-plugin to snowpack to fix this
 issue as well.
 
+## Issues
+
+Not all packages may be compatible with Snowpack. Please check
+[skypack.dev](https://skypack.dev) for ESM-compatible packages.
 
 ## Changelog
 

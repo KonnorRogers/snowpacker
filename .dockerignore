@@ -19,4 +19,4 @@ node_modules/
 
 .vscode/
 /tags
-.gitignore
+/examples

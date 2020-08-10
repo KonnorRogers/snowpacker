@@ -1,20 +1,21 @@
 namespace :snowpacker do
-  desc "Compiles assets using snowpack bundler"
-  task build: :environment do
-    Snowpacker::Rails::Runner.new.build
+  task init: :environment do
+    Rake::Task["snowpacker:init"].invoke
   end
 
-  desc "Compiles assets using snowpack bundler"
-  task compile: :build
+  task build: :environment do
+    Rake::Task["snowpacker:build"].invoke
+  end
 
-  desc "Run a snowpack dev server"
   task dev: :environment do
-    Snowpacker::Rails::Runner.new.dev
+    Rake::Task["snowpacker:dev"].invoke
   end
 
   desc "Removes compiled assets"
   task clobber: :environment do
-    command = "rm -rf #{::Rails.application.config.snowpacker.destination}"
+    build_dir = Rails.root.join(Snowpacker.config.build_dir)
+    output_path = File.join(build_dir, Snowpacker.config.output_path)
+    command = "rm -rf #{output_path}"
     logger = Logger.new(STDOUT)
     logger.info(command)
     exec(command)
