@@ -9,6 +9,8 @@ module Snowpacker
     attr_accessor :output_path
     attr_accessor :port, :hostname
 
+    # rubocop:disable Style/MethodMissingSuper Metrics/MethodLength
+
     # Allows dynamic definition of getters and setters
     # The setter must be the value used first.
     # @example
@@ -38,8 +40,10 @@ module Snowpacker
       send(setter, value)
     rescue
       # Raise error as normal, nothing to see here
-      super(symbol, *args, &block)
+      super(method_name, *args, &block)
     end
+
+    # rubocop:enable Style/MethodMissingSuper Metrics/MethodLength
 
     def respond_to_missing?(method_name, include_private = false)
       method_name.to_s.end_with?("=") || super
