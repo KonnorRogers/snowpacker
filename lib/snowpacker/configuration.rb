@@ -15,12 +15,12 @@ module Snowpacker
     #   Snowpacker.config.fake_attr # => Raises an error
     #   Snowpacker.config.fake_attr = "stuff"
     #   Snowpacker.config.fake_attr # => "stuff"
-    def method_missing(symbol, *args, &block)
+    def method_missing(method_name, *args, &block)
       # Check if the method missing an "attr=" method
-      raise unless /\A.*=\z/.match?(symbol.to_s)
+      raise unless method_name.to_s.end_with("=")
 
-      setter = symbol
-      getter = symbol.to_s.slice(0...-1).to_sym
+      setter = method_name
+      getter = method_name.to_s.slice(0...-1).to_sym
       instance_var = "@#{getter}".to_sym
 
       # attr_writer
@@ -31,10 +31,18 @@ module Snowpacker
       # attr_reader
       define_singleton_method(getter) { instance_variable_get(instance_var) }
 
+      # Ignores all arguments but the first one
       value = args[0]
+
+      # Actually sets the value on the instance variable
       send(setter, value)
     rescue
+      # Raise error as normal, nothing to see here
       super(symbol, *args, &block)
+    end
+
+    def respond_to_missing?(method_name, include_private = false)
+      method_name.to_s.end_with?("=") || super
     end
   end
 end
