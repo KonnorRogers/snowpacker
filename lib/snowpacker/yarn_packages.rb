@@ -27,6 +27,13 @@ module Snowpacker
       ]
     end
 
+    def self.rollup_packages
+      %w[
+        rollup-plugin-require-context
+        generate-source-map
+      ]
+    end
+
     def self.misc_packages
       %w[
         core-js@3

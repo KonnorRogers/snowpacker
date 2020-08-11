@@ -23,11 +23,13 @@
     "babel-plugin-dynamic-import-node": "^2.3.3",
     "babel-plugin-macros": "^2.8.0",
     "core-js": "3",
+    "generate-source-map": "^0.0.5",
     "postcss": "^7.0.32",
     "postcss-cli": "^7.1.1",
     "postcss-flexbugs-fixes": "^4.2.1",
     "postcss-import": "^12.0.1",
     "postcss-preset-env": "^6.7.0",
+    "rollup-plugin-require-context": "^1.0.1",
     "snowpack": "^2.7.7"
   }
 }

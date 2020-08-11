@@ -12,7 +12,10 @@ const scripts = {
 }
 
 const installOptions = {
-  NODE_ENV: true
+  NODE_ENV: true,
+  rollup: {
+    plugins: [require('rollup-plugin-require-context')()],
+  },
 }
 
 const devOptions = {
@@ -45,7 +48,6 @@ const plugins = [
       "output": [".js"]
     }
   ],
-  ["@snowpack/plugin-webpack", { /* see "Plugin Options" below */}]
 ]
 
 module.exports = {
