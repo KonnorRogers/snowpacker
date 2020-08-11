@@ -20,12 +20,14 @@ Snowpacker.configure do |snowpacker|
   snowpacker.build_dir = "public"
 
   # Appends to build_dir
-  snowpacker.output_path = "snowpacks" # => /public/snowpacks
+  snowpacker.output_path = "snowpacks" # => /build_dir/snowpacks
 
   # What port to run snowpacker with
   snowpacker.port = "4035"
 
   # What hostname to use
   snowpacker.hostname = "localhost"
-  snowpacker.test_attr = "test_attr"
+
+  # To add additional attributes you can do the following:
+  # snowpacker.add_attr("attr_name", "attr_value")
 end
