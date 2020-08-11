@@ -19,7 +19,7 @@ module Snowpacker
     #   Snowpacker.config.fake_attr # => "stuff"
     def method_missing(method_name, *args, &block)
       # Check if the method missing an "attr=" method
-      raise unless method_name.to_s.end_with("=")
+      raise unless method_name.to_s.end_with?("=")
 
       setter = method_name
       getter = method_name.to_s.slice(0...-1).to_sym
