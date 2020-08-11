@@ -27,7 +27,4 @@ Snowpacker.configure do |snowpacker|
 
   # What hostname to use
   snowpacker.hostname = "localhost"
-
-  # To add additional attributes you can do the following:
-  # snowpacker.add_attr("attr_name", "attr_value")
 end

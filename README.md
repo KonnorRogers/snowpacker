@@ -200,3 +200,15 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/Parama
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+## Roadmap
+
+[ ] Support require.context
+
+Possible options:
+
+[https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars](https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars)
+
+[https://github.com/rollup/plugins/tree/master/packages/multi-entry](https://github.com/rollup/plugins/tree/master/packages/multi-entry)
+[ ] Add documentation on Stimulus
+[https://github.com/lightster/rollup-plugin-stimulus](https://github.com/lightster/rollup-plugin-stimulus)

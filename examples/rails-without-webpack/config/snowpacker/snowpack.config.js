@@ -13,9 +13,6 @@ const scripts = {
 
 const installOptions = {
   NODE_ENV: true,
-  rollup: {
-    plugins: [require('rollup-plugin-require-context')()],
-  },
 }
 
 const devOptions = {
