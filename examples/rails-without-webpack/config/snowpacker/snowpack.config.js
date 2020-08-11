@@ -12,7 +12,12 @@ const scripts = {
 }
 
 const installOptions = {
-  NODE_ENV: true,
+  NODE_ENV: true
+  rollup: {
+    plugins: [
+      require("@rollup/plugin-dynamic-import-vars")()
+    ]
+  }
 }
 
 const devOptions = {
