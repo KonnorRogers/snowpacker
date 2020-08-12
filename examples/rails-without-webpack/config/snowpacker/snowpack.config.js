@@ -1,4 +1,5 @@
-const dynamicImportVars = import('@rollup/plugin-dynamic-import-vars')
+// Allows for import(`/controllers/${name}_controller.js`)
+const dynamicImportVars = require('@rollup/plugin-dynamic-import-vars');
 
 const OUTPUT_PATH = process.env["SNOWPACKER_OUTPUT_PATH"]
 const PORT = process.env["SNOWPACKER_PORT"]
@@ -16,7 +17,7 @@ const scripts = {
 const installOptions = {
   NODE_ENV: true,
   rollup: {
-    plugins: [dynamicImportVars()]
+    plugins: [dynamicImportVars.default()]
   }
 }
 
@@ -42,14 +43,14 @@ const plugins = [
       "output": [".css"]
     }
   ],
-  // [
-  //   "@snowpack/plugin-build-script",
-  //   {
-  //     "cmd": `babel --config-file ${BABEL_CONFIG} ${MOUNT_DIR}`,
-  //     "input": [".js"],
-  //     "output": [".js"]
-  //   }
-  // ],
+  [
+    "@snowpack/plugin-build-script",
+    {
+      "cmd": `babel --config-file ${BABEL_CONFIG} ${MOUNT_DIR}`,
+      "input": [".js"],
+      "output": [".js"]
+    }
+  ],
 ]
 
 module.exports = {
