@@ -25,7 +25,7 @@ Snowpacker uses the native ESM module spec. ESM Modules are fast,
 lightweight, and natively supported by all newer browsers ("evergreen browsers")
 For more reading on ESM modules, check out this link:
 
-[TODO](TODO)
+[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
 
 Snowpacker is also Rails agnostic. It can be used in conjunction with
 Rails and provides helper methods, but Rails is not required.
@@ -51,8 +51,8 @@ add config files.
 
 ```bash
 rails snowpacker:dev # starts a dev server
-rails snowpacker:build # builds for production
-
+rails snowpacker:build # builds for production (is hooked onto
+precompile)
 rails assets:precompile # will build snowpacker and asset pipeline
 ```
 
@@ -104,46 +104,13 @@ implement a plugin which does the same thing)
 
 ## File Structure
 
-Given the below file structure and a default configuration:
-
-```yaml
-app:
-├── snowpacker:
-│   ├── assets:
-│   ├── channels:
-│   ├── packs:
-│   └── stylesheets:
-```
-
-When building for production, it will output the following:
-
-```yaml
-├── public:
-│   └── snowpacks:
-│       ├── assets:
-│       ├── channels:
-│       ├── packs:
-│       ├── __snowpack__:
-│       ├── stylesheets:
-│       └── web_modules:
-```
+TODO - update file structure expectations.
 
 ## Including in views
 
 Use Rails generic helpers to include assets in your views
 
-```ruby
-<%= stylesheet_link_tag '/snowpacks/stylesheets/index', media: 'all',
-'data-turbolinks-track': 'reload' %>
-
-<%= javascript_include_tag '/snowpacks/packs/application',
-'data-turbolinks-track': 'reload', type: "module" %>
-```
-
-This assumes you are using the default configuration.
-
-Make sure to use `type: "module"` for all javascript scripts, otherwise,
-snowpack will not work properly.
+TODO: - Update how to include a snowpacker module
 
 ## Configuration
 
@@ -176,13 +143,15 @@ Examples can be found in the [/examples](/examples) directory.
 
 ## Converting from Webpack to Snowpack
 
-- Snowpack (as far as I'm aware) does not support the `require.context()`
-so you will have to manually `register` your Stimulus Controllers and
-your Websocket Channels.
+- As a result, I have added a package called
+[@rollup/plugin-dynamic-import-vars](https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars)
+which works very similarly. (TODO - Add examples)
 
 - Any require statements should be rewritten to import statements.
 Alternatively, you could add a polyfill-plugin to snowpack to fix this
 issue as well.
+
+[https://www.snowpack.dev/#node-built-in-could-not-be-resolved](https://www.snowpack.dev/#node-built-in-could-not-be-resolved)
 
 ## Issues
 
@@ -203,12 +172,10 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Roadmap
 
-[ ] Support require.context
-
-Possible options:
+[x] Support require.context // Still needs to be tested
 
 [https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars](https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars)
 
-[https://github.com/rollup/plugins/tree/master/packages/multi-entry](https://github.com/rollup/plugins/tree/master/packages/multi-entry)
 [ ] Add documentation on Stimulus
+
 [https://github.com/lightster/rollup-plugin-stimulus](https://github.com/lightster/rollup-plugin-stimulus)
