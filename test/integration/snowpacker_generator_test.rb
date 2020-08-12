@@ -52,5 +52,12 @@ class SnowpackerGeneratorTest < Minitest::Test
 
       assert_equal test_file, config_file
     end
+
+    out, err = capture_subprocess_io {
+      system("rails snowpacker:build")
+    }
+
+    assert_match %r{Build Complete!}, out
+    assert_nil err
   end
 end
