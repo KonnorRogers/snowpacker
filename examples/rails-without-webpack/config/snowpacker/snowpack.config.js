@@ -16,7 +16,7 @@ const scripts = {
 const installOptions = {
   NODE_ENV: true,
   rollup: {
-    plugins: [dynamicImportVars]
+    plugins: [dynamicImportVars()]
   }
 }
 
