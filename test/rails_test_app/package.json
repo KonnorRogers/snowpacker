@@ -9,6 +9,7 @@
     "@babel/plugin-transform-regenerator": "^7.10.4",
     "@babel/plugin-transform-runtime": "^7.11.0",
     "@babel/preset-env": "^7.11.0",
+    "@rollup/plugin-dynamic-import-vars": "^1.0.0",
     "@snowpack/plugin-babel": "^2.0.3",
     "babel-plugin-dynamic-import-node": "^2.3.3",
     "babel-plugin-macros": "^2.8.0",

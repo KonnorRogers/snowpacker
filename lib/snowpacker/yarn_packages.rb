@@ -5,6 +5,7 @@ module Snowpacker
         snowpack_packages,
         postcss_packages,
         babel_packages,
+        rollup_packages,
         misc_packages
       ].flatten
     end
