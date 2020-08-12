@@ -29,8 +29,7 @@ module Snowpacker
 
     def self.rollup_packages
       %w[
-        rollup-plugin-require-context
-        generate-source-map
+        @rollup/plugin-dynamic-import-vars
       ]
     end
 
