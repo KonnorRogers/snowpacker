@@ -5,9 +5,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%# <%= javascript_include_tag '/snowpacks/packs/application.js', type: "module" %1> %>
-    <script src="/snowpacks/packs/application.js" type="module"></script>
 
+    <%= snowpacker_javascript_tag "application" %>
     <script>
       window.HMR_WEBSOCKET_URL = "ws://localhost:4035"
     </script>

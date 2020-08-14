@@ -29,3 +29,11 @@ Snowpacker.configure do |snowpacker|
   # What hostname to use
   snowpacker.hostname = "localhost"
 end
+
+ActiveSupport.on_load :action_controller do
+  ActionController::Base.helper Webpacker::Helper
+end
+
+ActiveSupport.on_load :action_view do
+  include Webpacker::Helper
+end
