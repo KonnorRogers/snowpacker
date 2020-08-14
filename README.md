@@ -30,6 +30,9 @@ For more reading on ESM modules, check out this link:
 Snowpacker is also Rails agnostic. It can be used in conjunction with
 Rails and provides helper methods, but Rails is not required.
 
+Snowpacker is also unbundled by default (for now). Perhaps in the future
+I may add a bundler, but for now, I'm content with leaving it unbundled.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -93,14 +96,8 @@ result as Webpacker. The 2 files are
 
 - // const channels = require.context('.', true, /_channel\.js$/)
 - // channels.keys().forEach(channels)
-+ // Channels must be manually imported via `import Channel from
-"<path>"`
++ import(`./${name}_channel.js`)
 ```
-
-Instead, now you must manually load each channels. Currently,
-`require.context()` is not supported by Snowpack. It is a webpack
-specific function. (There is a plugin in the works with Snowpack to
-implement a plugin which does the same thing)
 
 ## File Structure
 
@@ -143,9 +140,9 @@ Examples can be found in the [/examples](/examples) directory.
 
 ## Converting from Webpack to Snowpack
 
-- As a result, I have added a package called
+- As a result of not having `require.context()` supported, I have added a package called
 [@rollup/plugin-dynamic-import-vars](https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars)
-which works very similarly. (TODO - Add examples)
+which works very similarly.
 
 - Any require statements should be rewritten to import statements.
 Alternatively, you could add a polyfill-plugin to snowpack to fix this
@@ -172,9 +169,9 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Roadmap
 
-[x] Support require.context // Still needs to be tested
+[x] Support require.context
 
-[https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars](https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars)
+Support is similar, but not the same [https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars](https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars)
 
 [ ] Add documentation on Stimulus
 
