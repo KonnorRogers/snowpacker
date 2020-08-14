@@ -1,5 +1,5 @@
 module Snowpacker
-  class Helpers
+  module Helpers
     def snowpacker_assets_path(name, **options)
       asset_path("/#{snowpacker_path}/#{assets}")
     end
