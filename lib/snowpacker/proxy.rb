@@ -6,6 +6,11 @@ require "socket"
 module Snowpacker
   # Proxy server for snowpacker
   class Proxy < Rack::Proxy
+    def initialize(app = nil, opts = {})
+      opts[:streaming] = false if Rails.env.test? && !opts.key?(:streaming)
+      super
+    end
+
     def perform_request(env)
       output_path = %r{/#{Snowpacker.config.output_path}}
       if env["PATH_INFO"].start_with?(output_path) && dev_server_running?
@@ -19,8 +24,6 @@ module Snowpacker
         # end
 
         env["SCRIPT_NAME"] = ""
-        puts "ENV: #{env}"
-
         super(env)
       else
         @app.call(env)
@@ -37,7 +40,7 @@ module Snowpacker
 
       # Socket.tcp(host, port, connect_timeout: connect_timeout).close
       # true
-    # rescue Errno::ECONNREFUSED
+      # rescue Errno::ECONNREFUSED
       # puts "Snowpacker is not currently running on #{host_with_port}"
       # false
     end

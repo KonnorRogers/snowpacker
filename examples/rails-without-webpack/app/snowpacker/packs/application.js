@@ -7,11 +7,10 @@
 import "@rails/ujs" // Autostarts
 import Turbolinks from "turbolinks"
 import ActiveStorage from "@rails/activestorage"
-// import "../channels/index"
 import "../stylesheets/index.css"
 
 Turbolinks.start()
 ActiveStorage.start()
 
-console.log("Hello Snowpacker")
+console.log("Hello from Snowpacker")
 

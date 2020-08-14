@@ -9,9 +9,9 @@ const BABEL_CONFIG = process.env["SNOWPACKER_BABEL_CONFIG_FILE"]
 const POSTCSS_CONFIG = process.env["SNOWPACKER_POSTCSS_CONFIG_FILE"]
 const HOSTNAME = process.env["SNOWPACKER_HOSTNAME"]
 
-const scripts = {
-  "mount:web_modules": `mount $WEB_MODULES --to /${OUTPUT_PATH}/web_modules`,
-  "mount:snowpacks": `mount ${MOUNT_DIR} --to /${OUTPUT_PATH}`
+const mount = {
+  [`${MOUNT_DIR}`]: `/${OUTPUT_PATH}`,
+  web_modules: `/${OUTPUT_PATH}`
 }
 
 const installOptions = {
@@ -54,7 +54,7 @@ const plugins = [
 ]
 
 module.exports = {
-  scripts,
+  mount,
   plugins: plugins,
   installOptions,
   devOptions,
