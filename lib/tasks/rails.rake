@@ -1,14 +1,8 @@
+def clobber
+end
 namespace :snowpacker do
   task init: :environment do
     Rake::Task["snowpacker:init"].invoke
-  end
-
-  task build: :environment do
-    Rake::Task["snowpacker:build"].invoke
-  end
-
-  task dev: :environment do
-    Rake::Task["snowpacker:dev"].invoke
   end
 
   desc "Removes compiled assets"
@@ -18,7 +12,16 @@ namespace :snowpacker do
     command = "rm -rf #{output_path}"
     logger = Logger.new(STDOUT)
     logger.info(command)
-    exec(command)
+    system(command)
+  end
+
+  task build: :environment do
+    Rake::Task["snowpacker:clobber"].invoke
+    Rake::Task["snowpacker:build"].invoke
+  end
+
+  task dev: :environment do
+    Rake::Task["snowpacker:dev"].invoke
   end
 end
 

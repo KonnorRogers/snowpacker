@@ -1,6 +1,3 @@
-// Allows for import(`/controllers/${name}_controller.js`)
-const dynamicImportVars = require('@rollup/plugin-dynamic-import-vars');
-
 const OUTPUT_PATH = process.env["SNOWPACKER_OUTPUT_PATH"]
 const PORT = process.env["SNOWPACKER_PORT"]
 const BUILD_DIR = process.env["SNOWPACKER_BUILD_DIR"]
@@ -11,14 +8,11 @@ const HOSTNAME = process.env["SNOWPACKER_HOSTNAME"]
 
 const mount = {
   [`${MOUNT_DIR}`]: `/${OUTPUT_PATH}`,
-  web_modules: `/${OUTPUT_PATH}`
+  $WEB_MODULES: `/${OUTPUT_PATH}`
 }
 
 const installOptions = {
   NODE_ENV: true,
-  rollup: {
-    plugins: [dynamicImportVars.default()]
-  }
 }
 
 const devOptions = {

@@ -4,9 +4,9 @@ module Snowpacker
       asset_path("/#{snowpacker_path}/#{assets}")
     end
 
-    def snowpacker_javascript_tag(name, **options)
+    def snowpacker_pack_tag(name, **options)
       options[:type] = "module" if options[:type].nil?
-      javascript_include_tag("/#{snowpacker_path}/#{name}", **options)
+      javascript_include_tag("/#{snowpacker_path}/packs/#{name}", **options)
     end
 
     def snowpacker_stylesheet_link_tag(name, **options)

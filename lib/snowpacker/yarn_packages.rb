@@ -5,16 +5,13 @@ module Snowpacker
         snowpack_packages,
         postcss_packages,
         babel_packages,
-        rollup_packages,
         misc_packages
       ].flatten
     end
 
     def self.snowpack_packages
-      # @snowpack/babel-plugin-package-import
       %w[
         snowpack
-        @snowpack/plugin-babel
       ]
     end
 
@@ -25,12 +22,6 @@ module Snowpacker
         postcss-import
         postcss-flexbugs-fixes
         postcss-preset-env
-      ]
-    end
-
-    def self.rollup_packages
-      %w[
-        @rollup/plugin-dynamic-import-vars
       ]
     end
 
