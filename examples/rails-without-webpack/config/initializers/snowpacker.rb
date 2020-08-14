@@ -28,7 +28,3 @@ Snowpacker.configure do |snowpacker|
   # What hostname to use
   snowpacker.hostname = "localhost"
 end
-
-Rails.application.config.assets.paths << Rails.root.join(Snowpacker.config.build_dir, Snowpacker.config.output_path)
-
-Rails.application.config.assets.paths << Rails.root.join(Snowpacker.config.output_path)
