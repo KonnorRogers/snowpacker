@@ -2,6 +2,7 @@
 // Channel files must be named *_channel.js.
 
 // WEbpack only
-const channels = import(`./${name}_channel.js`)
-channels.keys().forEach(channels)
-console.log(channels)
+// const channels = import(`./${name}_channel.js`)
+// channels.keys().forEach(channels)
+// console.log(channels)
+// console.log("hi")

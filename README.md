@@ -76,9 +76,9 @@ result as Webpacker. The 2 files are
 - require("channels")
 +
 + // https://www.skypack.dev/ to find packages
-+ import "https://cdn.skypack.dev/@rails/ujs" // Autostarts
-+ import Turbolinks from "https://cdn.skypack.dev/turbolinks"
-+ import ActiveStorage from "https://cdn.skypack.dev/@rails/activestorage"
++ import "@rails/ujs" // Autostarts
++ import Turbolinks from "turbolinks"
++ import ActiveStorage from "@rails/activestorage"
 + import "../channels"
 
 + Turbolinks.start()
