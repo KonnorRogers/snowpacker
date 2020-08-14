@@ -31,9 +31,9 @@ Snowpacker.configure do |snowpacker|
 end
 
 ActiveSupport.on_load :action_controller do
-  ActionController::Base.helper Webpacker::Helper
+  ActionController::Base.helper Snowpacker::Helpers
 end
 
 ActiveSupport.on_load :action_view do
-  include Webpacker::Helper
+  include Snowpacker::Helpers
 end
