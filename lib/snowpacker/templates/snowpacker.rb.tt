@@ -37,3 +37,13 @@ Snowpacker.configure do |snowpacker|
   # To add additional attributes you can do the following:
   # snowpacker.add_attr("attr_name", "attr_value")
 end
+
+<%- if defined?(Rails) -%>
+ActiveSupport.on_load :action_controller do
+  ActionController::Base.helper Webpacker::Helper
+end
+
+ActiveSupport.on_load :action_view do
+  include Webpacker::Helper
+end
+<%- end -%>

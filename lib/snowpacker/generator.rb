@@ -53,7 +53,7 @@ module Snowpacker
       create_config_files
       add_yarn_packages
 
-      say "Finishing initializing snowpacker", :green
+      say "Finished initializing snowpacker", :green
     end
   end
 end
