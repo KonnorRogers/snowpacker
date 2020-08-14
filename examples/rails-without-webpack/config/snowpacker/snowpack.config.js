@@ -29,7 +29,7 @@ const devOptions = {
 }
 
 const buildOptions = {
-  clean: true,
+  clean: false,
   baseUrl: "/",
   metaDir: `${OUTPUT_PATH}/__snowpack__`
 }

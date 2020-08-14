@@ -7,7 +7,8 @@ module Snowpacker
   # Proxy server for snowpacker
   class Proxy < Rack::Proxy
     def perform_request(env)
-      if env["PATH_INFO"].start_with?(%r{/#{Snowpacker.config.output_path}}) && dev_server_running?
+      output_path = %r{/#{Snowpacker.config.output_path}}
+      if env["PATH_INFO"].start_with?(output_path) && dev_server_running?
         env["HTTP_HOST"] = env["HTTP_X_FORWARDED_HOST"] = Snowpacker.config.hostname
         env["HTTP_X_FORWARDED_SERVER"] = host_with_port
         env["HTTP_PORT"] = env["HTTP_X_FORWARDED_PORT"] = Snowpacker.config.port
@@ -18,6 +19,7 @@ module Snowpacker
         # end
 
         env["SCRIPT_NAME"] = ""
+        puts "ENV: #{env}"
 
         super(env)
       else
@@ -28,15 +30,16 @@ module Snowpacker
     private
 
     def dev_server_running?
-      host = Snowpacker.config.hostname
-      port = Snowpacker.config.port
-      connect_timeout = 0.01
-
-      Socket.tcp(host, port, connect_timeout: connect_timeout).close
       true
-    rescue Errno::ECONNREFUSED
-      puts "Snowpacker is not currently running on #{host_with_port}"
-      false
+      # host = Snowpacker.config.hostname
+      # port = Snowpacker.config.port
+      # connect_timeout = 0.01
+
+      # Socket.tcp(host, port, connect_timeout: connect_timeout).close
+      # true
+    # rescue Errno::ECONNREFUSED
+      # puts "Snowpacker is not currently running on #{host_with_port}"
+      # false
     end
 
     def host_with_port
