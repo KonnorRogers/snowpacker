@@ -40,10 +40,10 @@ end
 
 <%- if defined?(Rails) -%>
 ActiveSupport.on_load :action_controller do
-  ActionController::Base.helper Webpacker::Helper
+  ActionController::Base.helper Snowpacker::Helper
 end
 
 ActiveSupport.on_load :action_view do
-  include Webpacker::Helper
+  include Snowpacker::Helper
 end
 <%- end -%>
