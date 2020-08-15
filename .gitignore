@@ -56,7 +56,7 @@ examples/*/.byebug_history
 examples/*/config/master.key
 
 examples/**/*tmp
-examples/**/public
+examples/**/public/snowpacks
 examples/**/node_modules
 examples/**/yarn-error.log
 examples/**/yarn-debug.log*
