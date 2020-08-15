@@ -1,3 +1,5 @@
+const path = require("path")
+
 const OUTPUT_PATH = process.env["SNOWPACKER_OUTPUT_PATH"]
 const PORT = process.env["SNOWPACKER_PORT"]
 const BUILD_DIR = process.env["SNOWPACKER_BUILD_DIR"]
@@ -7,7 +9,8 @@ const POSTCSS_CONFIG = process.env["SNOWPACKER_POSTCSS_CONFIG_FILE"]
 const HOSTNAME = process.env["SNOWPACKER_HOSTNAME"]
 
 const mount = {
-  [`${MOUNT_DIR}`]: `/${OUTPUT_PATH}`,
+  // [`${MOUNT_DIR}`]: `/${OUTPUT_PATH}`,
+  [`${MOUNT_DIR}`]: `/`,
 }
 
 const installOptions = {
@@ -18,15 +21,14 @@ const devOptions = {
   hostname: HOSTNAME,
   port: parseInt(PORT, 10),
   open: "none",
-  out: BUILD_DIR
+  out: path.join(BUILD_DIR, OUTPUT_PATH)
+  // out: BUILD_DIR
 }
 
 const buildOptions = {
   clean: false,
-  baseUrl: "/",
-  metaDir: `${OUTPUT_PATH}/__snowpack__`,
+  baseUrl: OUTPUT_PATH,
   minify: true,
-  webModulesUrl: `${OUTPUT_PATH}/web_modules`
 }
 
 const plugins = [
@@ -41,7 +43,7 @@ const plugins = [
   [
     "@snowpack/plugin-build-script",
     {
-      "cmd": `babel --config-file ${BABEL_CONFIG} ${MOUNT_DIR}`,
+      "cmd": `babel --config-file ${BABEL_CONFIG} --filename $FILE`,
       "input": [".js"],
       "output": [".js"]
     }
