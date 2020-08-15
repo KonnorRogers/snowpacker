@@ -33,16 +33,14 @@ module Snowpacker
     private
 
     def dev_server_running?
-      true
-      # host = Snowpacker.config.hostname
-      # port = Snowpacker.config.port
-      # connect_timeout = 0.01
+      host = Snowpacker.config.hostname
+      port = Snowpacker.config.port
+      connect_timeout = 0.01
 
-      # Socket.tcp(host, port, connect_timeout: connect_timeout).close
-      # true
-      # rescue Errno::ECONNREFUSED
-      # puts "Snowpacker is not currently running on #{host_with_port}"
-      # false
+      Socket.tcp(host, port, connect_timeout: connect_timeout).close
+      true
+      rescue Errno::ECONNREFUSED
+      false
     end
 
     def host_with_port

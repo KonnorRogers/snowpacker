@@ -8,7 +8,6 @@ const HOSTNAME = process.env["SNOWPACKER_HOSTNAME"]
 
 const mount = {
   [`${MOUNT_DIR}`]: `/${OUTPUT_PATH}`,
-  $WEB_MODULES: `/${OUTPUT_PATH}`
 }
 
 const installOptions = {
@@ -25,7 +24,9 @@ const devOptions = {
 const buildOptions = {
   clean: false,
   baseUrl: "/",
-  metaDir: `${OUTPUT_PATH}/__snowpack__`
+  metaDir: `${OUTPUT_PATH}/__snowpack__`,
+  minify: true,
+  webModulesUrl: `${OUTPUT_PATH}/web_modules`
 }
 
 const plugins = [
