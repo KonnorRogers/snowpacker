@@ -1,5 +1,3 @@
-const path = require("path")
-
 const OUTPUT_PATH = process.env["SNOWPACKER_OUTPUT_PATH"]
 const PORT = process.env["SNOWPACKER_PORT"]
 const BUILD_DIR = process.env["SNOWPACKER_BUILD_DIR"]
@@ -9,8 +7,7 @@ const POSTCSS_CONFIG = process.env["SNOWPACKER_POSTCSS_CONFIG_FILE"]
 const HOSTNAME = process.env["SNOWPACKER_HOSTNAME"]
 
 const mount = {
-  // [`${MOUNT_DIR}`]: `/${OUTPUT_PATH}`,
-  [`${MOUNT_DIR}`]: `/`,
+  [`${MOUNT_DIR}`]: `/${OUTPUT_PATH}`,
 }
 
 const installOptions = {
@@ -21,13 +18,15 @@ const devOptions = {
   hostname: HOSTNAME,
   port: parseInt(PORT, 10),
   open: "none",
-  out: path.join(BUILD_DIR, OUTPUT_PATH)
+  out: BUILD_DIR
 }
 
 const buildOptions = {
   clean: false,
-  baseUrl: OUTPUT_PATH,
+  baseUrl: "/",
   minify: true,
+  webModulesUrl: `${OUTPUT_PATH}/web_modules`,
+  metaDir: `${OUTPUT_PATH}/__snowpack__`
 }
 
 const plugins = [
