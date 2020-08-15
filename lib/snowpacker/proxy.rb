@@ -39,7 +39,7 @@ module Snowpacker
 
       Socket.tcp(host, port, connect_timeout: connect_timeout).close
       true
-      rescue Errno::ECONNREFUSED
+    rescue Errno::ECONNREFUSED
       false
     end
 
