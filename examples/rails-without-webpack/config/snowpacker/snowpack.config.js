@@ -22,7 +22,6 @@ const devOptions = {
   port: parseInt(PORT, 10),
   open: "none",
   out: path.join(BUILD_DIR, OUTPUT_PATH)
-  // out: BUILD_DIR
 }
 
 const buildOptions = {
