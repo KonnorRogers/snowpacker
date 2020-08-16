@@ -6,6 +6,7 @@ require "snowpacker/yarn_packages"
 require "snowpacker/proxy"
 require "snowpacker/generator"
 require "snowpacker/helpers"
+require "snowpacker/utils"
 
 module Snowpacker
   YARN_PACKAGES = YarnPackages.all_packages
