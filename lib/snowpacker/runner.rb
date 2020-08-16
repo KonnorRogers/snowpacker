@@ -41,8 +41,7 @@ module Snowpacker
       server = TCPServer.new(hostname, port)
       server.close
     rescue Errno::EADDRINUSE
-      $stdout.puts "Another program is running on port #{port}.\n
-                    Set a new port in #{Snowpacker.config_path} for devOptions: { port: \"#{port}\" }"
+      $stdout.puts "Another program is currently running on port #{port}.\nPlease use a different port."
       exit!
     end
   end
