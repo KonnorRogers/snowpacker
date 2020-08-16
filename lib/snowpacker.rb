@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "snowpacker/configuration"
-require "snowpacker/env"
+# require "snowpacker/env"
 require "snowpacker/yarn_packages"
 require "snowpacker/proxy"
 require "snowpacker/generator"
@@ -10,7 +10,6 @@ require "snowpacker/utils"
 
 module Snowpacker
   YARN_PACKAGES = YarnPackages.all_packages
-  # In case youre not using Rails
 
   class << self
     attr_accessor :config
@@ -24,4 +23,4 @@ end
 
 require "snowpacker/version"
 require "snowpacker/runner"
-require "snowpacker/engine" if defined?(Rails)
+require "snowpacker/engine" if rails?

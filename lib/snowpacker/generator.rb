@@ -1,8 +1,10 @@
 require "thor"
+require "snowpacker/utils"
 
 module Snowpacker
   class Generator < Thor::Group
     include Thor::Actions
+    include Utils
 
     TEMPLATES = File.join(File.expand_path(__dir__), "templates")
     CONFIG_FILES = %w[
@@ -21,7 +23,7 @@ module Snowpacker
 
       destination = File.join("config", "initializers", target)
 
-      if defined?(Rails)
+      if rails?
         destination = Rails.root.join("config", "initializers", target)
       end
 
@@ -33,7 +35,7 @@ module Snowpacker
     def create_config_files
       destination = File.join("config", "snowpacker")
 
-      if defined?(Rails)
+      if rails?
         destination = Rails.root.join("config", "snowpacker")
       end
 

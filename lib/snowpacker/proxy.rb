@@ -2,10 +2,13 @@
 
 require "rack/proxy"
 require "socket"
+require "snowpacker/utils"
 
 module Snowpacker
   # Proxy server for snowpacker
   class Proxy < Rack::Proxy
+    include Utils
+
     def initialize(app = nil, opts = {})
       opts[:streaming] = false if Rails.env.test? && !opts.key?(:streaming)
       super
@@ -30,29 +33,5 @@ module Snowpacker
       end
     end
 
-    private
-
-    def https?
-      return true if ENV["SNOWPACKER_HTTPS"] == "true"
-
-      false
-    end
-
-    def dev_server_running?
-      host = Snowpacker.config.hostname
-      port = Snowpacker.config.port
-      connect_timeout = 0.01
-
-      Socket.tcp(host, port, connect_timeout: connect_timeout).close
-      true
-    rescue Errno::ECONNREFUSED
-      false
-    end
-
-    def host_with_port
-      hostname = Snowpacker.config.hostname
-      port = Snowpacker.config.port
-      "#{hostname}:#{port}"
-    end
   end
 end

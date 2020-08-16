@@ -7,6 +7,7 @@ module Snowpacker
     # Returns a <script></script> tag for rails
     # For non-rails, it simply gives the content
     def snowpacker_hmr_tag
+
       hostname = Snowpacker.config.hostname
       port = Snowpacker.config.port
 
