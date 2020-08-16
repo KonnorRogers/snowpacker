@@ -1,3 +1,5 @@
+require "rails_helper"
+
 class SnowpackerBuildTest < Minitest::Test
   def setup
     remove_rails_snowpacker_dirs
@@ -8,8 +10,9 @@ class SnowpackerBuildTest < Minitest::Test
   end
 
   def it_builds_properly
-    rails_snowpacker_init
-    out, _err = capture_subprocess_io {
+    capture_io { rails_snowpacker_init }
+
+    out, _err = capture_io {
       Dir.chdir(RAILS_TEST_APP) { system("rails snowpacker:build") }
     }
 

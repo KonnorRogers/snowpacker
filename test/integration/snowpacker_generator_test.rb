@@ -10,22 +10,8 @@ class SnowpackerGeneratorTest < Minitest::Test
     remove_rails_snowpacker_dirs
   end
 
-  Minitest.after_run do
-    yarn_packages = Snowpacker::YARN_PACKAGES.map { |pkg|
-      if pkg == "core-js@3"
-        pkg = "core-js"
-      end
-
-      pkg
-    }
-
-    _out, _err = capture_subprocess_io {
-      Dir.chdir(RAILS_TEST_APP) { `yarn remove #{yarn_packages.join(" ")}` }
-    }
-  end
-
   def test_generator_works
-    rails_snowpacker_init
+    capture_subprocess_io { rails_snowpacker_init }
 
     context = instance_eval("binding", __FILE__, __LINE__)
     snowpacker_file = ERB.new(File.binread(File.join(TEMPLATE_DIR, "snowpacker.rb.tt")), trim_mode: "-", eoutvar: "@output_buffer").result(context)
@@ -49,5 +35,7 @@ class SnowpackerGeneratorTest < Minitest::Test
 
       assert_equal test_file, config_file
     end
+
+    capture_subprocess_io { cleanup_yarn_packages }
   end
 end

@@ -25,9 +25,16 @@ def remove_rails_snowpacker_dirs
 end
 
 def rails_snowpacker_init
-  out, err = capture_subprocess_io {
-    Dir.chdir(RAILS_TEST_APP) { `rails snowpacker:init` }
-  }
+  Dir.chdir(RAILS_TEST_APP) { `rails snowpacker:init` }
+end
 
-  [out, err]
+def cleanup_yarn_packages
+  yarn_packages = Snowpacker::YARN_PACKAGES.map { |pkg|
+    if pkg == "core-js@3"
+      pkg = "core-js"
+    end
+
+    pkg
+  }
+  Dir.chdir(RAILS_TEST_APP) { `yarn remove #{yarn_packages.join(" ")}` }
 end
