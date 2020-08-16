@@ -137,6 +137,8 @@ public/snowpacks/
 
 ```
 
+## Helpers
+
 ### Generic Helper
 
 `<%= snowpacker_path %>` will return the value of

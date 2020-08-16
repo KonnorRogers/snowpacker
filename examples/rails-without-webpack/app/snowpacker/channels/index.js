@@ -1,4 +1,4 @@
-// Load all the channels within this directory and all subdirectories.
-// Channel files must be named *_channel.js.
+// Channels must be loaded independently via
+// import ChannelOne from "./channel_one"
+// import ChannelTwo from "./channel_two"
 
-console.log("hi")
