@@ -7,6 +7,7 @@ module Snowpacker
     # Returns a <script></script> tag for rails
     # For non-rails, it simply gives the content
     def snowpacker_hmr_tag
+      return nil unless dev_server_running?
 
       hostname = Snowpacker.config.hostname
       port = Snowpacker.config.port
@@ -23,8 +24,12 @@ module Snowpacker
     end
 
     def snowpacker_pack_tag(name, **options)
-      options[:type] ||= "module"
-      javascript_include_tag("/#{snowpacker_path}/packs/#{name}", options)
+      if dev_server_running?
+        options[:type] ||= "module"
+        javascript_include_tag("/#{snowpacker_path}/packs/#{name}", options)
+      end
+
+      ## READ FROM MANIFEST FROM BUNDLER
     end
 
     def snowpacker_stylesheet_link_tag(name, **options)
