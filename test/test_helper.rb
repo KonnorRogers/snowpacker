@@ -1,3 +1,4 @@
+require "fileutils"
 require "minitest"
 require "minitest/autorun"
 require "rake"
@@ -18,11 +19,15 @@ ROOT_DIR = File.expand_path("..", __dir__)
 TEMPLATE_DIR = File.join(ROOT_DIR, "lib", "snowpacker", "templates")
 
 def remove_rails_snowpacker_dirs
-  Rake.rm_rf(RAILS_CONFIG_DIR)
-  Rake.rm_rf(RAILS_BUILD_DIR)
-  Rake.rm_rf(RAILS_SNOWPACKER_INITIALIZER)
+  FileUtils.rm_rf(RAILS_CONFIG_DIR)
+  FileUtils.rm_rf(RAILS_BUILD_DIR)
+  FileUtils.rm_rf(RAILS_SNOWPACKER_INITIALIZER)
 end
 
 def rails_snowpacker_init
-  Dir.chdir(RAILS_TEST_APP) { `rails snowpacker:init` }
+  out, err = capture_subprocess_io {
+    Dir.chdir(RAILS_TEST_APP) { `rails snowpacker:init` }
+  }
+
+  [out, err]
 end

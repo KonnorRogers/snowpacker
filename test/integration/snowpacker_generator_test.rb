@@ -19,7 +19,9 @@ class SnowpackerGeneratorTest < Minitest::Test
       pkg
     }
 
-    Dir.chdir(RAILS_TEST_APP) { `yarn remove #{yarn_packages.join(" ")}` }
+    _out, _err = capture_subprocess_io {
+      Dir.chdir(RAILS_TEST_APP) { `yarn remove #{yarn_packages.join(" ")}` }
+    }
   end
 
   def test_generator_works
