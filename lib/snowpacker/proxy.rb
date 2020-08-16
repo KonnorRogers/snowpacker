@@ -32,6 +32,5 @@ module Snowpacker
         @app.call(env)
       end
     end
-
   end
 end

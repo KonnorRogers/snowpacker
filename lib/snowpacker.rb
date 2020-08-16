@@ -23,4 +23,4 @@ end
 
 require "snowpacker/version"
 require "snowpacker/runner"
-require "snowpacker/engine" if rails?
+require "snowpacker/engine" if defined?(Rails)
