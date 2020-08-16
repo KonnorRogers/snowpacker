@@ -1,5 +1,4 @@
-Rails.application.config.middleware.insert_before 0, Snowpacker::Proxy,
-  {ssl_verify_none: true}
+Rails.application.config.middleware.insert_before 0, Snowpacker::Proxy, {ssl_verify_none: true}
 
 Snowpacker.configure do |snowpacker|
   # Where to find the config directory
@@ -28,6 +27,10 @@ Snowpacker.configure do |snowpacker|
 
   # What hostname to use
   snowpacker.hostname = "localhost"
+
+  # Whether or not to use https
+  # https://www.snowpack.dev/#https%2Fhttp2
+  snowpacker.https = "false"
 end
 
 ActiveSupport.on_load :action_controller do
