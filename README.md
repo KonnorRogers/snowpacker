@@ -121,6 +121,22 @@ app/snowpacker/
     └── index.css
 ```
 
+Which upon build will output to look like this:
+
+```bash
+tree -L 1 public/snowpacks
+
+public/snowpacks/
+├── assets/
+├── channels/
+├── packs/
+├── javascript/
+├── __snowpack__/
+├── stylesheets/
+└── web_modules/
+
+```
+
 ### Generic Helper
 
 `<%= snowpacker_path %>` will return the value of
