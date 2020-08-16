@@ -34,8 +34,9 @@ Snowpacker.configure do |snowpacker|
   # What hostname to use
   snowpacker.hostname = "localhost"
 
-  # To add additional attributes you can do the following:
-  # snowpacker.add_attr("attr_name", "attr_value")
+  # Whether or not to use https
+  # https://www.snowpack.dev/#https%2Fhttp2
+  snowpacker.https = "false"
 end
 
 <%- if defined?(Rails) -%>

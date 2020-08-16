@@ -3,7 +3,7 @@
 ## WORK IN PROGRESS
 
 Please note, that this project is still in it's infancy. Feel free to
-file bug reports and issues.
+file bug reports, issues, and feature requests.
 
 [![Gem Version](https://badge.fury.io/rb/snowpacker.svg)](https://badge.fury.io/rb/snowpacker)
 
@@ -12,12 +12,13 @@ file bug reports and issues.
 This gem integrates the [snowpack](https://snowpack.dev/) JS module bundler into
 your Rails / Ruby application. It is inspired by gems such as
 [breakfast](https://github.com/devlocker/breakfast) /
-[webpacker](https://github.com/rails/webpacker) started as a fork of
+[webpacker](https://github.com/rails/webpacker) and this project started
+as a fork of
 [parcel-rails](https://github.com/michaldarda/parcel-rails).
 
 This is not meant to be a 1:1 replacement of Webpacker. Snowpacker is
 actually just a wrapper around Snowpack using Rake and as a result can
-be used without Rails.
+be used without Rails with a little extra work.
 
 ## How is Snowpacker different?
 
@@ -27,11 +28,9 @@ For more reading on ESM modules, check out this link:
 
 [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
 
-Snowpacker is also Rails agnostic. It can be used in conjunction with
-Rails and provides helper methods, but Rails is not required.
-
-Snowpacker is also unbundled by default (for now). Perhaps in the future
-I may add a bundler, but for now, I'm content with leaving it unbundled.
+Snowpacker is also unbundled during development to eliminate compilation
+times and then is bundled in the final build process due to waterfall
+network requests that still cause some issues in production.
 
 ## Installation
 
@@ -96,18 +95,73 @@ result as Webpacker. The 2 files are
 
 - // const channels = require.context('.', true, /_channel\.js$/)
 - // channels.keys().forEach(channels)
-+ import(`./${name}_channel.js`)
++ // require.context() is currently unsupported
++ import ChannelName from "./<channel_path>"
 ```
 
 ## File Structure
 
-TODO - update file structure expectations.
+Snowpacker makes some assumptions about your file paths to provide
+helper methods.
 
-## Including in views
+```bash
+tree -L 2 app/snowpacker
 
-Use Rails generic helpers to include assets in your views
+app/snowpacker/
+├── assets/
+│   └── picture.png
+├── channels/
+│   ├── consumer.js
+│   └── index.js
+├── packs/
+│   └── application.js
+├── javascript/
+│   └── index.js
+└── stylesheets/
+    └── index.css
+```
 
-TODO: - Update how to include a snowpacker module
+### Generic Helper
+
+`<%= snowpacker_path %>` will return the value of
+`Snowpacker.config.output_path`
+
+
+### Assets
+
+Assets can be accessed via `<%= snowpacker_assets_path %>` and accepts all
+the same params as [#asset_path](https://api.rubyonrails.org/classes/ActionView/Helpers/AssetUrlHelper.html#method-i-asset_path)
+
+### Channels
+
+Channels have no special helper.
+
+### Packs
+
+Packs can be accessed via:
+
+`<%= snowpacker_pack_tag %>` and works the same as
+[#javascript_include_tag](https://api.rubyonrails.org/classes/ActionView/Helpers/AssetTagHelper.html#method-i-javascript_include_tag)
+
+### Javascript
+
+Javascript has no special helper.
+
+This is the recommended file structure. `packs` are your "entrypoints"
+and where files get bundled to.
+
+### Stylesheets
+
+Stylesheets can be accessed via:
+
+`<%= snowpacker_stylesheet_link_tag %>` and works just like
+[#stylesheet_link_tag](https://api.rubyonrails.org/classes/ActionView/Helpers/AssetTagHelper.html#method-i-stylesheet_link_tag). I recommend importing your css in your `packs` file if you plan on changing it to support HMR.
+
+### HMR
+
+To enable HMR in your `<head>` of your document simply put:
+
+`<%= snowpacker_hmr_tag %>`
 
 ## Configuration
 
@@ -169,7 +223,7 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Roadmap
 
-[x] Support require.context
+[ ] Support require.context
 
 Support is similar, but not the same [https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars](https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars)
 

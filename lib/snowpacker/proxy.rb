@@ -19,9 +19,9 @@ module Snowpacker
         env["HTTP_PORT"] = env["HTTP_X_FORWARDED_PORT"] = Snowpacker.config.port
         env["HTTP_X_FORWARDED_PROTO"] = env["HTTP_X_FORWARDED_SCHEME"] = "http"
 
-        # unless dev_server.https?
-        env["HTTPS"] = env["HTTP_X_FORWARDED_SSL"] = "off"
-        # end
+        unless https?
+          env["HTTPS"] = env["HTTP_X_FORWARDED_SSL"] = "off"
+        end
 
         env["SCRIPT_NAME"] = ""
         super(env)
@@ -31,6 +31,12 @@ module Snowpacker
     end
 
     private
+
+    def https?
+      return true if ENV["SNOWPACKER_HTTPS"] == "true"
+
+      false
+    end
 
     def dev_server_running?
       host = Snowpacker.config.hostname
