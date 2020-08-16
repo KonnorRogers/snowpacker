@@ -39,6 +39,5 @@ module Snowpacker
       command = "NODE_ENV=#{env} yarn run snowpack #{cmd} --config #{@config_file}"
       exec(command)
     end
-
   end
 end

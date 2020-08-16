@@ -1,10 +1,8 @@
-require "cgi"
+require "snowpacker/utils"
 
 module Snowpacker
   module Helpers
-    def rails?
-      return true if defined?(Rails)
-    end
+    include Utils
 
     # Returns a <script></script> tag for rails
     # For non-rails, it simply gives the content

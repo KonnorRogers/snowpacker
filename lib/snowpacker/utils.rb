@@ -10,6 +10,10 @@ module Snowpacker
       exit!
     end
 
+    def rails?
+      return true if defined?(Rails)
+    end
+
     private
 
     def print_port_in_use(port)
