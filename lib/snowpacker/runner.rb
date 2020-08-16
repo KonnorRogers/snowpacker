@@ -2,9 +2,12 @@
 
 require "socket"
 require "snowpacker/env"
+require "thor"
 
 module Snowpacker
-  class Runner
+  class Runner < Thor::Group
+    include Thor::Actions
+
     attr_reader :config_file
 
     def initialize
@@ -41,8 +44,19 @@ module Snowpacker
       server = TCPServer.new(hostname, port)
       server.close
     rescue Errno::EADDRINUSE
-      $stdout.puts "Another program is currently running on port #{port}.\nPlease use a different port."
+      print_port_in_use(port)
       exit!
+    end
+
+    def print_port_in_use(port)
+      error_message = "\nUnable to start snowpacker dev server\n\n"
+      info_message = <<~INFO
+        Another program is currently running on port: #{port}
+        Please use a different port.
+
+      INFO
+      say error_message, :yellow
+      say info_message, :magenta
     end
   end
 end
