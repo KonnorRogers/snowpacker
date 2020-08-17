@@ -14,23 +14,25 @@ Snowpacker.configure do |snowpacker|
   snowpacker.postcss_config_file = File.join(snowpacker.config_dir, "postcss.config.js")
 
   # Where to find your snowpack files
-  snowpacker.mount_dir = File.join("app", "snowpacker")
+  
+  snowpacker.mount_dir = Rails.root.join("app", "snowpacker")
+  
 
   # Where to build snowpack to (out dir)
   snowpacker.build_dir = "public"
 
   # Appends to build_dir
-  snowpacker.output_path = "snowpacks" # => /build_dir/snowpacks
+  snowpacker.output_path = "snowpacks" # => public/snowpacks
 
   # What port to run snowpacker with
-  snowpacker.port = "4035"
+  snowpacker.port = 4035
 
   # What hostname to use
   snowpacker.hostname = "localhost"
 
   # Whether or not to use https
   # https://www.snowpack.dev/#https%2Fhttp2
-  snowpacker.https = "false"
+  snowpacker.https = false
 end
 
 ActiveSupport.on_load :action_controller do

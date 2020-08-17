@@ -49,7 +49,6 @@ const plugins = [
       "output": [".js"]
     }
   ],
-  // ["@snowpack/plugin-webpack", { "mode": "production" }]
 ]
 
 module.exports = {
