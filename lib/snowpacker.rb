@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "snowpacker/configuration"
-require "snowpacker/defaults"
 require "snowpacker/env"
 require "snowpacker/generator"
 require "snowpacker/helpers"
@@ -16,7 +15,7 @@ module Snowpacker
     attr_accessor :config
 
     def configure
-      self.config ||= Defaults.config
+      self.config ||= Configuration.new
       yield(config) if block_given?
     end
   end
