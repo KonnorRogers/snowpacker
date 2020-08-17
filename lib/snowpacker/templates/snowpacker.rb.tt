@@ -33,7 +33,7 @@ Snowpacker.configure do |snowpacker|
   snowpacker.output_path = "snowpacks" # => public/snowpacks
 
   # What port to run snowpacker with
-  snowpacker.port = 4035
+  snowpacker.port = "4035"
 
   # What hostname to use
   snowpacker.hostname = "localhost"

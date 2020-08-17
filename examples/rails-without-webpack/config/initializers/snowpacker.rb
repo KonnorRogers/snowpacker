@@ -14,9 +14,9 @@ Snowpacker.configure do |snowpacker|
   snowpacker.postcss_config_file = File.join(snowpacker.config_dir, "postcss.config.js")
 
   # Where to find your snowpack files
-  
+
   snowpacker.mount_dir = Rails.root.join("app", "snowpacker")
-  
+
 
   # Where to build snowpack to (out dir)
   snowpacker.build_dir = "public"
@@ -25,7 +25,7 @@ Snowpacker.configure do |snowpacker|
   snowpacker.output_path = "snowpacks" # => public/snowpacks
 
   # What port to run snowpacker with
-  snowpacker.port = 4035
+  snowpacker.port = "4035"
 
   # What hostname to use
   snowpacker.hostname = "localhost"

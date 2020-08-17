@@ -16,9 +16,8 @@ module Snowpacker
 
     def perform_request(env)
       output_path = %r{/#{Snowpacker.config.output_path}}
-      request = Rack::Request.new(env)
 
-      if request.path.start_with?(output_path) && dev_server_running?
+      if env["PATH_INFO"].start_with?(output_path) && dev_server_running?
         env["HTTP_HOST"] = env["HTTP_X_FORWARDED_HOST"] = Snowpacker.config.hostname
         env["HTTP_X_FORWARDED_SERVER"] = host_with_port
         env["HTTP_PORT"] = env["HTTP_X_FORWARDED_PORT"] = Snowpacker.config.port
