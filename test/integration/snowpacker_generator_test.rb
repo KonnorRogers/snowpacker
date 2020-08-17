@@ -11,8 +11,7 @@ class SnowpackerGeneratorTest < Minitest::Test
   end
 
   def test_generator_works
-    # capture_subprocess_io { rails_snowpacker_init }
-    rails_snowpacker_init
+    capture_subprocess_io { rails_snowpacker_init }
 
     context = instance_eval("binding", __FILE__, __LINE__)
     snowpacker_file = ERB.new(File.binread(File.join(TEMPLATE_DIR, "snowpacker.rb.tt")), trim_mode: "-", eoutvar: "@output_buffer").result(context)
