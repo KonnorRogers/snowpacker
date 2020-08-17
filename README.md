@@ -241,8 +241,10 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Roadmap
 
-[ ] Add default file structure with init
+[x] Add default file structure with init
+
 [ ] Add a bundler for production
+
 [ ] Support require.context
 
 Support is similar, but not the same [https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars](https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars)
