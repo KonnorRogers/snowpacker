@@ -159,7 +159,7 @@ Channels have no special helper.
 Packs can be accessed via:
 
 `<%= snowpacker_pack_tag %>` and works the same as
-[#javascript_include_tag](https://api.rubyonrails.org/classes/ActionView/Helpers/AssetTagHelper.html#method-i-javascript_include_tag)
+[`#javascript_include_tag`](https://api.rubyonrails.org/classes/ActionView/Helpers/AssetTagHelper.html#method-i-javascript_include_tag)
 
 `packs` are your "entrypoints" and where files get bundled to, very
 similar to Webpacker.
@@ -173,7 +173,9 @@ Javascript files have no special helper.
 Stylesheets can be accessed via:
 
 `<%= snowpacker_stylesheet_link_tag %>` and works just like
-[#stylesheet_link_tag](https://api.rubyonrails.org/classes/ActionView/Helpers/AssetTagHelper.html#method-i-stylesheet_link_tag). I recommend importing your css in your `packs` file if you plan on changing it to support HMR.
+[`#stylesheet_link_tag`](https://api.rubyonrails.org/classes/ActionView/Helpers/AssetTagHelper.html#method-i-stylesheet_link_tag).
+I recommend importing your css in your `packs` file if you plan on
+changing it to support HMR.
 
 ### HMR
 
@@ -212,9 +214,7 @@ Examples can be found in the [/examples](/examples) directory.
 
 ## Converting from Webpack to Snowpack
 
-- As a result of not having `require.context()` supported, I have added a package called
-[@rollup/plugin-dynamic-import-vars](https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars)
-which works very similarly.
+- `require.context()` is not currently supported
 
 - Any require statements should be rewritten to import statements.
 Alternatively, you could add a polyfill-plugin to snowpack to fix this

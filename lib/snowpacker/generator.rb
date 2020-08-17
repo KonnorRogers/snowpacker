@@ -39,6 +39,8 @@ module Snowpacker
         destination = Rails.root.join("config", "snowpacker")
       end
 
+      Rake.mkdir_p destination
+
       say "\n\nCreating config files @ #{destination}...\n\n", :magenta
       CONFIG_FILES.each do |filename|
         template filename, File.join(destination, filename)
@@ -46,7 +48,14 @@ module Snowpacker
     end
 
     def create_snowpacker_files
-      #
+      destination = File.join("app", "snowpacker")
+
+      if rails?
+        destination = Rails.root.join("app", "snowpacker")
+      end
+      say "\n\nCreating snowpacker files...\n\n", :magenta
+
+      directory "snowpacker", destination
     end
 
     def add_yarn_packages
@@ -55,9 +64,9 @@ module Snowpacker
     end
 
     def init
-      Snowpacker.configure
       create_initializer_file
       create_config_files
+      create_snowpacker_files
       add_yarn_packages
 
       say "Finished initializing snowpacker", :green
