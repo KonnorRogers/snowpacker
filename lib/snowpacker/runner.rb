@@ -37,7 +37,7 @@ module Snowpacker
     def snowpacker_command(env: "", cmd: "")
       env = ENV["NODE_ENV"] || env
       command = "NODE_ENV=#{env} yarn run snowpack #{cmd} --config #{@config_file}"
-      exec(command)
+      Rake.sh(command)
     end
   end
 end
