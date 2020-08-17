@@ -20,6 +20,7 @@
     "@babel/preset-env": "^7.11.0",
     "@snowpack/babel-plugin-package-import": "^1.0.0",
     "@snowpack/plugin-babel": "^2.0.3",
+    "@snowpack/plugin-webpack": "^2.0.3",
     "babel-plugin-dynamic-import-node": "^2.3.3",
     "babel-plugin-macros": "^2.8.0",
     "core-js": "3",
