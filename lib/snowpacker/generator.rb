@@ -36,8 +36,7 @@ module Snowpacker
       destination = File.join("config", "snowpacker")
 
       if rails?
-        # destination = Rails.root.join("config", "snowpacker")
-        destination = Snowpacker.config.config_dir
+        destination = Rails.root.join("config", "snowpacker")
       end
 
       say "\n\nCreating config files @ #{destination}...\n\n", :magenta
@@ -56,6 +55,7 @@ module Snowpacker
     end
 
     def init
+      Snowpacker.configure
       create_initializer_file
       create_config_files
       add_yarn_packages

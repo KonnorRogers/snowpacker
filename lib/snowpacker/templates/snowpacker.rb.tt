@@ -1,42 +1,39 @@
+<% Snowpacker.configure %>
 <%- if defined?(Rails) -%>
 Rails.application.config.middleware.insert_before 0, Snowpacker::Proxy, {ssl_verify_none: true}
 <%- end -%>
 
 Snowpacker.configure do |snowpacker|
   # Where to find the config directory
-  <%- if defined?(Rails) -%>
-  snowpacker.config_dir = Rails.root.join("config", "snowpacker")
-  <%- else -%>
-  snowpacker.config_dir = File.join("config", "snowpacker")
-  <%- end -%>
+  snowpacker.config_dir = <%= Snowpacker.config.config_dir %>
 
   # Where to find the snowpack config file
-  snowpacker.config_file = File.join(snowpacker.config_dir, "snowpack.config.js")
+  snowpacker.config_file = <%= Snowpacker.config.config_file %>
 
   # Where to find the babel config file
-  snowpacker.babel_config_file = File.join(snowpacker.config_dir, "babel.config.js")
+  snowpacker.babel_config_file = <%= Snowpacker.config.babel_config_file -%>
 
   # Where to find the postcss config file
-  snowpacker.postcss_config_file = File.join(snowpacker.config_dir, "postcss.config.js")
+  snowpacker.postcss_config_file = <%= Snowpacker.config.postcss_config_file %>
 
   # Where to find your snowpack files
-  snowpacker.mount_dir = File.join("app", "snowpacker")
+  snowpacker.mount_dir = <%= Snowpacker.config.mount_dir %>
 
   # Where to build snowpack to (out dir)
-  snowpacker.build_dir = "public"
+  snowpacker.build_dir = <%= Snowpacker.config.build_dir %>
 
   # Appends to build_dir
-  snowpacker.output_path = "snowpacks" # => /build_dir/snowpacks
+  snowpacker.output_path = <%= Snowpacker.config.output_path %> # => /build_dir/snowpacks
 
   # What port to run snowpacker with
-  snowpacker.port = "4035"
+  snowpacker.port = <%= Snowpacker.config.port %>
 
   # What hostname to use
-  snowpacker.hostname = "localhost"
+  snowpacker.hostname = <%= Snowpacker.config.hostname %>
 
   # Whether or not to use https
   # https://www.snowpack.dev/#https%2Fhttp2
-  snowpacker.https = "false"
+  snowpacker.https = <%= Snowpacker.config.https %>
 end
 
 <%- if defined?(Rails) -%>

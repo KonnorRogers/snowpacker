@@ -1,3 +1,5 @@
+# require 'snowpacker/defaults'
+
 module Snowpacker
   class Configuration
     attr_accessor :config_dir
@@ -9,8 +11,8 @@ module Snowpacker
     attr_accessor :output_path
     attr_accessor :port, :hostname
 
-    def initialize(config)
-
+    def initialize
+      yield(self) if block_given?
     end
 
     # rubocop:disable Style/MethodMissingSuper Metrics/MethodLength

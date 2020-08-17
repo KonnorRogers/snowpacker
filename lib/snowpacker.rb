@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 require "snowpacker/configuration"
-# require "snowpacker/env"
-require "snowpacker/yarn_packages"
-require "snowpacker/proxy"
+require "snowpacker/defaults"
+require "snowpacker/env"
 require "snowpacker/generator"
 require "snowpacker/helpers"
+require "snowpacker/proxy"
 require "snowpacker/utils"
+require "snowpacker/yarn_packages"
 
 module Snowpacker
   YARN_PACKAGES = YarnPackages.all_packages
@@ -15,7 +16,7 @@ module Snowpacker
     attr_accessor :config
 
     def configure
-      self.config ||= Configuration.new
+      self.config ||= Defaults.config
       yield(config) if block_given?
     end
   end
