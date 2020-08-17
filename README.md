@@ -161,12 +161,12 @@ Packs can be accessed via:
 `<%= snowpacker_pack_tag %>` and works the same as
 [#javascript_include_tag](https://api.rubyonrails.org/classes/ActionView/Helpers/AssetTagHelper.html#method-i-javascript_include_tag)
 
+`packs` are your "entrypoints" and where files get bundled to, very
+similar to Webpacker.
+
 ### Javascript
 
-Javascript has no special helper.
-
-This is the recommended file structure. `packs` are your "entrypoints"
-and where files get bundled to.
+Javascript files have no special helper.
 
 ### Stylesheets
 
@@ -177,7 +177,7 @@ Stylesheets can be accessed via:
 
 ### HMR
 
-To enable HMR in your `<head>` of your document simply put:
+To enable HMR in the `<head>` of your document simply put:
 
 `<%= snowpacker_hmr_tag %>`
 
