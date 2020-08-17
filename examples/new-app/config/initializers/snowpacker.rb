@@ -1,14 +1,8 @@
-<%- if defined?(Rails) -%>
 Rails.application.config.middleware.insert_before 0, Snowpacker::Proxy, {ssl_verify_none: true}
-<%- end -%>
 
 Snowpacker.configure do |snowpacker|
   # Where to find the config directory
-  <%- if defined?(Rails) -%>
   snowpacker.config_dir = Rails.root.join("config", "snowpacker")
-  <%- else -%>
-  snowpacker.config_dir = File.join("config", "snowpacker")
-  <%- end -%>
 
   # Where to find the snowpack config file
   snowpacker.config_file = File.join(snowpacker.config_dir, "snowpack.config.js")
@@ -20,11 +14,9 @@ Snowpacker.configure do |snowpacker|
   snowpacker.postcss_config_file = File.join(snowpacker.config_dir, "postcss.config.js")
 
   # Where to find your snowpack files
-  <% if defined?(Rails) %>
+  
   snowpacker.mount_dir = Rails.root.join("app", "snowpacker")
-  <% else %>
-  snowpacker.mount_dir = File.join("app", "snowpacker")
-  <% end %>
+  
 
   # Where to build snowpack to (out dir)
   snowpacker.build_dir = "public"
@@ -43,7 +35,6 @@ Snowpacker.configure do |snowpacker|
   snowpacker.https = false
 end
 
-<%- if defined?(Rails) -%>
 ActiveSupport.on_load :action_controller do
   ActionController::Base.helper Snowpacker::Helpers
 end
@@ -51,4 +42,3 @@ end
 ActiveSupport.on_load :action_view do
   include Snowpacker::Helpers
 end
-<%- end -%>
