@@ -1,0 +1,4 @@
+module Snowpacker
+  DEFAULTS = {
+  }
+end

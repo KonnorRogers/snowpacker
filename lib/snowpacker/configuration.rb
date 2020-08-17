@@ -9,6 +9,10 @@ module Snowpacker
     attr_accessor :output_path
     attr_accessor :port, :hostname
 
+    def initialize(config)
+
+    end
+
     # rubocop:disable Style/MethodMissingSuper Metrics/MethodLength
 
     # Allows dynamic definition of getters and setters

@@ -36,13 +36,18 @@ module Snowpacker
       destination = File.join("config", "snowpacker")
 
       if rails?
-        destination = Rails.root.join("config", "snowpacker")
+        # destination = Rails.root.join("config", "snowpacker")
+        destination = Snowpacker.config.config_dir
       end
 
       say "\n\nCreating config files @ #{destination}...\n\n", :magenta
       CONFIG_FILES.each do |filename|
         template filename, File.join(destination, filename)
       end
+    end
+
+    def create_snowpacker_files
+      #
     end
 
     def add_yarn_packages
