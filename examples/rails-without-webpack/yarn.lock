@@ -6196,6 +6196,11 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^3.1.0"
 
+snowpack-plugin-rollup-bundle@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/snowpack-plugin-rollup-bundle/-/snowpack-plugin-rollup-bundle-0.0.3.tgz#092c6d243f9849dfbb49c730910486a4789f8115"
+  integrity sha512-WV18LLNzZha5PZT7PJCU0FSQZ8YT1izb929XTeeYnZDctauNN12k2r6dmfmkvAjKZ1FUw87wEUh9fgdDSCxH/g==
+
 snowpack@^2.7.7:
   version "2.7.7"
   resolved "https://registry.yarnpkg.com/snowpack/-/snowpack-2.7.7.tgz#a994c84561f7508f01af7d6cdb103d19420e7298"

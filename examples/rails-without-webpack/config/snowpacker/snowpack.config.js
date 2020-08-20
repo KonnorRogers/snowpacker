@@ -49,6 +49,7 @@ const plugins = [
       "output": [".js"]
     }
   ],
+  ["snowpack-plugin-rollup-bundle", {} ]
 ]
 
 module.exports = {
