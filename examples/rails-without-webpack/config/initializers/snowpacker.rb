@@ -24,6 +24,9 @@ Snowpacker.configure do |snowpacker|
   # Appends to build_dir
   snowpacker.output_path = "snowpacks" # => public/snowpacks
 
+  # entryfile directory
+  snowpacker.entryfile_path = "packs"
+
   # What port to run snowpacker with
   snowpacker.port = "4035"
 

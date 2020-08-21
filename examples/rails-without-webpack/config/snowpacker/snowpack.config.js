@@ -1,5 +1,9 @@
+const fs = require('fs')
+const path = require('path')
+
 const prefix = "SNOWPACKER"
 const OUTPUT_PATH = process.env[`${prefix}_OUTPUT_PATH`]
+const ENTRYFILE_PATH = process.env[`${prefix}_ENTRYFILE_PATH`]
 const PORT = process.env[`${prefix}_PORT`]
 const BUILD_DIR = process.env[`${prefix}_BUILD_DIR`]
 const MOUNT_DIR = process.env[`${prefix}_MOUNT_DIR`]
@@ -32,6 +36,9 @@ const buildOptions = {
   metaDir: `${OUTPUT_PATH}/__snowpack__`
 }
 
+const buildDir = path.resolve(BUILD_DIR, OUTPUT_PATH)
+const entryFileDir = path.resolve(buildDir, ENTRYFILE_PATH)
+
 const plugins = [
   [
     "@snowpack/plugin-build-script",
@@ -49,7 +56,18 @@ const plugins = [
       "output": [".js"]
     }
   ],
-  ["snowpack-plugin-rollup-bundle", {} ]
+  [
+    "snowpack-plugin-rollup-bundle",
+    {
+      extendConfig: (config) => {
+        config.outputOptions.dir = path.join(entryFileDir)
+        config.inputOptions.input = fs
+          .readdirSync(entryFileDir)
+          .map(file => path.join(entryFileDir, file))
+        return config
+      }
+    }
+  ]
 ]
 
 module.exports = {
