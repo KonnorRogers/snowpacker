@@ -38,6 +38,7 @@ const buildOptions = {
 
 const buildDir = path.resolve(BUILD_DIR, OUTPUT_PATH)
 const entryFileDir = path.resolve(buildDir, ENTRYFILE_PATH)
+console.log(entryFileDir)
 
 const plugins = [
   [
