@@ -61,7 +61,7 @@ const plugins = [
     "snowpack-plugin-rollup-bundle",
     {
       extendConfig: (config) => {
-        config.outputOptions.dir = path.join(entryFileDir)
+        config.outputOptions.dir = entryFileDir
         config.inputOptions.input = fs
           .readdirSync(entryFileDir)
           .map(file => path.join(entryFileDir, file))
