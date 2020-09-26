@@ -26,7 +26,7 @@ const devOptions = {
 
 const buildOptions = {
   clean: false,
-  baseUrl: `/`,
+  baseUrl: `/frontend`,
 }
 
 const plugins = [
@@ -57,7 +57,7 @@ const plugins = [
 ]
 
 const proxy = {
-  [OUTPUT_PATH]: "/"
+//   [MOUNT_DIR]: "/"
 }
 
 module.exports = {
