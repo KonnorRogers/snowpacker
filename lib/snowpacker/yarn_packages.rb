@@ -12,6 +12,7 @@ module Snowpacker
     def self.snowpack_packages
       %w[
         snowpack
+        snowpack-plugin-rollup-bundle
       ]
     end
 
@@ -38,8 +39,6 @@ module Snowpacker
         @babel/preset-env
         @babel/plugin-transform-runtime
         babel-plugin-macros
-        @babel/preset-env
-        babel-plugin-macros
         @babel/plugin-syntax-dynamic-import
         babel-plugin-dynamic-import-node
         @babel/plugin-transform-destructuring
@@ -47,6 +46,8 @@ module Snowpacker
         @babel/plugin-proposal-object-rest-spread
         @babel/plugin-transform-runtime
         @babel/plugin-transform-regenerator
+        babel-plugin-macros
+        import-all.macro
       ]
     end
   end
