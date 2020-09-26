@@ -17,15 +17,14 @@ Snowpacker.configure do |snowpacker|
 
   snowpacker.mount_dir = Rails.root.join("app", "snowpacker")
 
-
   # Where to build snowpack to (out dir)
   snowpacker.build_dir = "public"
 
   # Appends to build_dir
-  snowpacker.output_path = "snowpacks" # => public/snowpacks
+  snowpacker.output_path = "frontend" # => public/snowpacks
 
   # entryfile directory
-  snowpacker.entryfile_path = "packs"
+  snowpacker.entryfile_path = "entrypoints"
 
   # What port to run snowpacker with
   snowpacker.port = "4035"
