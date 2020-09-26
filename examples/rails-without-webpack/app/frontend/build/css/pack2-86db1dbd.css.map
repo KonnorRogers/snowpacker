@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../home/krog/projects/javascript/snowpack-plugin-rollup-bundle/__tests__/example_dir/build/stylesheets/second-stylesheet.css"],"names":[],"mappings":"AAAA,IACE,eAAkB,CAClB,UACF","file":"pack2-86db1dbd.css","sourcesContent":["div {\n  background: yellow;\n  color: black;\n}\n"]}

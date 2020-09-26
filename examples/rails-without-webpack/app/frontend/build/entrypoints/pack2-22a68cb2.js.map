@@ -1,1 +1,0 @@
-{"version":3,"file":"pack2-22a68cb2.js","sources":["../../../home/krog/projects/javascript/snowpack-plugin-rollup-bundle/__tests__/example_dir/build/entrypoints/pack2.js"],"sourcesContent":["import \"../stylesheets/second-stylesheet.css\";\nconsole.log(\"hi from pack2\");"],"names":["console","log"],"mappings":"AACAA,QAAQC,IAAI"}
