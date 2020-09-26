@@ -1,0 +1,1 @@
+export default "/assets/other-images/further-nested/nested-image.jpg";

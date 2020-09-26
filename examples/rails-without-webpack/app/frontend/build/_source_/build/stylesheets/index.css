@@ -1,0 +1,9 @@
+body {
+  background: blue;
+  color: white;
+}
+
+div {
+  width: 50%;
+  margin: 2rem auto;
+}

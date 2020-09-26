@@ -1,0 +1,37 @@
+{
+  "entrypoints/application.js": "/entrypoints/application-e33cef62.js",
+  "entrypoints": {
+    "application": {
+      "js": "/entrypoints/application-e33cef62.js",
+      "js.map": "/entrypoints/application-e33cef62.js.map",
+      "css": "/css/application-f5ebf47f.css",
+      "css.map": "/css/application-f5ebf47f.css.map"
+    },
+    "pack2": {
+      "js": "/entrypoints/pack2-22a68cb2.js",
+      "js.map": "/entrypoints/pack2-22a68cb2.js.map",
+      "css": "/css/pack2-86db1dbd.css",
+      "css.map": "/css/pack2-86db1dbd.css.map"
+    }
+  },
+  "entrypoints/pack2.js": "/entrypoints/pack2-22a68cb2.js",
+  "chunks/stimulus.chunk.js": "/chunks/stimulus-a688c18d.chunk.js",
+  "chunks": {
+    "stimulus": {
+      "js": "/chunks/stimulus-a688c18d.chunk.js",
+      "js.map": "/chunks/stimulus-a688c18d.chunk.js.map"
+    }
+  },
+  "css/application.css": "/css/application-f5ebf47f.css",
+  "css/application.css.map": "/css/application-f5ebf47f.css.map",
+  "css/pack2.css": "/css/pack2-86db1dbd.css",
+  "css/pack2.css.map": "/css/pack2-86db1dbd.css.map",
+  "assets/logo.svg": "/assets/logo-4c7b557810aeeb58.svg",
+  "assets": {
+    "logo": "/assets/logo-4c7b557810aeeb58.svg",
+    "nested-image": "/assets/other-images/further-nested/nested-image-d531000f105d669d.jpg",
+    "small-house": "/assets/small-house-d531000f105d669d.png"
+  },
+  "assets/other-images/further-nested/nested-image.jpg": "/assets/other-images/further-nested/nested-image-d531000f105d669d.jpg",
+  "assets/small-house.png": "/assets/small-house-d531000f105d669d.png"
+}
