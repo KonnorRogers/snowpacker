@@ -9,7 +9,7 @@ const HOSTNAME = process.env[`${prefix}_HOSTNAME`]
 const HTTPS = process.env[`${prefix}_HTTPS`]
 
 const mount = {
-  [`${MOUNT_DIR}`]: `/${OUTPUT_PATH}`,
+  [`${MOUNT_DIR}`]: `/`,
 }
 
 const installOptions = {
@@ -20,15 +20,13 @@ const devOptions = {
   hostname: HOSTNAME,
   port: parseInt(PORT, 10),
   open: "none",
-  out: BUILD_DIR,
+  out: BUILD_DIR + "/" + OUTPUT_PATH,
   secure: (HTTPS === "true")
 }
 
 const buildOptions = {
   clean: false,
   baseUrl: `/`,
-  // webModulesUrl: `${OUTPUT_PATH}/web_modules`,
-  // metaDir: `${OUTPUT_PATH}/__snowpack__`
 }
 
 const plugins = [
@@ -53,16 +51,21 @@ const plugins = [
   [
     "snowpack-plugin-rollup-bundle",
     {
-      entrypoints: "public/entrypoints/**/*.js"
+      entrypoints: `${BUILD_DIR}/${OUTPUT_PATH}/**/*.js`
     }
   ]
 ]
+
+const proxy = {
+  [OUTPUT_PATH]: "/"
+}
 
 module.exports = {
   mount,
   plugins: plugins,
   installOptions,
   devOptions,
-  buildOptions
+  buildOptions,
+  proxy
 }
 

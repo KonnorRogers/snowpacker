@@ -14,17 +14,15 @@ Snowpacker.configure do |snowpacker|
   snowpacker.postcss_config_file = File.join(snowpacker.config_dir, "postcss.config.js")
 
   # Where to find your snowpack files
-
+  
   snowpacker.mount_dir = Rails.root.join("app", "snowpacker")
+  
 
   # Where to build snowpack to (out dir)
   snowpacker.build_dir = "public"
 
-  # Appends to build_dir
-  snowpacker.output_path = "frontend" # => public/snowpacks
-
-  # entryfile directory
-  snowpacker.entryfile_path = "entrypoints"
+  # url to use for assets IE: /frontend/xyz.css, gets built to public/frontend
+  snowpacker.output_path = "frontend"
 
   # What port to run snowpacker with
   snowpacker.port = "4035"
