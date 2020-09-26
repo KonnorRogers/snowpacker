@@ -48,14 +48,14 @@ module Snowpacker
     end
 
     def create_snowpacker_files
-      destination = File.join("app", "snowpacker")
+      destination = File.join("app", "frontend")
 
       if rails?
-        destination = Rails.root.join("app", "snowpacker")
+        destination = Rails.root.join("app", "frontend")
       end
       say "\n\nCreating snowpacker files...\n\n", :magenta
 
-      directory "snowpacker", destination
+      directory "frontend", destination
     end
 
     def add_yarn_packages
