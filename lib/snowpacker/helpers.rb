@@ -23,15 +23,15 @@ module Snowpacker
       asset_path("/#{snowpacker_path}/#{assets}", options)
     end
 
-    def snowpacker_pack_tag(name, **options)
+    def snowpacker_entrypoint_tag(name, **options)
       options[:type] ||= "module"
 
       if dev_server_running?
-        javascript_include_tag("/#{snowpacker_path}/packs/#{name}", options)
+        javascript_include_tag("/#{snowpacker_path}/entrypoints/#{name}", options)
       end
 
       ## TODO: Change to reading from manifest for production
-      javascript_include_tag("/#{snowpacker_path}/packs/#{name}", options)
+      javascript_include_tag("/#{snowpacker_path}/entrypoints/#{name}", options)
     end
 
     def snowpacker_stylesheet_link_tag(name, **options)
