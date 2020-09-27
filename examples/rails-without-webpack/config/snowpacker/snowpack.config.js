@@ -63,7 +63,7 @@ const plugins = [
 ]
 
 const proxy = {
-  [OUTPUT_PATH]: "/"
+  // [OUTPUT_PATH]: "/"
 }
 
 module.exports = {
