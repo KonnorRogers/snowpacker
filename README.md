@@ -22,15 +22,16 @@ be used without Rails with a little extra work.
 
 ## How is Snowpacker different?
 
+Snowpacker is unbundled during development to eliminate compilation
+times and then is bundled in the final build process due to waterfall
+network requests that still cause some issues in production.
+
 Snowpacker uses the native ESM module spec. ESM Modules are fast,
 lightweight, and natively supported by all newer browsers ("evergreen browsers")
 For more reading on ESM modules, check out this link:
 
 [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
 
-Snowpacker is also unbundled during development to eliminate compilation
-times and then is bundled in the final build process due to waterfall
-network requests that still cause some issues in production.
 
 ## Installation
 
@@ -46,8 +47,7 @@ gem 'snowpacker', '~> 0.0.4.alpha1'
 rails snowpacker:init
 ```
 
-Which will install your yarn packages, create an initializer file, and
-add config files.
+Which will install your yarn packages, create an initializer file, add config files, and create an `app/snowpacker` directory similar to Webpacker.
 
 #### Tasks
 
@@ -58,15 +58,11 @@ precompile)
 rails assets:precompile # will build snowpacker and asset pipeline
 ```
 
-#### New Rails app
+#### Existing Rails app
 
 When working with a new Rails app, it is important to switch any webpack
-`require` statements to ESM-based `import`
-
-With a new app you will have to change 2 files to achieve the same
-result as Webpacker. The 2 files are
-`app/javascript/packs/application.js` and the other is
-`app/javascript/channels/index.js`
+`require` statements to ESM-based `import`. For example, consider the
+following javascript file:
 
 ```diff
 // app/javascript/packs/application.js
@@ -76,16 +72,20 @@ result as Webpacker. The 2 files are
 - require("turbolinks").start()
 - require("@rails/activestorage").start()
 - require("channels")
-+
-+ // https://www.skypack.dev/ to find packages
+-
++ // Snowpacker
 + import "@rails/ujs" // Autostarts
 + import Turbolinks from "turbolinks"
 + import ActiveStorage from "@rails/activestorage"
 + import "../channels"
-
++
 + Turbolinks.start()
 + ActiveStorage.start()
 ```
+
+You may notice a `require.context` statement in your javascript to load
+`channels`. This runs via Node and is not browser compatible. To get
+around this Snowpacker installs a package called [import-all.macro](@TODO) to allow you to import an entire directory of files.
 
 ```diff
 // app/javascript/channels/index.js
@@ -95,8 +95,8 @@ result as Webpacker. The 2 files are
 
 - // const channels = require.context('.', true, /_channel\.js$/)
 - // channels.keys().forEach(channels)
-+ // require.context() is currently unsupported
-+ import ChannelName from "./<channel_path>"
+// @TODO
++ import.all("**/*_channel.js")
 ```
 
 ## File Structure
@@ -113,7 +113,7 @@ app/snowpacker/
 ├── channels/
 │   ├── consumer.js
 │   └── index.js
-├── packs/
+├── entrypoints/
 │   └── application.js
 ├── javascript/
 │   └── index.js
@@ -129,11 +129,9 @@ tree -L 1 public/snowpacks
 public/snowpacks/
 ├── assets/
 ├── channels/
-├── packs/
+├── entrypoints/
 ├── javascript/
-├── __snowpack__/
-├── stylesheets/
-└── web_modules/
+├── css/
 
 ```
 
@@ -158,7 +156,7 @@ Channels have no special helper.
 
 Packs can be accessed via:
 
-`<%= snowpacker_pack_tag %>` and works the same as
+`<%= snowpacker_entry_tag %>` and works the same as
 [`#javascript_include_tag`](https://api.rubyonrails.org/classes/ActionView/Helpers/AssetTagHelper.html#method-i-javascript_include_tag)
 
 `packs` are your "entrypoints" and where files get bundled to, very
