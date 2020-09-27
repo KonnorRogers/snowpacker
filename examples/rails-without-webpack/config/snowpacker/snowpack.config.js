@@ -70,6 +70,5 @@ module.exports = {
   installOptions,
   devOptions,
   buildOptions,
-  proxy
 }
 
