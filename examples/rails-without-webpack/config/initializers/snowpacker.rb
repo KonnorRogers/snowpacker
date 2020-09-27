@@ -21,8 +21,10 @@ Snowpacker.configure do |snowpacker|
   # Where to build snowpack to (out dir)
   snowpacker.build_dir = "public"
 
-  # url to use for assets IE: /frontend/xyz.css, gets built to public/frontend
+  # url to use for assets IE: /snowpacker/xyz.css, gets built to public/frontend
   snowpacker.output_path = "snowpacker"
+
+  snowpacker.entrypoints_dir = "entrypoints"
 
   # What port to run snowpacker with
   snowpacker.port = "4035"
