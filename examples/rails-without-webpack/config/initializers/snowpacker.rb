@@ -15,14 +15,14 @@ Snowpacker.configure do |snowpacker|
 
   # Where to find your snowpack files
   
-  snowpacker.mount_dir = Rails.root.join("app", "frontend")
+  snowpacker.mount_dir = Rails.root.join("app", "snowpacker")
   
 
   # Where to build snowpack to (out dir)
   snowpacker.build_dir = "public"
 
   # url to use for assets IE: /frontend/xyz.css, gets built to public/frontend
-  snowpacker.output_path = "frontend"
+  snowpacker.output_path = "snowpacker"
 
   # What port to run snowpacker with
   snowpacker.port = "4035"

@@ -1,3 +1,5 @@
+const path = require("path")
+
 const prefix = "SNOWPACKER"
 const OUTPUT_PATH = process.env[`${prefix}_OUTPUT_PATH`]
 const PORT = process.env[`${prefix}_PORT`]
@@ -9,7 +11,7 @@ const HOSTNAME = process.env[`${prefix}_HOSTNAME`]
 const HTTPS = process.env[`${prefix}_HTTPS`]
 
 const mount = {
-  [`${MOUNT_DIR}`]: `/`,
+  [MOUNT_DIR]: `/${OUTPUT_PATH}`
 }
 
 const installOptions = {
@@ -20,13 +22,13 @@ const devOptions = {
   hostname: HOSTNAME,
   port: parseInt(PORT, 10),
   open: "none",
-  out: BUILD_DIR + "/" + OUTPUT_PATH,
+  out: BUILD_DIR,
   secure: (HTTPS === "true")
 }
 
 const buildOptions = {
   clean: false,
-  baseUrl: `/frontend`,
+  baseUrl: `/`,
 }
 
 const plugins = [
@@ -51,7 +53,11 @@ const plugins = [
   [
     "snowpack-plugin-rollup-bundle",
     {
-      entrypoints: `${BUILD_DIR}/${OUTPUT_PATH}/**/*.js`
+      entrypoints: `${BUILD_DIR}/${OUTPUT_PATH}/entrypoints/**/*.js`,
+      extendConfig: (config) => {
+        config.outputOptions.dir = path.join(BUILD_DIR, OUTPUT_PATH)
+        return config
+      }
     }
   ]
 ]

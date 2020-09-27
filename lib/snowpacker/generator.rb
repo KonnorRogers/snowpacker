@@ -55,7 +55,7 @@ module Snowpacker
       end
       say "\n\nCreating snowpacker files...\n\n", :magenta
 
-      directory "frontend", destination
+      directory "snowpacker", destination
     end
 
     def add_yarn_packages
