@@ -8,7 +8,6 @@ require "thor"
 module Snowpacker
   class Runner < Thor::Group
     include ::Thor::Actions
-    include Utils
 
     attr_reader :config_file
 
@@ -21,25 +20,27 @@ module Snowpacker
       exit!
     end
 
-    # Build for production
-    def self.build
-      new
-      snowpacker_command(env: :production, cmd: :build)
-    end
+    class << self
+      # Build for production
+      def build
+        new
+        snowpacker_command(env: :production, cmd: :build)
+      end
 
-    # Serve for development
-    def self.dev
-      detect_port!
-      new
-      snowpacker_command(env: :development, cmd: :dev)
-    end
+      # Serve for development
+      def dev
+        new
+        Utils.detect_port!
+        snowpacker_command(env: :development, cmd: :dev)
+      end
 
-    private
+      private
 
-    def self.snowpacker_command(env: "", cmd: "")
-      env = ENV["NODE_ENV"] || env
-      command = "NODE_ENV=#{env} yarn run snowpack #{cmd} --config #{@config_file}"
-      Rake.sh(command)
+      def snowpacker_command(env: "", cmd: "")
+        env = ENV["NODE_ENV"] || env
+        command = "NODE_ENV=#{env} yarn run snowpack #{cmd} --config #{@config_file}"
+        Rake.sh(command)
+      end
     end
   end
 end
