@@ -1,0 +1,13 @@
+{
+  "name": "snowpacker",
+  "version": "0.0.4-alpha1",
+  "description": "An integration between Rails and Snowpack",
+  "main": "index.js",
+  "repository": "git@github.com:ParamagicDev/snowpacker.git",
+  "author": "paramagicdev <konnor5456@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "cypress": "^5.2.0"
+  }
+}
