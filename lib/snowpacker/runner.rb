@@ -22,13 +22,15 @@ module Snowpacker
     end
 
     # Build for production
-    def build
+    def self.build
+      new
       snowpacker_command(env: :production, cmd: :build)
     end
 
     # Serve for development
-    def dev
+    def self.dev
       detect_port!
+      new
       snowpacker_command(env: :development, cmd: :dev)
     end
 

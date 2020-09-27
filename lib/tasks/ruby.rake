@@ -3,12 +3,12 @@ require "snowpacker/generator"
 namespace :snowpacker do
   desc "initializes snowpacker"
   task :init do
-    Snowpacker::Generator.new.init
+    Snowpacker::Generator.init
   end
 
   desc "Compiles assets using snowpack bundler"
   task :build do
-    Snowpacker::Runner.new.build
+    Snowpacker::Runner.build
   end
 
   desc "Compiles assets using snowpack bundler"
@@ -16,6 +16,6 @@ namespace :snowpacker do
 
   desc "Run a snowpack dev server"
   task :dev do
-    Snowpacker::Runner.new.dev
+    Snowpacker::Runner.dev
   end
 end

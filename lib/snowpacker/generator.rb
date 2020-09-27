@@ -63,7 +63,8 @@ module Snowpacker
       Rake.sh %(yarn add -D #{::Snowpacker::YARN_PACKAGES.join(" ")})
     end
 
-    def init
+    def self.init
+      new
       create_initializer_file
       create_config_files
       create_snowpacker_files
