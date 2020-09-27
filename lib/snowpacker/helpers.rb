@@ -34,7 +34,7 @@ module Snowpacker
       javascript_include_tag("/#{snowpacker_path}/entrypoints/#{name}", options)
     end
 
-    def snowpacker_stylesheet_link_tag(name, **options)
+    def snowpacker_stylesheet_tag(name, **options)
       options[:media] ||= "screen"
       stylesheet_link_tag("/#{snowpacker_path}/#{name}", options)
     end

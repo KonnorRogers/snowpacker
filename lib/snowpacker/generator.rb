@@ -48,10 +48,10 @@ module Snowpacker
     end
 
     def create_snowpacker_files
-      destination = File.join("app", "frontend")
+      destination = File.join("app", "snowpacker")
 
       if rails?
-        destination = Rails.root.join("app", "frontend")
+        destination = Rails.root.join("app", "snowpacker")
       end
       say "\n\nCreating snowpacker files...\n\n", :magenta
 
@@ -63,14 +63,17 @@ module Snowpacker
       Rake.sh %(yarn add -D #{::Snowpacker::YARN_PACKAGES.join(" ")})
     end
 
-    def self.init
-      new
+    def init
       create_initializer_file
       create_config_files
       create_snowpacker_files
       add_yarn_packages
 
       say "Finished initializing snowpacker", :green
+    end
+
+    def self.init
+      new.init
     end
   end
 end
