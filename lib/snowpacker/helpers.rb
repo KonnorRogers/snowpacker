@@ -2,19 +2,17 @@ require "snowpacker/utils"
 
 module Snowpacker
   module Helpers
-    include Utils
-
     # Returns a <script></script> tag for rails
     # For non-rails, it simply gives the content
     def snowpacker_hmr_tag
-      return nil unless dev_server_running?
+      return nil unless Utils.dev_server_running?
 
       hostname = Snowpacker.config.hostname
       port = Snowpacker.config.port
 
       hmr = %(window.HMR_WEBSOCKET_URL = "ws:#{hostname}:#{port}")
 
-      return tag.script(hmr.html_safe) if rails?
+      return tag.script(hmr.html_safe) if Utils.rails?
 
       hmr
     end
@@ -26,7 +24,7 @@ module Snowpacker
     def snowpacker_entrypoint_tag(name, **options)
       options[:type] ||= "module"
 
-      if dev_server_running?
+      if Utils.dev_server_running?
         javascript_include_tag("/#{snowpacker_path}/entrypoints/#{name}", options)
       end
 
