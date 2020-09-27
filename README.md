@@ -85,7 +85,7 @@ following javascript file:
 
 You may notice a `require.context` statement in your javascript to load
 `channels`. This runs via Node and is not browser compatible. To get
-around this Snowpacker installs a package called [import-all.macro](@TODO) to allow you to import an entire directory of files.
+around this Snowpacker installs a package called [import-all.macro](https://github.com/kentcdodds/import-all.macro) to allow you to import an entire directory of files.
 
 ```diff
 // app/javascript/channels/index.js
@@ -142,10 +142,9 @@ public/snowpacks/
 `<%= snowpacker_path %>` will return the value of
 `Snowpacker.config.output_path`
 
-
 ### Assets
 
-Assets can be accessed via `<%= snowpacker_assets_path %>` and accepts all
+Assets can be accessed via `<%= snowpacker_asset_path("name", **options) %>` and accepts all
 the same params as [#asset_path](https://api.rubyonrails.org/classes/ActionView/Helpers/AssetUrlHelper.html#method-i-asset_path)
 
 ### Channels
@@ -156,7 +155,7 @@ Channels have no special helper.
 
 Packs can be accessed via:
 
-`<%= snowpacker_entry_tag %>` and works the same as
+`<%= javascript_snow_tag %>` and works the same as
 [`#javascript_include_tag`](https://api.rubyonrails.org/classes/ActionView/Helpers/AssetTagHelper.html#method-i-javascript_include_tag)
 
 `packs` are your "entrypoints" and where files get bundled to, very
@@ -170,7 +169,7 @@ Javascript files have no special helper.
 
 Stylesheets can be accessed via:
 
-`<%= snowpacker_stylesheet_link_tag %>` and works just like
+`<%= stylesheet_snow_tag %>` and works just like
 [`#stylesheet_link_tag`](https://api.rubyonrails.org/classes/ActionView/Helpers/AssetTagHelper.html#method-i-stylesheet_link_tag).
 I recommend importing your css in your `packs` file if you plan on
 changing it to support HMR.
@@ -214,11 +213,8 @@ Examples can be found in the [/examples](/examples) directory.
 
 - `require.context()` is not currently supported
 
-- Any require statements should be rewritten to import statements.
-Alternatively, you could add a polyfill-plugin to snowpack to fix this
-issue as well.
-
-[https://www.snowpack.dev/#node-built-in-could-not-be-resolved](https://www.snowpack.dev/#node-built-in-could-not-be-resolved)
+Please use
+[import.all-macro](https://github.com/kentcdodds/import-all.macro)
 
 ## Issues
 
@@ -239,14 +235,16 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Roadmap
 
-[x] Add default file structure with init
+- [x] Add default file structure with init
 
-[ ] Add a bundler for production
+- [x] Add a bundler for production
 
-[ ] Support require.context
+- [x] Support require.context
 
-Support is similar, but not the same [https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars](https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars)
+- [ ] Reading from production manifest
 
-[ ] Add documentation on Stimulus
+- [ ] Parity with Webpacker helper methods
 
-[https://github.com/lightster/rollup-plugin-stimulus](https://github.com/lightster/rollup-plugin-stimulus)
+- [ ] Add documentation / installation on Stimulus
+
+- [ ] Create a tailwind installer

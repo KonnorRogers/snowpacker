@@ -16,11 +16,11 @@ module Snowpacker
       hmr
     end
 
-    def snowpacker_assets_path(name, **options)
-      asset_path("/#{snowpacker_path}/#{name}", options)
+    def snowpacker_asset_path(name, **options)
+      asset_path(File.join(snowpacker_path, name), options)
     end
 
-    def snowpacker_entrypoint_tag(name, **options)
+    def javascript_snow_tag(name, **options)
       options[:type] ||= "module"
 
       if Utils.dev_server_running?
@@ -33,14 +33,12 @@ module Snowpacker
 
     # Returns nothing when not in production. CSS only gets extracted
     # during the final build.
-    def snowpacker_stylesheet_tag(name, **options)
+    def stylesheet_snow_tag(name, **options)
       return unless Rails.env == "development"
 
       options[:media] ||= "screen"
       stylesheet_link_tag("/#{snowpacker_path}/#{name}", options)
     end
-
-    private
 
     def snowpacker_path
       Snowpacker.config.output_path
