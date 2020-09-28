@@ -1,8 +1,16 @@
 Rails.application.config.middleware.insert_before 0, Snowpacker::Proxy, {ssl_verify_none: true}
 
 Snowpacker.configure do |snowpacker|
+  # Where to build snowpack to (out dir)
+  snowpacker.build_dir = "public"
+
+  # url to use for assets IE: /snowpacker/xyz.css, gets built to public/frontend
+  snowpacker.output_dir = "snowpacker"
+
   # Where to find the config directory
-  snowpacker.config_dir = Rails.root.join("config", "snowpacker")
+    snowpacker.config_path = Rails.root.join("config", "snowpacker")
+    snowpacker.mount_path = Rails.root.join("app", "snowpacker")
+    snowpacker.manifest_file = Rails.root.join(snowpacker.build_dir, snowpacker.output_path, "manifest.json")
 
   # Where to find the snowpack config file
   snowpacker.config_file = File.join(snowpacker.config_dir, "snowpack.config.js")
@@ -14,15 +22,6 @@ Snowpacker.configure do |snowpacker|
   snowpacker.postcss_config_file = File.join(snowpacker.config_dir, "postcss.config.js")
 
   # Where to find your snowpack files
-
-  snowpacker.mount_dir = Rails.root.join("app", "snowpacker")
-
-  # Where to build snowpack to (out dir)
-  snowpacker.build_dir = "public"
-
-  # url to use for assets IE: /snowpacker/xyz.css, gets built to public/frontend
-  snowpacker.output_path = "snowpacker"
-
   snowpacker.entrypoints_dir = "entrypoints"
 
   # What port to run snowpacker with

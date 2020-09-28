@@ -9,7 +9,7 @@ namespace :snowpacker do
   task clobber: :environment do
     build_dir = Rails.root.join(Snowpacker.config.build_dir)
     output_path = File.join(build_dir, Snowpacker.config.output_dir)
-    command = "rm -rf #{output_path}"
+    command = "rm -rf #{output_dir}"
     logger = Logger.new(STDOUT)
     logger.info(command)
     system(command)
