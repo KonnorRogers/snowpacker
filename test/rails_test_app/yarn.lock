@@ -5890,10 +5890,10 @@ snowpack-plugin-rollup-bundle@^0.1.3:
     rollup-plugin-styles "^3.10.0"
     rollup-plugin-terser "^7.0.0"
 
-snowpack@^2.12.0:
-  version "2.12.0"
-  resolved "https://registry.yarnpkg.com/snowpack/-/snowpack-2.12.0.tgz#19c2b928ecf6d86a97fc8c85c7f62d0115662c05"
-  integrity sha512-UulgxRA8wIGyMmdaTYetlY+45pPklX3p8mKiT9e48ZyC0gIm62c5yGAPXN9NlHLkl6pG2ykPAUbZwYP86HJiIQ==
+snowpack@^2.12.1:
+  version "2.12.1"
+  resolved "https://registry.yarnpkg.com/snowpack/-/snowpack-2.12.1.tgz#fd065896473ff0bda6d46fde3bab5e39fa917919"
+  integrity sha512-zMg7pOn96maiuMbKMXjMSbwTgq/hnZiWkBVIQL3TDXNCICT3uxSEW0vvPFyPNOg0JNvc0sb08Wvz5TyP5F8AjA==
   dependencies:
     "@babel/plugin-syntax-import-meta" "^7.10.4"
     "@snowpack/plugin-build-script" "^2.0.7"
