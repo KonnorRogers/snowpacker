@@ -11,13 +11,13 @@ Snowpacker.configure do |snowpacker|
 
   # Where to find the config directory
   <%- if defined?(Rails) -%>
-    snowpacker.config_path = Rails.root.join("config", "snowpacker")
-    snowpacker.mount_path = Rails.root.join("app", "snowpacker")
-    snowpacker.manifest_file = Rails.root.join(snowpacker.build_dir, snowpacker.output_path, "manifest.json")
+  snowpacker.config_path = Rails.root.join("config", "snowpacker")
+  snowpacker.mount_path = Rails.root.join("app", "snowpacker")
+  snowpacker.manifest_file = Rails.root.join(snowpacker.build_dir, snowpacker.output_dir, "manifest.json")
   <%- else -%>
-    snowpacker.config_path = File.join("config", "snowpacker")
-    snowpacker.mount_path = File.join("app", "snowpacker")
-    snowpacker.manifest_file = File.join(snowpacker.build_dir, snowpacker.output_path, "manifest.json")
+  snowpacker.config_path = File.join("config", "snowpacker")
+  snowpacker.mount_path = File.join("app", "snowpacker")
+  snowpacker.manifest_file = File.join(snowpacker.build_dir, snowpacker.output_dir, "manifest.json")
   <%- end -%>
 
   # Where to find the snowpack config file
