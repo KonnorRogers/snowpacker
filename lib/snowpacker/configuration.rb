@@ -11,7 +11,6 @@ module Snowpacker
     attr_accessor :manifest_file
     attr_accessor :output_dir
     attr_accessor :port, :hostname
-    attr_accessor :manifest_file
 
     def initialize
       yield(self) if block_given?
