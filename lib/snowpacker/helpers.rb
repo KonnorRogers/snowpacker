@@ -17,18 +17,18 @@ module Snowpacker
     end
 
     def snowpacker_asset_path(name, **options)
-      asset_path(File.join(snowpacker_path, name), options)
+      asset_path(File.join(snowpacker_dir, name), options)
     end
 
     def javascript_snow_tag(name, **options)
       options[:type] ||= "module"
 
       if Utils.dev_server_running?
-        javascript_include_tag("/#{snowpacker_path}/#{entrypoints_dir}/#{name}", options)
+        javascript_include_tag("/#{snowpacker_dir}/#{entrypoints_dir}/#{name}", options)
       end
 
       ## TODO: Change to reading from manifest for production
-      javascript_include_tag("/#{snowpacker_path}/#{entrypoints_dir}/#{name}", options)
+      javascript_include_tag("/#{snowpacker_dir}/#{entrypoints_dir}/#{name}", options)
     end
 
     # Returns nothing when not in production. CSS only gets extracted
@@ -37,11 +37,11 @@ module Snowpacker
       return unless Rails.env == "development"
 
       options[:media] ||= "screen"
-      stylesheet_link_tag("/#{snowpacker_path}/#{name}", options)
+      stylesheet_link_tag("/#{snowpacker_dir}/#{name}", options)
     end
 
-    def snowpacker_path
-      Snowpacker.config.output_path
+    def snowpacker_dir
+      Snowpacker.config.output_dir
     end
 
     def entrypoints_dir

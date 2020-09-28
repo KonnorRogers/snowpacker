@@ -140,7 +140,7 @@ public/snowpacks/
 ### Generic Helper
 
 `<%= snowpacker_path %>` will return the value of
-`Snowpacker.config.output_path`
+`Snowpacker.config.output_dir`
 
 ### Assets
 

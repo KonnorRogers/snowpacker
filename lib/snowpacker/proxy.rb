@@ -13,9 +13,9 @@ module Snowpacker
     end
 
     def perform_request(env)
-      output_path = %r{/#{Snowpacker.config.output_path}}
+      output_dir = %r{/#{Snowpacker.config.output_dir}}
 
-      if env["PATH_INFO"].start_with?(output_path) && Utils.dev_server_running?
+      if env["PATH_INFO"].start_with?(output_dir) && Utils.dev_server_running?
         env["HTTP_HOST"] = env["HTTP_X_FORWARDED_HOST"] = Snowpacker.config.hostname
         env["HTTP_X_FORWARDED_SERVER"] = Utils.host_with_port
         env["HTTP_PORT"] = env["HTTP_X_FORWARDED_PORT"] = Snowpacker.config.port
