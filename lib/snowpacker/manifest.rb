@@ -1,9 +1,9 @@
 class Snowpacker::Manifest
   # class << self
-  #   def parse_manifest(manifest_file = Snowpacker.config.manifest_files)
+  #   def parse_manifest(manifest_file = Snowpacker.config.manifest_file)
   #   end
 
-  #   def lookup(name, type)
+  #   def lookup(file_name, type)
   #   end
   # end
 end
