@@ -13,13 +13,13 @@ Snowpacker.configure do |snowpacker|
   snowpacker.manifest_file = Rails.root.join(snowpacker.build_dir, snowpacker.output_dir, "manifest.json")
 
   # Where to find the snowpack config file
-  snowpacker.config_file = File.join(snowpacker.config_dir, "snowpack.config.js")
+  snowpacker.config_file = File.join(snowpacker.config_path, "snowpack.config.js")
 
   # Where to find the babel config file
-  snowpacker.babel_config_file = File.join(snowpacker.config_dir, "babel.config.js")
+  snowpacker.babel_config_file = File.join(snowpacker.config_path, "babel.config.js")
 
   # Where to find the postcss config file
-  snowpacker.postcss_config_file = File.join(snowpacker.config_dir, "postcss.config.js")
+  snowpacker.postcss_config_file = File.join(snowpacker.config_path, "postcss.config.js")
 
   # Where to find your snowpack files
   snowpacker.entrypoints_dir = "entrypoints"
