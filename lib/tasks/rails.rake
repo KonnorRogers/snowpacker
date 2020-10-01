@@ -8,7 +8,7 @@ namespace :snowpacker do
   desc "Removes compiled assets"
   task clobber: :environment do
     build_dir = Rails.root.join(Snowpacker.config.build_dir)
-    output_path = File.join(build_dir, Snowpacker.config.output_dir)
+    output_dir = File.join(build_dir, Snowpacker.config.output_dir)
     command = "rm -rf #{output_dir}"
     logger = Logger.new(STDOUT)
     logger.info(command)
@@ -16,7 +16,6 @@ namespace :snowpacker do
   end
 
   task build: :environment do
-    Rake::Task["snowpacker:clobber"].invoke
     Rake::Task["snowpacker:build"].invoke
   end
 
