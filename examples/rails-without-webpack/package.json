@@ -34,6 +34,6 @@
     "postcss-preset-env": "^6.7.0",
     "rollup-plugin-require-context": "^1.0.1",
     "snowpack": "^2.12.1",
-    "snowpack-plugin-rollup-bundle": "^0.1.3"
+    "snowpack-plugin-rollup-bundle": "^0.1.4"
   }
 }
