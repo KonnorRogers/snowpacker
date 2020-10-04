@@ -38,7 +38,7 @@ module Snowpacker
         "#{hostname}:#{port}"
       end
 
-    private
+      private
 
       def print_port_in_use(port)
         error_message = "\nUnable to start snowpacker dev server\n\n"
@@ -50,6 +50,6 @@ module Snowpacker
         say error_message, :yellow
         say info_message, :magenta
       end
-  end
+    end
   end
 end
