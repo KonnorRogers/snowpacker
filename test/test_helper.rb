@@ -25,18 +25,11 @@ def remove_rails_snowpacker_dirs
 end
 
 def rails_snowpacker_init
-  Dir.chdir(RAILS_TEST_APP) { `rails snowpacker:init` }
+  STDIN.stub :gets, "y" do
+    Dir.chdir(RAILS_TEST_APP) { `rails snowpacker:init` }
+  end
 end
 
-def cleanup_yarn_packages
-  yarn_packages = Snowpacker::YARN_PACKAGES.map { |pkg|
-    if pkg == "core-js@3"
-      pkg = "core-js"
-    end
-
-    pkg
-  }
-  Dir.chdir(RAILS_TEST_APP) { `yarn remove #{yarn_packages.join(" ")}` }
+Minitest.after_run do
+  remove_rails_snowpacker_dirs
 end
-
-Minitest.after_run { remove_rails_snowpacker_dirs }

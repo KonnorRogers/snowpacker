@@ -10,10 +10,21 @@ class SnowpackerGeneratorTest < Minitest::Test
     remove_rails_snowpacker_dirs
   end
 
+  def cleanup_yarn_packages
+    yarn_packages = Snowpacker::YARN_PACKAGES.map { |pkg|
+      if pkg == "core-js@3"
+        pkg = "core-js"
+      end
+
+      pkg
+    }
+    Dir.chdir(RAILS_TEST_APP) { `yarn remove #{yarn_packages.join(" ")}` }
+  end
+
   def test_generator_works
     capture_subprocess_io { rails_snowpacker_init }
 
-    out, _err = capture_io {
+    out, _err = capture_subprocess_io {
       Dir.chdir(RAILS_TEST_APP) { system("rails snowpacker:build") }
     }
 

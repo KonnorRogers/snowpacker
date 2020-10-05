@@ -60,7 +60,7 @@ module Snowpacker
 
     def add_yarn_packages
       say "\n\nAdding yarn packages...\n\n", :magenta
-      Rake.sh %(yarn add -D #{::Snowpacker::YARN_PACKAGES.join(" ")})
+      Rake.sh %(yarn add #{::Snowpacker::YARN_PACKAGES.join(" ")})
     end
 
     def init
