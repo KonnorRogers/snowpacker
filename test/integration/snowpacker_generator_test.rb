@@ -10,7 +10,6 @@ class SnowpackerGeneratorTest < Minitest::Test
     remove_rails_snowpacker_dirs
   end
 
-
   def cleanup_yarn_packages
     yarn_packages = Snowpacker::YARN_PACKAGES.map { |pkg|
       if pkg == "core-js@3"

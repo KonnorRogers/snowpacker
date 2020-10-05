@@ -5,7 +5,7 @@ default_ignores: true  # default: true
 
 ignore:                 # default: []
   - 'db/schema.rb'
-  - '**/node_modules'
+  - '**/*node_modules/**/*'
   - 'vendor/**/*'
   - 'test/**/*':
     - Layout/AlignHash
