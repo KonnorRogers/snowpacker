@@ -1,6 +1,6 @@
 require "test_helper.rb"
 
-class TestEnv < Minitest::Test
+class EnvTest < Minitest::Test
   def test_sets_env_vars_appropriately
     Snowpacker.configure
     Snowpacker.config.hostname = "hostname"
