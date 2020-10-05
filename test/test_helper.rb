@@ -30,6 +30,7 @@ def rails_snowpacker_init
   end
 end
 
+
 Minitest.after_run do
   remove_rails_snowpacker_dirs
 end

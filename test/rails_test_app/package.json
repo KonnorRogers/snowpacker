@@ -24,8 +24,6 @@
     "postcss-flexbugs-fixes": "^4.2.1",
     "postcss-import": "^12.0.1",
     "postcss-preset-env": "^6.7.0",
-    "snowpack": "^2.13.2",
-    "snowpack-plugin-rollup-bundle": "^0.1.4",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
