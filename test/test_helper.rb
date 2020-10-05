@@ -38,3 +38,5 @@ def cleanup_yarn_packages
   }
   Dir.chdir(RAILS_TEST_APP) { `yarn remove #{yarn_packages.join(" ")}` }
 end
+
+Minitest.after_run { remove_rails_snowpacker_dirs }
