@@ -1,6 +1,6 @@
 require "json"
 
-class Snowpacker
+module Snowpacker
   module Manifest
     class << self
       attr_accessor :manifest_hash
