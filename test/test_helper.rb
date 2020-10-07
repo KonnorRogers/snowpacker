@@ -8,8 +8,6 @@ require "thor"
 require "minitest/reporters"
 Minitest::Reporters.use! [Minitest::Reporters::DefaultReporter.new(color: true, slow_count: 5)]
 
-ENV["SNOWPACKER_TEST"] = "true"
-
 TEST_DIR = File.expand_path(__dir__)
 FIXTURE_DIR = File.join(TEST_DIR, "fixtures")
 RUBY_TEST_APP = File.join(TEST_DIR, "ruby_test_app")
@@ -30,7 +28,7 @@ end
 
 def rails_snowpacker_init
   Thor::LineEditor.stub :readline, "y\n" do
-    Dir.chdir(RAILS_TEST_APP) { system("rails snowpacker:init") }
+    Dir.chdir(RAILS_TEST_APP) { system(%(SNOWPACKER_TEST="test" rails snowpacker:init")) }
   end
 end
 

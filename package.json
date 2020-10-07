@@ -1,14 +1,14 @@
 {
-  "name": "snowpacker",
+  "name": "rails-snowpacker",
   "version": "0.0.4-alpha1",
   "description": "An npm package for integration with Snowpacker",
   "repository": "git@github.com:ParamagicDev/snowpacker.git",
   "author": "paramagicdev <konnor5456@gmail.com>",
   "license": "MIT",
   "source": "package/src/index.js",
-  "main": "package/dist/snowpacker.js",
-  "module": "package/dist/snowpacker.module.js",
-  "unpkg": "package/dist/snowpacker.umd.js",
+  "main": "package/dist/rails-snowpacker.js",
+  "module": "package/dist/rails-snowpacker.module.js",
+  "unpkg": "package/dist/rails-snowpacker.umd.js",
   "scripts": {
     "build": "microbundle --target node",
     "dev": "yarn build --watch",

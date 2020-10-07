@@ -69,10 +69,10 @@ module Snowpacker
 
     def add_snowpacker
       if ENV["SNOWPACKER_TEST"] == "true"
-        return system("yarn add snowpacker file:../../")
+        return system("yarn add rails-snowpacker file:../../")
       end
 
-      system("yarn add snowpacker")
+      system("yarn add rails-snowpacker")
     end
 
     def self.init
