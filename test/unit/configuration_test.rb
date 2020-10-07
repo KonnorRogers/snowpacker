@@ -1,6 +1,6 @@
 require "test_helper.rb"
 
-class TestConfiguration < Minitest::Test
+class ConfigurationTest < Minitest::Test
   def test_initialize_without_error
     config = Snowpacker::Configuration.new
 

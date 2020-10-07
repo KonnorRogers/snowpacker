@@ -34,7 +34,6 @@ Rake::TestTask.new(:"test:unit") do |t|
   t.verbose = true
 end
 
-task :format do
-  sh("standardrb --format progress --fix")
-end
+require "standard/rake"
+
 task default: :test

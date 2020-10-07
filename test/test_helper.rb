@@ -8,6 +8,7 @@ require "minitest/reporters"
 Minitest::Reporters.use! [Minitest::Reporters::DefaultReporter.new(color: true, slow_count: 5)]
 
 TEST_DIR = File.expand_path(__dir__)
+FIXTURE_DIR = File.join(TEST_DIR, "fixtures")
 RUBY_TEST_APP = File.join(TEST_DIR, "ruby_test_app")
 RAILS_TEST_APP = File.join(TEST_DIR, "rails_test_app")
 
@@ -25,7 +26,9 @@ def remove_rails_snowpacker_dirs
 end
 
 def rails_snowpacker_init
-  Dir.chdir(RAILS_TEST_APP) { `rails snowpacker:init` }
+  STDIN.stub :gets, "y" do
+    Dir.chdir(RAILS_TEST_APP) { `rails snowpacker:init` }
+  end
 end
 
 Minitest.after_run { remove_rails_snowpacker_dirs }

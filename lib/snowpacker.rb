@@ -6,6 +6,7 @@ require "snowpacker/generator"
 require "snowpacker/helpers"
 require "snowpacker/proxy"
 require "snowpacker/utils"
+require "snowpacker/manifest"
 
 module Snowpacker
   class << self
