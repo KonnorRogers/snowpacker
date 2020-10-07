@@ -1,0 +1,42 @@
+{
+  "name": "snowpacker",
+  "version": "0.0.4-alpha1",
+  "description": "An npm package for integration with Snowpacker",
+  "repository": "git@github.com:ParamagicDev/snowpacker.git",
+  "author": "paramagicdev <konnor5456@gmail.com>",
+  "license": "MIT",
+  "source": "package/src/index.js",
+  "main": "package/dist/snowpacker.js",
+  "module": "package/dist/snowpacker.module.js",
+  "unpkg": "package/dist/snowpacker.umd.js",
+  "scripts": {
+    "build": "microbundle --target node",
+    "dev": "yarn build --watch",
+    "deploy": "yarn version"
+  },
+  "devDependencies": {
+    "microbundle": "^0.12.4"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.11.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/plugin-transform-destructuring": "^7.10.4",
+    "@babel/plugin-transform-regenerator": "^7.10.4",
+    "@babel/plugin-transform-runtime": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
+    "babel-plugin-dynamic-import-node": "^2.3.3",
+    "babel-plugin-macros": "^2.8.0",
+    "core-js": "3",
+    "import-all.macro": "^3.1.0",
+    "postcss": "^8.1.1",
+    "postcss-cli": "^8.0.0",
+    "postcss-flexbugs-fixes": "^4.2.1",
+    "postcss-import": "^12.0.1",
+    "postcss-preset-env": "^6.7.0",
+    "snowpack": "^2.13.3",
+    "snowpack-plugin-rollup-bundle": "^0.2.1"
+  }
+}
