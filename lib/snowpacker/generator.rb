@@ -58,18 +58,21 @@ module Snowpacker
       directory "snowpacker", destination
     end
 
-    def add_yarn_packages
-      say "\n\nAdding yarn packages...\n\n", :magenta
-      Rake.sh %(yarn add #{::Snowpacker::YARN_PACKAGES.join(" ")})
-    end
-
     def init
       create_initializer_file
       create_config_files
       create_snowpacker_files
-      add_yarn_packages
+      add_snowpacker
 
       say "Finished initializing snowpacker", :green
+    end
+
+    def add_snowpacker
+      if ENV["SNOWPACKER_TEST"] == "true"
+        return system("yarn add snowpacker file:../../")
+      end
+
+      system("yarn add snowpacker")
     end
 
     def self.init
