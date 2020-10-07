@@ -23,16 +23,6 @@ class SnowpackerGeneratorTest < Minitest::Test
     snowpacker_file = ERB.new(File.binread(File.join(TEMPLATE_DIR, "snowpacker.rb.tt")), trim_mode: "-", eoutvar: "@output_buffer").result(context)
     assert_equal File.read(RAILS_SNOWPACKER_INITIALIZER), snowpacker_file
 
-    package_json = File.read(File.join(RAILS_TEST_APP, "package.json"))
-    Snowpacker::YARN_PACKAGES.each do |pkg|
-      # work around core-js@3 which turns to "core-js": "3"
-      if pkg == "core-js@3"
-        pkg = "core-js"
-      end
-
-      assert_includes package_json, pkg
-    end
-
     config_files = %w[snowpack.config.js postcss.config.js babel.config.js]
 
     config_files.each do |config_file|
@@ -41,7 +31,5 @@ class SnowpackerGeneratorTest < Minitest::Test
 
       assert_equal test_file, config_file
     end
-
-    capture_subprocess_io { cleanup_yarn_packages }
   end
 end

@@ -6,11 +6,8 @@ require "snowpacker/generator"
 require "snowpacker/helpers"
 require "snowpacker/proxy"
 require "snowpacker/utils"
-require "snowpacker/yarn_packages"
 
 module Snowpacker
-  YARN_PACKAGES = YarnPackages.all_packages
-
   class << self
     attr_accessor :config
 
