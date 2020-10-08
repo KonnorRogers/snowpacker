@@ -13,7 +13,7 @@ class SnowpackerGeneratorTest < Minitest::Test
   def test_generator_works
     capture_subprocess_io { rails_snowpacker_init }
 
-    out, _err = capture_subprocess_io {
+    out, err = capture_subprocess_io {
       Dir.chdir(RAILS_TEST_APP) { system("rails snowpacker:build") }
     }
 

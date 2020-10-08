@@ -3,7 +3,6 @@ import Turbolinks from "turbolinks"
 import ActiveStorage from "@rails/activestorage"
 import "../stylesheets/index.css"
 import "../javascript"
-import "../assets/fake-asset.png"
 
 Turbolinks.start()
 ActiveStorage.start()

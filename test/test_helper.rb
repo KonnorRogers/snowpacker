@@ -27,9 +27,7 @@ def remove_rails_snowpacker_dirs
 end
 
 def rails_snowpacker_init
-  Thor::LineEditor.stub :readline, "y\n" do
-    Dir.chdir(RAILS_TEST_APP) { system(%(SNOWPACKER_TEST="test" rails snowpacker:init")) }
-  end
+  Dir.chdir(RAILS_TEST_APP) { system(%(rails snowpacker:init)) }
 end
 
 Minitest.after_run { remove_rails_snowpacker_dirs }
