@@ -8,9 +8,10 @@
   "source": "package/src/index.js",
   "main": "package/dist/rails-snowpacker.js",
   "module": "package/dist/rails-snowpacker.module.js",
-  "unpkg": "package/dist/rails-snowpacker.umd.js",
+  "files": [
+    "package/dist"
+  ],
   "scripts": {
-    "build": "microbundle --target node",
     "dev": "yarn build --watch",
     "deploy": "yarn version"
   },
