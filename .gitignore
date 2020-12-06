@@ -68,3 +68,4 @@ test/**/*storage
 test/**/*node_modules
 test/**/*yarn-error.log
 package/dist
+Gemfile.lock
