@@ -19,7 +19,7 @@ class SnowpackerGeneratorTest < Minitest::Test
 
     context = instance_eval("binding", __FILE__, __LINE__)
 
-    file = File.binread(File.join(TEMPLATE_DIR, "snowpacker.rb.tt")
+    file = File.binread(File.join(TEMPLATE_DIR, "snowpacker.rb.tt"))
     trim_mode = "-"
     eoutvar = "@output_buffer"
 
