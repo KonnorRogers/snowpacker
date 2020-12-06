@@ -23,7 +23,7 @@ class SnowpackerGeneratorTest < Minitest::Test
     trim_mode = "-"
     eoutvar = "@output_buffer"
 
-    snowpacker_file
+    snowpacker_file = nil
 
     # Account for ERB argument deprecation from 2.5 -> 2.6
     # https://bugs.ruby-lang.org/issues/14256 
