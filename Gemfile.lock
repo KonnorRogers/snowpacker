@@ -3,7 +3,7 @@ PATH
   specs:
     snowpacker (0.0.4.alpha1)
       rack-proxy (~> 0.6.4)
-      rake (~> 13.0)
+      rake (>= 13.0)
       thor (~> 0.20)
 
 GEM
@@ -180,7 +180,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 2)
   conventional-changelog (~> 1.2)
-  minitest (~> 5.14)
+  minitest (>= 5.14)
   minitest-reporters (~> 1.4)
   pry (~> 0.12)
   rails (~> 6.0)
