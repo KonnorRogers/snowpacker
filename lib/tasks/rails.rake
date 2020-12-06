@@ -1,5 +1,3 @@
-def clobber
-end
 namespace :snowpacker do
   task init: :environment do
     Rake::Task["snowpacker:init"].invoke
