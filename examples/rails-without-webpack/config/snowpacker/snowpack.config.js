@@ -59,12 +59,12 @@ const plugins = [
       "output": [".js"]
     }
   ],
-  [
-    "snowpack-plugin-rollup-bundle",
-    {
-      entrypoints: `${BUILD_DIR}/${OUTPUT_DIR}/${ENTRYPOINTS_DIR}/**/*.js`,
-    }
-  ]
+  // [
+  //   "snowpack-plugin-rollup-bundle",
+  //   {
+  //     entrypoints: `${BUILD_DIR}/${OUTPUT_DIR}/${ENTRYPOINTS_DIR}/**/*.js`,
+  //   }
+  // ]
 ]
 
 module.exports = {
