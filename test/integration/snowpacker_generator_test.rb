@@ -13,11 +13,9 @@ class SnowpackerGeneratorTest < Minitest::Test
   def test_generator_works
     capture_subprocess_io { rails_snowpacker_init }
 
-    out, err = capture_subprocess_io {
-      Dir.chdir(RAILS_TEST_APP) { system("rails snowpacker:build") }
-    }
+    output = Dir.chdir(RAILS_TEST_APP) { `rails snowpacker:build` }
 
-    assert_match %r{Build Complete!}, out
+    assert_match %r{Build Complete!}, output
 
     context = instance_eval("binding", __FILE__, __LINE__)
     snowpacker_file = ERB.new(File.binread(File.join(TEMPLATE_DIR, "snowpacker.rb.tt")), trim_mode: "-", eoutvar: "@output_buffer").result(context)
