@@ -18,7 +18,7 @@ const HTTPS = process.env[`${prefix}_HTTPS`]
 const PORT = process.env[`${prefix}_PORT`]
 
 const mount = {
-  [MOUNT_PATH]: `/`
+  [MOUNT_PATH]: `/${OUTPUT_DIR}`
 }
 
 const installOptions = {
@@ -29,13 +29,13 @@ const devOptions = {
   hostname: HOSTNAME,
   port: parseInt(PORT, 10),
   open: "none",
-  out: path.join(BUILD_DIR, OUTPUT_DIR),
+  out: BUILD_DIR,
   secure: (HTTPS === "true")
 }
 
 const buildOptions = {
   clean: true,
-  baseUrl: `/${OUTPUT_DIR}`,
+  baseUrl: `/`,
   metaDir: path.join(OUTPUT_DIR, "__snowpack__"),
   webModulesUrl: path.join(OUTPUT_DIR, "web_modules")
 }
