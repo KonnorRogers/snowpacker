@@ -29,7 +29,7 @@ class SnowpackerGeneratorTest < Minitest::Test
     # https://bugs.ruby-lang.org/issues/14256 
 
     if Gem::Version.new(RUBY_VERSION) < Gem::Version.new("2.6.0")
-      snowpacker_file = ERB.new(file, 1, trim_mode, eoutvar)
+      snowpacker_file = ERB.new(file, 0, trim_mode, eoutvar)
     else
       snowpacker_file = ERB.new(file, trim_mode: trim_mode, eoutvar: eoutvar)
     end
