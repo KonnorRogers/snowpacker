@@ -18,7 +18,23 @@ class SnowpackerGeneratorTest < Minitest::Test
     assert_match %r{Build Complete!}, output
 
     context = instance_eval("binding", __FILE__, __LINE__)
-    snowpacker_file = ERB.new(File.binread(File.join(TEMPLATE_DIR, "snowpacker.rb.tt")), trim_mode: "-", eoutvar: "@output_buffer").result(context)
+
+    file = File.binread(File.join(TEMPLATE_DIR, "snowpacker.rb.tt")
+    trim_mode = "-"
+    eoutvar = "@output_buffer"
+
+    snowpacker_file
+
+    # Account for ERB argument deprecation from 2.5 -> 2.6
+    # https://bugs.ruby-lang.org/issues/14256 
+
+    if Gem::Version($RUBY_VERSION) < Gem::Version("2.6.0")
+      snowpacker_file = ERB.new(file, 1, trim_mode, eoutvar)
+    else
+      snowpacker_file = ERB.new(file, trim_mode: trim_mode, eoutvar: eoutvar)
+    end
+
+    snowpacker_file = snowpacker_file.result(context)
     assert_equal File.read(RAILS_SNOWPACKER_INITIALIZER), snowpacker_file
 
     config_files = %w[snowpack.config.js postcss.config.js babel.config.js]
