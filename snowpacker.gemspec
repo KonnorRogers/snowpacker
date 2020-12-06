@@ -42,4 +42,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "standardrb", "~> 1.0"
   spec.add_development_dependency "yard", "~> 0.9"
   spec.add_development_dependency "minitest-reporters", "~> 1.4"
+  spec.add_development_dependency "tzinfo-data"
 end
