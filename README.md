@@ -239,7 +239,8 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 - [ ] Add a bundler for production (work in progress)
 
-- [] Support require.context
+- [x] Support require.context (There is a work around using import.all
+with babel)
 
 - [ ] Reading from production manifest
 
