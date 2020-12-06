@@ -237,9 +237,9 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 - [x] Add default file structure with init
 
-- [x] Add a bundler for production
+- [ ] Add a bundler for production (work in progress)
 
-- [x] Support require.context
+- [] Support require.context
 
 - [ ] Reading from production manifest
 
@@ -247,4 +247,5 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 - [ ] Add documentation / installation on Stimulus
 
-- [ ] Create a tailwind installer
+- [ ] Create an npm package to read a default config from and pin
+snowpack versions
