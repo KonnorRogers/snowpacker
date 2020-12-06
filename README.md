@@ -250,3 +250,7 @@ with babel)
 
 - [ ] Create an npm package to read a default config from and pin
 snowpack versions
+
+- [ ] Add in End-to-end testing to confirm everything works as intended.
+
+- [ ] Make the config environment from NPM in Typescript so users can import types for good completion.
