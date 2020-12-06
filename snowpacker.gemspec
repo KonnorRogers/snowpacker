@@ -31,12 +31,12 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_runtime_dependency "rack-proxy", "~> 0.6.4"
-  spec.add_runtime_dependency "rake", "~> 13.0"
+  spec.add_runtime_dependency "rake", ">= 13.0"
   spec.add_runtime_dependency "thor", "~> 0.20"
 
   spec.add_development_dependency "bundler", "~> 2"
   spec.add_development_dependency "conventional-changelog", "~> 1.2"
-  spec.add_development_dependency "minitest", "~> 5.14"
+  spec.add_development_dependency "minitest", ">= 5.14"
   spec.add_development_dependency "pry", "~> 0.12"
   spec.add_development_dependency "rails", "~> 6.0"
   spec.add_development_dependency "standardrb", "~> 1.0"
