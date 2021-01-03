@@ -2,6 +2,12 @@
 
 ## WORK IN PROGRESS
 
+If you would like to help support the future of this project,
+please consider sponsoring me so I can keep a regular stream
+of updates and fixes to this project.
+
+https://github.com/sponsors/ParamagicDev
+
 Please note, that this project is still in it's infancy. Feel free to
 file bug reports, issues, and feature requests.
 
