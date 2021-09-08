@@ -1,5 +1,13 @@
 # Snowpacker
 
+## Future of the project
+
+As I have become quite busy with other projects, I would consider Snowpacker deprecated at this time. Perhaps it will get revisited in the future. As of right now, my recommendation is to use ViteRuby.
+
+https://vite-ruby.netlify.app/
+
+If someone would like ownership of the project or the name, feel free to open an issue on the repo.
+
 ## WORK IN PROGRESS
 
 If you would like to help support the future of this project,
