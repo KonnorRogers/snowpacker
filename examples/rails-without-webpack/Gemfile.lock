@@ -2,9 +2,9 @@ PATH
   remote: ../..
   specs:
     snowpacker (0.0.4.alpha1)
-      rack-proxy (~> 0.6.4)
-      rake (~> 13.0)
-      thor (~> 0.20)
+      rack-proxy (>= 0.6.0)
+      rake (>= 13.0)
+      thor (>= 0.20)
 
 GEM
   remote: https://rubygems.org/
@@ -180,7 +180,7 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    tzinfo (1.2.7)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
     web-console (4.0.4)
       actionview (>= 6.0.0)
