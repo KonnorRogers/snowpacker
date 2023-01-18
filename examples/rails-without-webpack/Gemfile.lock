@@ -2,9 +2,9 @@ PATH
   remote: ../..
   specs:
     snowpacker (0.0.4.alpha1)
-      rack-proxy (~> 0.6.4)
-      rake (~> 13.0)
-      thor (~> 0.20)
+      rack-proxy (>= 0.6.0)
+      rake (>= 13.0)
+      thor (>= 0.20)
 
 GEM
   remote: https://rubygems.org/
@@ -112,7 +112,7 @@ GEM
     public_suffix (4.0.5)
     puma (4.3.5)
       nio4r (~> 2.0)
-    rack (2.2.3)
+    rack (2.2.6.2)
     rack-proxy (0.6.5)
       rack
     rack-test (1.1.0)
